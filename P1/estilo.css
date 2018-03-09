@@ -11,17 +11,25 @@ div{
 }
 
 .cabecera {
-  padding: 5px 50px;
   font-size: 20px;
 }
 
 .logo{
-  padding-right: 0em;
+
 }
 
 .titulo-cabecera {
-
+  float:none;
+  text-align: center;
+  background: #f5b505;
 }
+
+.titulo-obra{
+  float:none;
+  text-align: center;
+  background: #f0c030;
+}
+
 
 .menu{
 
@@ -33,33 +41,36 @@ div{
 }
 
 .navitem{
-  padding: 0.3em 1em;
-  margin-right: 42px;
+  padding: 1em 2em;
+  margin-right: 50px;
   font-family: helvetica;
-  font-size: 15px;
+  font-size: 18px;
   display: inherit;
-  border-color: darkseagreen;
-  border-style: double;
+  border-color: #009020;
+  border-style: solid;
 }
 
-.seccion-lateral{
-  padding: 150px 10px;
+.seccion-navegacion{
   float:left;
+  width: 20%;
+  height: 60%;
+  border-color: #00b060;
+  border-style: solid;
 }
 
 .seccion-central{
   float:right;
-  margin-right: 40px;
-  padding: 150px 100px;
-  border-color: green;
+  margin-right: 15px;
+  width: 70%;
+  height: 80%;
+  border-color: #00b000;
   border-style: solid;
 }
 
 .footer{
   position: relative;
   height: 50px;
-  padding: 10px 10px;
   clear: both;
-  background: #f00000;
+  background: #f0b000;
   text-align: center;
 }
