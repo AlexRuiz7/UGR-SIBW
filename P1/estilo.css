@@ -11,7 +11,8 @@ div{
 }
 
 .cabecera {
-  padding: 50px 100px;
+  padding: 5px 50px;
+  font-size: 20px;
 }
 
 .logo{
@@ -28,26 +29,37 @@ div{
 
 .navbar{
   display: inline-flex;
+
 }
 
 .navitem{
-  padding: 0.2em 1em;
-  margin-right: 40px;
+  padding: 0.3em 1em;
+  margin-right: 42px;
   font-family: helvetica;
-  font-size: 14px;
+  font-size: 15px;
   display: inherit;
   border-color: darkseagreen;
   border-style: double;
 }
 
 .seccion-lateral{
-
+  padding: 150px 10px;
+  float:left;
 }
 
 .seccion-central{
-
+  float:right;
+  margin-right: 40px;
+  padding: 150px 100px;
+  border-color: green;
+  border-style: solid;
 }
 
 .footer{
-
+  position: relative;
+  height: 50px;
+  padding: 10px 10px;
+  clear: both;
+  background: #f00000;
+  text-align: center;
 }
