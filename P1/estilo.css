@@ -12,7 +12,7 @@ div{
 }
 
 .cabecera {
-  width: 100%;
+  width: -webkit-fill-available;
   display: inline-flex;
   font-size: 20px;
 }
@@ -60,6 +60,7 @@ div{
 
 .secciones {
   display: inline-flex;
+  width: -webkit-fill-available;
 }
 
 .seccion-lateral{
