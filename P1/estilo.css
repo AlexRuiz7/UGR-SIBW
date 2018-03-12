@@ -19,13 +19,11 @@ div{
 }
 
 .titulo-cabecera {
-  float:none;
   text-align: center;
   background: #f5b505;
 }
 
 .titulo-obra{
-  float:none;
   text-align: center;
   background: #f0c030;
 }
@@ -50,22 +48,16 @@ div{
   border-style: solid;
 }
 
+.secciones {
+  display: -webkit-box;
+}
+
 .seccion-navegacion{
-  float:left;
   width: 20%;
-  height: 60%;
   border-color: #00b060;
   border-style: solid;
 }
 
-.seccion-central{
-  float:right;
-  margin-right: 15px;
-  width: 70%;
-  height: 80%;
-  border-color: #00b000;
-  border-style: solid;
-}
 
 .footer{
   position: relative;
@@ -73,4 +65,26 @@ div{
   clear: both;
   background: #f0b000;
   text-align: center;
+}
+
+
+/* Estilo definido para el grid de la sección central de contenido */
+.seccion-central {
+  display: grid;
+  grid-template-columns: 100px 100px 100px;
+  grid-template-rows: 100px 100px 100px;
+  grid-gap: 15px;
+  background-color: #fff;
+  color: #444;
+  border: chartreuse;
+  border-style: solid;
+  width: fit-content;
+}
+
+.box {
+  background-color: #444;
+  color: #fff;
+  border-radius: 5px;
+  padding: 20px;
+  font-size: 150%;
 }
