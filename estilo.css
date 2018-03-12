@@ -1,0 +1,81 @@
+
+
+html {
+  font-family: Arial,"Helvetica Neue",Helvetica,sans-serif;
+  font-size: 16px;
+  color: black;
+}
+
+div{
+  padding: 0.5em;
+}
+
+.cabecera {
+  width: 100%;
+  display: inline-flex;
+  font-size: 20px;
+}
+
+.logo{
+}
+
+
+.titulo-cabecera {
+  width: 80%;
+  margin-right: 5px;
+  text-align: center;
+  background: #f5b505;
+}
+
+.titulo-obra{
+  width: 80%;
+  margin-right: 5px;
+  text-align: center;
+  background: #f0c030;
+}
+
+
+.menu{
+
+}
+
+.navbar{
+  display: inline-flex;
+
+}
+
+.navitem{
+  padding: 1em 2em;
+  margin-right: 50px;
+  font-family: helvetica;
+  font-size: 18px;
+  display: inherit;
+  border-color: #009020;
+  border-style: solid;
+}
+
+.secciones{
+  width: 100%;
+  display: inline-flex;
+}
+
+.seccion-navegacion{
+  border-color: #00b060;
+  border-style: solid;
+}
+
+.seccion-central{
+  margin-left: 20px;
+  margin-right: 20px;
+  width: 70%;
+  border-color: #00b000;
+  border-style: solid;
+}
+
+.footer{
+  position: relative;
+  height: 50px;
+  clear: both;
+  background: #f0b000;
+  text-align: center;
+}
