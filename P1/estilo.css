@@ -8,6 +8,7 @@ html {
 
 div{
   padding: 0.5em;
+  margin: 10px;
 }
 
 .cabecera {
@@ -17,8 +18,11 @@ div{
 }
 
 .logo{
+  border: red;
+  border-style: solid;
+  text-align: center;
+  vertical-align: middle;
 }
-
 
 .titulo-cabecera {
   width: 80%;
@@ -55,10 +59,10 @@ div{
 }
 
 .secciones {
-  display: -webkit-box;
+  display: inline-flex;
 }
 
-.seccion-navegacion{
+.seccion-lateral{
   width: 20%;
   border-color: #00b060;
   border-style: solid;
@@ -74,7 +78,7 @@ div{
 
 
 /* Estilo definido para el grid de la sección central de contenido */
-.seccion-central {
+.grid {
   display: grid;
   grid-template-columns: 100px 100px 100px;
   grid-template-rows: 100px 100px 100px;
