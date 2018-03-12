@@ -7,23 +7,29 @@ html {
 }
 
 div{
-  padding: 1em;
+  padding: 0.5em;
 }
 
 .cabecera {
+  width: 100%;
+  display: inline-flex;
   font-size: 20px;
 }
 
 .logo{
-
 }
 
+
 .titulo-cabecera {
+  width: 80%;
+  margin-right: 5px;
   text-align: center;
   background: #f5b505;
 }
 
 .titulo-obra{
+  width: 80%;
+  margin-right: 5px;
   text-align: center;
   background: #f0c030;
 }
@@ -57,7 +63,6 @@ div{
   border-color: #00b060;
   border-style: solid;
 }
-
 
 .footer{
   position: relative;
