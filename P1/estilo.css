@@ -7,10 +7,11 @@ html {
 }
 
 div{
-  padding: 1em;
+  padding: 0.5em;
 }
 
 .cabecera {
+  width: 100%;
   display: inline-flex;
   font-size: 20px;
 }
@@ -20,11 +21,15 @@ div{
 
 
 .titulo-cabecera {
+  width: 80%;
+  margin-right: 5px;
   text-align: center;
   background: #f5b505;
 }
 
 .titulo-obra{
+  width: 80%;
+  margin-right: 5px;
   text-align: center;
   background: #f0c030;
 }
@@ -50,7 +55,6 @@ div{
 }
 
 .secciones{
-  height: auto;
   width: 100%;
   display: inline-flex;
 }
@@ -61,6 +65,9 @@ div{
 }
 
 .seccion-central{
+  margin-left: 20px;
+  margin-right: 20px;
+  width: 70%;
   border-color: #00b000;
   border-style: solid;
 }
