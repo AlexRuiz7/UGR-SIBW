@@ -87,6 +87,10 @@ div{
 
 }
 
+.obra-text{
+  font-size: 22px;
+}
+
 .footer{
   position: relative;
   height: fit-content;;
@@ -100,9 +104,9 @@ div{
 /* Estilo definido para el grid de la sección central de contenido */
 .grid {
   display: grid;
-  grid-template-columns: 200px 200px 200px;
-  grid-template-rows: 200px 200px 200px;
-  grid-gap: 25px;
+  grid-template-columns: 250px 250px 250px;
+  grid-template-rows: 250px 250px 250px;
+  grid-gap: 30px;
   color: #888;
   /*border: chartreuse;
   border-style: solid;*/
