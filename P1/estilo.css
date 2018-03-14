@@ -71,6 +71,13 @@ div{
   border-style: solid;
 }
 
+.seccion-central{
+  width: fit-content;
+  border: chartreuse;
+  border-style: solid;
+  width: -webkit-fill-available;
+}
+
 .footer{
   position: relative;
   height: 50px;
