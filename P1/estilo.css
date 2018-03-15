@@ -86,14 +86,6 @@ img {
   border-style: solid;
 }
 
-.titulo-obra{
-  width: 80%;
-  margin-right: 5px;
-  text-align: center;
-  /*background: #f0c030;*/
-  background: linear-gradient(to bottom, rgba(100,66,33,1), rgba(100,66,33,0.3));
-}
-
 a{
   text-align: center;
   text-decoration: none;
@@ -153,15 +145,6 @@ div.seccion-lateral .navitem{
   border-style: outset;
   border-color: orangered;
   box-shadow: 5px 6px 10px #451e00;
-}
-
-.seccion-central{
-  width: -webkit-fill-available;
-  /*
-  border: chartreuse;
-  border-style: solid;
-  */
-  background: linear-gradient(to bottom, rgba(100,66,33,1), rgba(100,66,33,0.3));
 }
 
 /* Estilo definido para el grid de la sección central de contenido */
