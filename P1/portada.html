@@ -9,34 +9,35 @@
 </head>
 
 <body>
+  <!-- CABECERA: comienzo -->
   <div class="cabecera">
     <!-- Elementos que deben aparecer en la cabecera:
     //  * Título
     //  * Logotipo o imagen
-    //  * Menú
+    //  * Menú (navbar)
     -->
 
+    <!-- LOGO: comienzo -->
     <div class="logo">
-      <img src="./imgs/icn_medium.png" alt="Logotipo del museo">
+      <a class="imagen" href="portada.html" title="Ir a inicio">
+        <img src="./imgs/icn_medium.png" alt="Logotipo del museo">
+      </a>
     </div>
+    <!-- LOGO: fin -->
 
     <!-- TITULO-CABECERA: comienzo -->
     <div class="titulo-cabecera">
-      <h1>MUSEO DE LO GROTESCO</h1>
+      <!-- TÍTULO: comienzo -->
+      <div class="titulo">
+        <h1>MUSEO DE LO GROTESCO</h1>
+      </div>
+      <!-- TÍTULO: fin -->
 
       <!-- MENU: comienzo -->
-      <div class="menu">
-        <ul class="navbar">
-          <li class="navitem">
-            <a href="./obra.html">Template Obra</a>
-          </li>
-          <li class="navitem">
-            <a href="url">Cómo llegar</a>
-          </li>
-          <li class="navitem">
-            <a href="url">Conócenos</a>
-          </li>
-        </ul>
+      <div class="navbar">
+        <a class="navitem active" href="portada.html" title="Ir a inicio">Inicio</a>
+        <a class="navitem" href="./obra.html" title="Listado de obras">Obras</a>
+        <a class="navitem" href=#informacion title="Ir a detalles">Conócenos</a>
       </div>
       <!-- MENU: fin -->
     </div>
@@ -48,52 +49,82 @@
   <div class="secciones">
     <!-- SECCION-LATERAL: comienzo -->
     <div class="seccion-lateral">
-      <p align="center">
-        Informacion útil de Navegacion.
-      </p>
-      <p>
-        <h3><a href="./portada.html">Inicio</a></h3>
-      </p>
-      <p >
-        <h3><a href="./obra1.html">Obra 1</a></h3>
-      </p>
-      <p>
-        <h3><a href="./obra2.html">Obra 2</a></h3>
-      </p>
+
+      <div>
+        <h3 align="center">NAVEGADOR</h3>
+      </div>
+      <!-- <div class="clearfix"></div> -->
+
+      <div class="navitem" title="Ir">
+        <a href="./portada.html">Inicio</a>
+      </div>
+
+      <div class="navitem" title="Ir">
+        <a href="./obra_1.html">Obra 1</a>
+      </div>
+
+      <div class="navitem" title="Ir">
+        <a href="./obra_2.html">Obra 2</a>
+      </div>
+
+      <div class="navitem" title="Ir">
+        <a href="">Obra 3</a>
+      </div>
+
+      <div class="navitem" title="Ir">
+        <a href="">Enlace 1</a>
+      </div>
+
+      <div class="navitem" title="Ir">
+        <a href="">Enlace 2</a>
+      </div>
+
+      <div class="navitem" title="Ir">
+        <a href="">Enlace 3</a>
+      </div>
+
+      <div class="navitem" title="Ir">
+        <a href="">Enlace 4</a>
+      </div>
+
+      <div class="navitem" title="Ir">
+        <a href="">Enlace 5</a>
+      </div>
+
     </div>
     <!-- SECCION-LATERAL: fin -->
     <!-- GRID: comienzo  -->
     <div class="grid">
-      <div class="box a">
-        <img src="./imgs/Quentin_Matsys_-_A_Grotesque_old_woman_128.jpg" alt="imagen">
-        <br>
-        <a href="./obra1.html">Ir a la obra</a>
+      <div class="box">
+        <a href="./obra_1.html" title="Visitar Obra">
+          <img src="./imgs/Quentin_Matsys_-_A_Grotesque_old_woman_128.jpg" class="imagen">
+        </a>
       </div>
-      <div class="box b">
-        <img src="./imgs/The_chapman_brothers_128.jpg" alt="imagen">
-        <br>
-        <a href="./obra2.html">Ir a la obra</a>
+      <div class="box">
+        <a href="./obra_2.html" title="Visitar Obra">
+          <img src="./imgs/The_chapman_brothers_128.jpg" class="imagen">
+        </a>
       </div>
-      <div class="box c">
-        C #3
+      <div class="box">
+        <p>En construcción #3</p>
       </div>
-      <div class="box d">
-        D #4
+      <div class="box">
+        <p>En construcción #4</p>
       </div>
-      <div class="box e">
-        E #5
+      <div class="box">
+        <p>En construcción #5</p>
       </div>
-      <div class="box f">
-        F #6
+      <div class="box">
+        <p>En construcción #5</p>
       </div>
-      <div class="box g">
-        G #7
+      <div class="box">
+        <p>En construcción #7</p>
       </div>
-      <div class="box h">
-        H #8
+      <div class="box">
+        <p>En construcción #8</p>
       </div>
-      <div class="box i">
-        I #9
+      <div class="box">
+        <p>En construcción #9</p>
       </div>
     </div>
     <!-- GRID: fin -->
@@ -102,10 +133,49 @@
 
   <!-- FOOTER: comienzo -->
   <div class="footer">
-    <h1>Te esperamos.<h1/>
-    <img src="./imgs/icn_small.png" alt="Logotipo del museo">
+
+    <div id="informacion">
+      <p class="bold">Dirección:</p>
+      <p>Calle Desengaño, 21, Madrid</p>
+      <p class="bold">Teléfono:</p>
+      <p>9xx xxx xxx, 6xx xxx xxx</p>
+      <p class="bold">Correo:</p>
+      <p>vayase_señor_cuesta@gmail.com</p>
+    </div>
+
+    <div id="mapa">
+      <a class="imagen" href="https://www.google.es/maps" target="_blank" title="Abrir Google Maps">
+        <img class="map" src="imgs/madrid-map.gif">
+      </a>
+    </div>
+
+    <div id="copyright">
+      <p>Al acceder a esta página confirmas haber leído y aceptado nuestros
+         términos de servicio, cookies y políticas de privacidad.</p>
+      <p>Copyright 1999-2018.</p>
+      <p>Todos los derechos reservados.</p>
+    </div>
+
+    <div id="rrss">
+      <a href="https://www.facebook.com/" target="_blank">
+        <img src="icons/fb_ico.png"/>
+      </a>
+      <a href="https://www.instagram.com/" target="_blank">
+        <img src="icons/ig_ico.png"/>
+      </a>
+      <a href="https://twitter.com/" target="_blank">
+        <img src="icons/tw_ico.png"/>
+      </a>
+    </div>
+
+    <span>
+      <img src="./imgs/icn_small.png" alt="Logotipo del museo">
+    </span>
+
   </div>
   <!-- FOOTER: fin -->
+
+  <button onclick="document.documentElement.scrollTop = 0;" id="scroll" title="Volver a arriba"></button>
 
 </body>
 
