@@ -70,6 +70,7 @@ img {
 
 .titulo {
   height: fit-content;
+  height: -moz-fit-content;
   letter-spacing: 10px;
   font-family: serif;
 }
@@ -114,6 +115,7 @@ a:hover {
 
 .seccion-lateral{
   width: fit-content;
+  width: -moz-fit-content;
   display: grid;
   grid-auto-rows: max-content;
   grid-gap: 2em;
@@ -129,6 +131,7 @@ a:hover {
 .seccion-lateral div {
   min-width: 170px;
   width: fit-content;
+  width: -moz-fit-content;
   overflow: unset;
   margin-left: -5%;
   margin-right: -5%;
