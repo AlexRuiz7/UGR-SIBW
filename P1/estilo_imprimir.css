@@ -1,17 +1,25 @@
 
+html {
+  background: none;
+}
+
 body {
-  border-style: solid;
+  border-style: double;
   border-color: black;
   margin: 5%;
 }
 
 .obra div {
   overflow: unset !important;
-  /*border-style: solid;*/
+  border-style: solid;
+  align-items: start;
 }
 
 .cabecera {
   background: none !important;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  align-items: center;
 }
 
 .obra {
@@ -25,13 +33,14 @@ body {
   display: grid;
   grid-template-columns: 3fr 4fr;
   text-align: center;
-  align-items: center;
+  align-items: start;
+  /*border-style: solid;*/
 }
 
 .meta-obra {
   display: grid;
   grid-template-rows: 1fr 1fr 1fr 4fr;
-  height: 90%;
+  height: auto;
   align-items: center;
 }
 
@@ -56,10 +65,14 @@ body {
   height: 95%;
   width: 95%;
   object-fit: scale-down;
+  overflow: unset;
+  place-self: center;
 }
 
 .descripcion-obra {
   text-align: justify;
+  font-variant: all-petite-caps;
+  font-size: 1.4vw;
 }
 
 .footer {

@@ -190,7 +190,9 @@ div.seccion-lateral .navitem{
   display: grid;
   grid-template-rows: 1fr 1fr 1fr;
   grid-template-columns: 1fr 2fr;
+  grid-column-gap: 10px;
   font-size: 1.2vw;
+  text-align: left;
   overflow: unset;
 }
 
