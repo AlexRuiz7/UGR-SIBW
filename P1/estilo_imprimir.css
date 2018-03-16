@@ -1,0 +1,67 @@
+
+body {
+  border-style: solid;
+  border-color: black;
+}
+
+.obra div {
+  overflow: unset !important;
+  /*border-style: solid;*/
+}
+
+.cabecera {
+  background: none !important;
+}
+
+.obra {
+  display: grid;
+  grid-template-rows: 9fr 1fr;
+  background: none;
+  overflow: unset;
+}
+
+.encabezado-imagen {
+  display: grid;
+  grid-template-columns: 3fr 4fr;
+  text-align: center;
+  align-items: center;
+}
+
+.meta-obra {
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr 4fr;
+  height: 90%;
+  align-items: center;
+}
+
+
+#titulo-obra {
+  text-transform: uppercase;
+  font-family: serif;
+  font-weight: bolder;
+  font-style: italic;
+  font-size: 35px;
+}
+
+#autor, #fecha {
+  text-transform: capitalize;
+  display: inline;
+}
+
+
+.imagen-obra {
+  max-height: 680px;
+  max-width: 550px;
+  height: 95%;
+  width: 95%;
+  object-fit: scale-down;
+}
+
+.descripcion-obra {
+  text-align: justify;
+}
+
+.footer {
+  background: none !important;
+  grid-template-columns: 1fr 1fr 1fr !important;
+}
