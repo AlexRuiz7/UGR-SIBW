@@ -1,0 +1,81 @@
+
+html {
+  background: none;
+}
+
+body {
+  border-style: double;
+  border-color: black;
+  margin: 5%;
+}
+
+.obra div {
+  overflow: unset !important;
+  border-style: solid;
+  align-items: start;
+}
+
+.cabecera {
+  background: none !important;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  align-items: center;
+}
+
+.obra {
+  display: grid;
+  grid-template-rows: 9fr 1fr;
+  background: none;
+  overflow: unset;
+}
+
+.encabezado-imagen {
+  display: grid;
+  grid-template-columns: 3fr 4fr;
+  text-align: center;
+  align-items: start;
+  /*border-style: solid;*/
+}
+
+.meta-obra {
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr 4fr;
+  height: auto;
+  align-items: center;
+}
+
+
+#titulo-obra {
+  text-transform: uppercase;
+  font-family: serif;
+  font-weight: bolder;
+  font-style: italic;
+  font-size: 35px;
+}
+
+#autor, #fecha {
+  text-transform: capitalize;
+  display: inline;
+}
+
+
+.imagen-obra {
+  max-height: 680px;
+  max-width: 550px;
+  height: 95%;
+  width: 95%;
+  object-fit: scale-down;
+  overflow: unset;
+  place-self: center;
+}
+
+.descripcion-obra {
+  text-align: justify;
+  font-variant: all-petite-caps;
+  font-size: 1.4vw;
+}
+
+.footer {
+  background: none !important;
+  grid-template-columns: 1fr 1fr 1fr !important;
+}
