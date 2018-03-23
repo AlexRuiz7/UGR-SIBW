@@ -101,7 +101,7 @@ a.active{
 }
 
 a:hover {
-  background-color: grey;
+  background-color: grey !important;
   color: red;
   transition: background-color .7s, color .7s !important;
 }
@@ -246,7 +246,7 @@ p {
   cursor: pointer;                   /* Add a mouse pointer on hover */
   padding: 15px;                     /* Some padding */
   border-radius: 100%;               /* Rounded corners */
-  background-image: url("icons/arrow.png");
+  background-image: url("../icons/arrow.png");
   background-repeat: no-repeat;
   background-position: center;
 }
