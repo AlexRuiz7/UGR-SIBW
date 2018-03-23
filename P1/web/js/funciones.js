@@ -15,7 +15,7 @@ var oculto = true;
  *
  * @type {Array}
  */
-var bad_words = /comechapas|palurdo|bocachancla|cuerpoescombro|cenutrio|cabezabuqe|caraespatula|carajaula|puto|puta|mierda|cabron/gi;
+var bad_words = / comechapas | palurdo | bocachancla | cuerpoescombro | cenutrio | cabezabuque | caraespatula | carajaula | puto | puta | mierda | cabron /gi;
 
 
 /**
@@ -30,6 +30,15 @@ function mostrarComentarios(){
 }
 
 
+function comprobarDate(date){
+  var format_date = date;
+  if(date<10){
+    format_date = "0"+date;
+  }
+  console.log(format_date);
+  return format_date;
+}
+
 /**
  * Recupera la información introducida por el usuario.
  *
@@ -38,12 +47,19 @@ function mostrarComentarios(){
 function enviarComentario(){
   var nombre     = document.getElementById("nombre").value;
   var comentario = document.getElementById("comentario").value;
+  var email      = document.getElementById("email").value;
   var date       = new Date();
-  var fecha      = date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear();
-  var hora       = date.getHours() + ":" + date.getMinutes();
+  var dia        = comprobarDate(date.getDate());
+  var mes        = comprobarDate(date.getMonth());
+  var fecha      = dia + "/" + mes + "/" + date.getFullYear();
+  var horas      = comprobarDate(date.getHours());
+  var minutos    = comprobarDate(date.getMinutes());
+  var hora       = horas + ":" + minutos;
   date           = fecha + " - " + hora;
 
-  crearNuevoComentario(date, nombre, comentario);
+  // Comprueba si los campos están completados
+  if ( !(nombre==="" || comentario==="" || email==="" ))
+    crearNuevoComentario(date, nombre, comentario);
 
   // Devulve false para evitar que la página se refresque al hacer submit
   return false;
@@ -100,6 +116,5 @@ function crearNuevoComentario(fecha, nombre, texto){
  */
 function revisarComentario(){
   var comentario = document.getElementById("comentario");
-  comentario.value = comentario.value.replace(bad_words, "****");
-  // alert(comentario.value);
+  comentario.value = comentario.value.replace(bad_words, " **** ");
 }

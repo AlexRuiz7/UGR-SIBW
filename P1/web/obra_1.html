@@ -196,7 +196,7 @@
         <!-- Comentario predefinido 1 -->
         <div class="comentario">
           <div class="comentario-fecha">
-            <p>19/2/2018 - 17:58</p>
+            <p>19/02/2018 - 17:58</p>
             <p>Juan Cuesta</p>
           </div>
           <div class="texto">
@@ -215,7 +215,7 @@
         <!-- Comentario predefinido 2 -->
         <div class="comentario">
           <div class="comentario-fecha">
-            <p>13/3/2018 - 11:42</p>
+            <p>13/03/2018 - 11:42</p>
             <p>Emilio Delgado</p>
           </div>
           <div class="texto">
@@ -238,15 +238,17 @@
           <fieldset>
             <div id=personal-info>
               <span>
-                Nombre: <input type="text" id="nombre" name="nombre" placeholder="Escribe aquí tu nombre..." required>
+                Nombre: <input type="text" id="nombre" name="nombre"
+                placeholder="Escribe aquí tu nombre..." maxlength="30" required>
               </span>
               <span>
-                Email: <input type="email" id="email" name="email" placeholder="Escribe aquí tu email..." required>
+                Email: <input type="email" id="email" name="email"
+                placeholder="Escribe aquí tu email..." maxlength="50" required>
               </span>
             </div>
             <div>
               <textarea id="comentario" placeholder="Escribe aquí tu comentario..."
-               onKeyUp="revisarComentario();" required></textarea>
+               onKeyUp="revisarComentario();" maxlength="2000" required></textarea>
             </div>
             <div>
               <input id=boton type="submit" value="Enviar" onClick="enviarComentario();">
