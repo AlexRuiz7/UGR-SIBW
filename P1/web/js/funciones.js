@@ -88,7 +88,7 @@ function crearNuevoComentario(fecha, nombre, texto){
 
   // Recuperar comentarios anteriores y añadir el nuevo
   var old_data  = document.getElementById("comentarios");
-  old_data.appendChild(nuevo_comentario);
+  old_data.appendChild(nuevo_comentario);return false;
 }
 
 
