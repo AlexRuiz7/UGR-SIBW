@@ -5,5 +5,9 @@
     ?> 
     <h1>Esta es la pagina principal</h1> 
     <p>Hola.</p> 
-  </body> 
+    <?php 
+      include(’footer.php’); 
+    ?> 
+  </body>
+  
 </html>
