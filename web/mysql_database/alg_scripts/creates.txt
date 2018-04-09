@@ -1,0 +1,12 @@
+CREATE TABLE obras (
+ id INT PRIMARY KEY  AUTO_INCREMENT, date DATE NOT NULL,  
+ description TEXT NOT NULL, title VARCHAR(30) NOT NULL, author VARCHAR(50) NOT NULL,
+ imagelink VARCHAR(100) NOT NULL, seemorelink VARCHAR(120) 
+);
+
+CREATE TABLE comentarios (
+ id INT PRIMARY KEY AUTO_INCREMENT, date DATE NOT NULL, obraref INT NOT NULL,
+ ip VARCHAR(16) NOT NULL, username VARCHAR(60) NOT NULL, email VARCHAR(80) NOT NULL,
+ comment TEXT NOT NULL,	
+ FOREIGN KEY (obraref) REFERENCES obras(id)
+);
