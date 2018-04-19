@@ -1,0 +1,33 @@
+CREATE TABLE		Obra
+(
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	fechaobra DATETIME NOT NULL,
+	fechapublicacion DATETIME DEFAULT CURRENT_TIMESTAMP,
+	fechamodificacion DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+ 	description TEXT NOT NULL, 
+	title VARCHAR(30) NOT NULL, 
+	author VARCHAR(50) NOT NULL,
+ 	imagelink VARCHAR(100) NOT NULL, 
+	seemorelink VARCHAR(120) 
+);
+
+
+CREATE TABLE		Comentario
+(
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	obraref INT NOT NULL, 
+	date DATE NOT NULL, 
+	ip VARCHAR(16) NOT NULL, 
+ 	username VARCHAR(60) NOT NULL, 
+	email VARCHAR(80) NOT NULL,
+ 	comment TEXT NOT NULL,	
+	FOREIGN KEY (obraref) REFERENCES Obra(id)
+);
+
+
+CREATE TABLE		PalabrasMalsonantes
+(
+	palabra VARCHAR(20) PRIMARY KEY
+);
+
+
