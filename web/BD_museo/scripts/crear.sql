@@ -21,7 +21,7 @@ CREATE TABLE		Comentario
 	obraref INT NOT NULL,
 	fechapublicacion DATETIME DEFAULT CURRENT_TIMESTAMP,
 	ip VARCHAR(16) NOT NULL,
- 	nombreusuario VARCHAR(60) NOT NULL,
+ 	usuario VARCHAR(60) NOT NULL,
 	email VARCHAR(80) NOT NULL,
  	comentario TEXT NOT NULL,
 	FOREIGN KEY (obraref) REFERENCES Obra(id)
