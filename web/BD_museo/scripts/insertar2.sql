@@ -1,5 +1,5 @@
 INSERT INTO		Comentario
-  (obraref, fechapublicacion, ip, username, email, comment)
+  (obraref, fechapublicacion, ip, nombreusuario, email, comentario)
 
   VALUES 
   (
