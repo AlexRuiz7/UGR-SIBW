@@ -1,6 +1,6 @@
 INSERT INTO	Obra
 
-  (fechaobra, description, title, autor,	imagelink, seemorelink)
+  (fechaobra, descripcion, titulo, autor,	imagen, vermas)
 
   VALUES (
     '1513',
