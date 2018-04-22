@@ -25,8 +25,8 @@ INSERT INTO		Comentario
  (
     4, '2018-4-12 12:15', "192.168.2.91", "Extraviado17", "extraviado17@dominio.com",
     "Me gusta su peinado, favorece mucho sus ojos.
-     ¿Alguien sabe quien le peina? Me gustaria que me
-     peinase a mi también. ¡Gracias!"
+     Â¿Alguien sabe quien le peina? Me gustaria que me
+     peinase a mi tambiÃ©n. Â¡Gracias!"
   );
 
 
@@ -45,10 +45,10 @@ INSERT INTO		DatosWeb
 ("ImageBig","icn_big.png"),
 ("ImageSmall","icn_small.png"),
 ("ImageMedium","icn_medium.png"),
-("Direccion", "Calle Desengraño 21, Madrid"),
+("Direccion", "Calle DesengraÃ±o 21, Madrid"),
 ("TelefonoFijo", "9xx xxx xxx"),
 ("TelefonoMovil", "6xx xxx xxx"),
-("Correo", "vayase_señor_cuesta@gmail.com"),
+("Correo", "vayase_seÃ±or_cuesta@gmail.com"),
 ("Facebook", "https://www.facebook.com/"),
 ("Instagram", "https://www.instagram.com/"),
 ("Twitter", "https://www.twitter.com/"),
@@ -61,10 +61,10 @@ INSERT INTO		Coleccion
 
   VALUES 
   (
-    "Renacimiento grotesco", "Obras de la edad moderna y poco posteriores de temática sátira"
+    "Renacimiento grotesco", "Obras de la edad moderna y poco posteriores de temÃ¡tica sÃ¡tira"
   ),
   (
-    "Populares", "Las obras más populares del museo."
+    "Populares", "Las obras mÃ¡s populares del museo."
   );
 
 
