@@ -1,0 +1,3 @@
+SELECT   tituloColeccion,titulo, fechaobra
+FROM	Obra,EnColeccion,Coleccion
+WHERE	Obra.id=idObra	AND	Coleccion.id=idColeccion;
