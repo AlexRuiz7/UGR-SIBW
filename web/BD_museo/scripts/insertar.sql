@@ -3,7 +3,7 @@ INSERT INTO	Obra
   (fechaobra, description, title, author,	imagelink, seemorelink)
 
   VALUES (
-    '1513',
+    '1512',
     "<p>
       <b>'La Duquesa Fea'</b> o también conocida como '<b>Una mujer mayor</b>',
       es un cuadro del pintor flamenco <b>Quentin Massys</b>, realizado

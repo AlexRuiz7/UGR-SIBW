@@ -30,6 +30,11 @@ function mostrarComentarios(){
 }
 
 
+/**
+ * [comprobarDate description]
+ * @param  {[type]} date [description]
+ * @return {[type]}      [description]
+ */
 function comprobarDate(date){
   var format_date = date;
   if(date<10){
@@ -117,4 +122,21 @@ function crearNuevoComentario(fecha, nombre, texto){
 function revisarComentario(){
   var comentario = document.getElementById("comentario");
   comentario.value = comentario.value.replace(bad_words, " **** ");
+}
+
+
+/**
+ * Comprueba el valor introducido al servidor en la variable GET para evitar
+ * inyección de código SQL.
+ *
+ * @param  {[type]} id datos de entrada
+ * @return {[type]}    true si es un número, false si es cualquier otra cosa.
+ */
+function getEsNumero(id){
+  return !id.isNaN();
+}
+
+
+function alerta(msg){
+  alert(msg);
 }

@@ -1,6 +1,9 @@
 <?php
   $obra = $_GET["id"];
   // Comprobar integridad de datos con JS
+  // if ( !getEsNumero($obra) )
+  //   alerta("Consulta no válida");
+
 
 
   /* Inicializar variables por si la consulta falla */
@@ -29,6 +32,10 @@
 
     mysqli_set_charset($conexion, "utf8");
     $peticion = "SELECT * FROM Obra WHERE id=" . $obra;
+    <script>
+      alerta($peticion);
+    </script>
+
 
     if ( !($resultado = mysqli_query ($conexion, $peticion)) ) {
       die("No se ha podido realizar la peticion: " . mysqli_error($conexion));
