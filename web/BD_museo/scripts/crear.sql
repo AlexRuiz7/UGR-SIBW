@@ -1,5 +1,6 @@
-CREATE DATABASE museo;
+CREATE DATABASE museo CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE museo;
+
 
 CREATE TABLE		Obra
 (
@@ -19,7 +20,7 @@ CREATE TABLE		Comentario
 (
 	id INT PRIMARY KEY AUTO_INCREMENT,
 	obraref INT NOT NULL,
-	fechapublicacion DATETIME DEFAULT CURRENT_TIMESTAMP,
+	fechapublicacion VARCHAR(20) NOT NULL,
 	ip VARCHAR(16) NOT NULL,
  	usuario VARCHAR(60) NOT NULL,
 	email VARCHAR(80) NOT NULL,
@@ -44,7 +45,7 @@ CREATE TABLE		DatosWeb
 CREATE TABLE		Coleccion
 (
 	id INT PRIMARY KEY AUTO_INCREMENT,
-	tituloColeccion	VARCHAR(50) NOT NULL, 
+	tituloColeccion	VARCHAR(50) NOT NULL,
 	descripcion VARCHAR(250) NOT NULL
 );
 
@@ -56,4 +57,3 @@ CREATE TABLE		EnColeccion
 	FOREIGN KEY (idColeccion) REFERENCES Coleccion(id),
 	FOREIGN KEY (idObra) REFERENCES Obra(id)
 );
-	

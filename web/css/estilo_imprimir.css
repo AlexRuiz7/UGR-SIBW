@@ -18,7 +18,7 @@ body {
 .cabecera {
   background: none !important;
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 1fr 2fr;
   align-items: center;
 }
 
@@ -39,7 +39,7 @@ body {
 
 .meta-obra {
   display: grid;
-  grid-template-rows: 1fr 1fr 1fr 4fr;
+  grid-template-rows: 1fr 1fr 1fr 3fr;
   height: auto;
   align-items: center;
 }
@@ -70,6 +70,8 @@ body {
 }
 
 .descripcion-obra {
+  column-count: 2;
+  column-gap: 30px;
   text-align: justify;
   font-variant: all-petite-caps;
   font-size: 1.4vw;

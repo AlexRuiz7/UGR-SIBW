@@ -1,10 +1,7 @@
 <?php
   $obra = $_GET["id"];
   // Comprobar integridad de datos con JS
-  // if ( !getEsNumero($obra) )
-  //   alerta("Consulta no válida");
-
-
+  $valido = is_numeric($obra);
 
   /* Inicializar variables por si la consulta falla */
   $titulo = "Titulo de la Obra";
@@ -21,21 +18,9 @@
     tristique pellentesque. Maecenas aliquet nunc sit amet nisl ultrices,
     pellentesque egestas velit interdum.";
 
-  if($obra <> "") {
+  if($valido) {
 
-    $conexion = mysqli_connect ("localhost", "usuario", "", "museo");
-    $abreBD = mysqli_select_db ("museo", $conexion);
-
-    if ( mysqli_connect_errno() ) {
-      die("No se ha podido conectar a la base de datos: " . mysqli_connect_error());
-    }
-
-    mysqli_set_charset($conexion, "utf8");
     $peticion = "SELECT * FROM Obra WHERE id=" . $obra;
-    <script>
-      alerta($peticion);
-    </script>
-
 
     if ( !($resultado = mysqli_query ($conexion, $peticion)) ) {
       die("No se ha podido realizar la peticion: " . mysqli_error($conexion));
@@ -46,17 +31,18 @@
     if ($num_filas > 0) {
       $fila         = mysqli_fetch_assoc ($resultado);
       $fecha        = $fila["fechaobra"];
-      $descripcion  = $fila["description"];
-      $titulo       = $fila["title"];
-      $autor        = $fila["author"];
-      $imagen       = $fila["imagelink"];
-      $link         = $fila["seemorelink"];
+      $descripcion  = $fila["descripcion"];
+      $titulo       = $fila["titulo"];
+      $autor        = $fila["autor"];
+      $imagen       = $fila["imagen"];
+      $link         = $fila["vermas"];
+      $publicacion  = $fila["fechapublicacion"];
+      $edicion      = $fila["fechamodificacion"];
     }
     else{
       echo("<script>console.log('PHP: sin datos - ".$num_filas."');</script>");
     }
 
-    mysqli_close ($conexion);
   }
 ?>
 
@@ -98,18 +84,55 @@
   </div>
   <!-- Encabezado -->
 
+  <!-- Fechas -->
+  <div class="fechas">
+    <p>Fecha de publicación: <?php echo $publicacion ?> </p>
+    <p>Última modificacion: <?php echo $edicion ?> </p>
+  </div>
+  <!-- Fechas -->
+
   <!-- Enlaces -->
   <div class="enlaces">
-    <a href="https://www.facebook.com/" target="_blank" title="Compartir en Facebook">
+    <a name="fb" title="Compartir en Facebook" href="" onclick="compartir();return false;">
       <img src="icons/fb_ico.png"/>
     </a>
-    <a href="https://twitter.com/" target="_blank" title="Compartir en Twitter">
+    <a title="Compartir en Twitter" onclick="compartir();return false;" href="" >
       <img src="icons/tw_ico.png"/>
     </a>
-    <a href="obra_imprimir.html" target="_blank" title="Imprimir">
+    <a href="/web_sibw/php/obra_imprimir.php?id=<?php echo $obra ?>" target="_blank" title="Imprimir">
       <img src="icons/print.png"/>
     </a>
   </div>
   <!-- Enlaces -->
+
+  <!-- Modal -->
+  <div id="compartir" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <div class="modal-header">
+        <span id="cerrar" class="close">&times;</span>
+        <h2>COMPARTIR</h2>
+      </div>
+      <div class="modal-body">
+        <div class="compartir">
+          <p>Se publicará en Twitter/Facebook el siguiente mensaje:</p>
+          <p> <?php echo $titulo ?> </p>
+          <div class="imagen">
+            <img src="/web_sibw/images/The_chapman_brothers_128.jpg" alt="Imagen">
+          </div>
+          <p>
+            via @MuseoDeLoGrotesco
+          </p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <h3>Modal Footer</h3>
+      </div>
+    </div>
+
+  </div>
+  <!-- Modal -->
+
 </div>
 <!-- OBRA: fin -->

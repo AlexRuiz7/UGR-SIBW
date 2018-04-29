@@ -126,17 +126,32 @@ function revisarComentario(){
 
 
 /**
- * Comprueba el valor introducido al servidor en la variable GET para evitar
- * inyección de código SQL.
- *
- * @param  {[type]} id datos de entrada
- * @return {[type]}    true si es un número, false si es cualquier otra cosa.
+ * Manejo del modal para compartir en redes sociales
  */
-function getEsNumero(id){
-  return !id.isNaN();
-}
 
+ // Get the modal
+ var modal_compartir = document.getElementById("compartir");
 
-function alerta(msg){
-  alert(msg);
+ // Get the button that opens the modal
+ var fb = document.getElementsByName("fb");
+
+ // Get the <span> element that closes the modal
+ var span = document.getElementById("cerrar")[0];
+
+ // When the user clicks the button, open the modal
+function compartir() {
+  var modal_compartir = document.getElementById("compartir");
+   modal_compartir.style.display = "block";
+ }
+
+ // When the user clicks on <span> (x), close the modal
+ span.onclick = function() {
+   var modal_compartir = document.getElementById("compartir");
+   modal_compartir.style.display = "none";
+ }
+
+ // When the user clicks anywhere outside of the modal, close it
+ window.onclick = function(event) {
+   if (event.target == modal_compartir)
+       modal_compartir.style.display = "none";
 }

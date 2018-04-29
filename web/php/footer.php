@@ -1,13 +1,60 @@
+<?php
+  $peticion_direccion = "SELECT valorDato FROM DatosWeb WHERE nombreDato='Direccion'";
+  $peticion_fijo   = "SELECT valorDato FROM DatosWeb WHERE nombreDato='TelefonoFijo'";
+  $peticion_movil  = "SELECT valorDato FROM DatosWeb WHERE nombreDato='TelefonoMovil'";
+  $peticion_correo = "SELECT valorDato FROM DatosWeb WHERE nombreDato='Correo'";
+  $peticion_fb   = "SELECT valorDato FROM DatosWeb WHERE nombreDato='Facebook'";
+  $peticion_ig   = "SELECT valorDato FROM DatosWeb WHERE nombreDato='Instagram'";
+  $peticion_tw   = "SELECT valorDato FROM DatosWeb WHERE nombreDato='Twitter'";
+
+  if ( !($resultado = mysqli_query ($conexion, $peticion_direccion)) )
+    die("No se ha podido realizar la peticion: " . mysqli_error($conexion));
+  $fila         = mysqli_fetch_assoc ($resultado);
+  $direccion       = $fila["valorDato"];
+
+  if ( !($resultado = mysqli_query ($conexion, $peticion_fijo)) )
+    die("No se ha podido realizar la peticion: " . mysqli_error($conexion));
+  $fila         = mysqli_fetch_assoc ($resultado);
+  $fijo       = $fila["valorDato"];
+
+  if ( !($resultado = mysqli_query ($conexion, $peticion_movil)) )
+    die("No se ha podido realizar la peticion: " . mysqli_error($conexion));
+  $fila         = mysqli_fetch_assoc ($resultado);
+  $movil       = $fila["valorDato"];
+
+  if ( !($resultado = mysqli_query ($conexion, $peticion_correo)) )
+    die("No se ha podido realizar la peticion: " . mysqli_error($conexion));
+  $fila         = mysqli_fetch_assoc ($resultado);
+  $correo  = $fila["valorDato"];
+
+  if ( !($resultado = mysqli_query ($conexion, $peticion_fb)) )
+    die("No se ha podido realizar la peticion: " . mysqli_error($conexion));
+  $fila         = mysqli_fetch_assoc ($resultado);
+  $fb  = $fila["valorDato"];
+
+  if ( !($resultado = mysqli_query ($conexion, $peticion_ig)) )
+    die("No se ha podido realizar la peticion: " . mysqli_error($conexion));
+  $fila         = mysqli_fetch_assoc ($resultado);
+  $ig  = $fila["valorDato"];
+
+  if ( !($resultado = mysqli_query ($conexion, $peticion_tw)) )
+    die("No se ha podido realizar la peticion: " . mysqli_error($conexion));
+  $fila         = mysqli_fetch_assoc ($resultado);
+  $tw  = $fila["valorDato"];
+?>
+
+
+
 <!-- FOOTER: comienzo -->
 <div class="footer">
 
   <div id="informacion">
     <p class="bold">Dirección:</p>
-    <p>Calle Desengaño, 21, Madrid</p>
+    <p><?php echo $direccion ?></p>
     <p class="bold">Teléfono:</p>
-    <p>9xx xxx xxx, 6xx xxx xxx</p>
+    <p><?php echo $fijo . " ," . $movil ?></p>
     <p class="bold">Correo:</p>
-    <p>vayase_señor_cuesta@gmail.com</p>
+    <p><?php echo $correo ?></p>
   </div>
 
   <div id="mapa">
@@ -24,13 +71,13 @@
   </div>
 
   <div id="rrss">
-    <a href="https://www.facebook.com/" target="_blank" title="Estamos en Facebook">
+    <a href="<?php echo $fb ?>" target="_blank" title="Estamos en Facebook">
       <img src="icons/fb_ico.png"/>
     </a>
-    <a href="https://www.instagram.com/" target="_blank" title="Estamos en Instagram">
+    <a href="<?php echo $ig ?>" target="_blank" title="Estamos en Instagram">
       <img src="icons/ig_ico.png"/>
     </a>
-    <a href="https://twitter.com/" target="_blank" title="Estamos en twitter">
+    <a href="<?php echo $tw ?>" target="_blank" title="Estamos en twitter">
       <img src="icons/tw_ico.png"/>
     </a>
   </div>
@@ -42,4 +89,4 @@
 </div>
 <!-- FOOTER: fin -->
 
-<button onclick="document.documentElement.scrollTop = 0;" id="scroll" title="Volver a arriba"></button>
+<!-- <button onclick="document.documentElement.scrollTop = 0;" id="scroll" title="Volver a arriba"></button> -->

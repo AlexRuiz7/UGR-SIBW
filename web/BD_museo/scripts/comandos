@@ -1,4 +1,0 @@
-mysql> create database museo;
-mysql> use museo;
-mysql> source crear.sql;
-mysql> source insertar.sql;

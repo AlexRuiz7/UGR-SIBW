@@ -1,3 +1,14 @@
+<?php
+  $conexion = mysqli_connect ("localhost", "usuario", "", "museo");
+
+  if ( mysqli_connect_errno() ) {
+    die("No se ha podido conectar a la base de datos: " . mysqli_connect_error());
+  }
+
+  mysqli_set_charset($conexion, "utf8");
+?>
+
+
 <html>
   <head>
     <meta charset="UTF-8">
@@ -27,3 +38,8 @@
   </body>
 
 </html>
+
+
+<?php
+  mysqli_close ($conexion);
+?>
