@@ -57,3 +57,29 @@ CREATE TABLE		EnColeccion
 	FOREIGN KEY (idColeccion) REFERENCES Coleccion(id),
 	FOREIGN KEY (idObra) REFERENCES Obra(id)
 );
+
+
+
+CREATE TABLE        nivelprivilegios
+(
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	titulo VARCHAR(30) NOT NULL,
+	editardatos BIT DEFAULT 0,
+	comentar BIT DEFAULT 0,
+	moderar BIT DEFAULT 0,
+	gestionmuseo BIT DEFAULT 0,
+	gestionpermisos BIT DEFAULT 0
+
+);
+
+
+CREATE TABLE        usuarios
+(
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	fecharegistro DATETIME DEFAULT CURRENT_TIMESTAMP,
+ 	nombreusuario VARCHAR(30) NOT NULL,
+	password VARCHAR(30) NOT NULL,
+	privilegios INT NOT NULL,
+	imagen VARCHAR(30),
+	FOREIGN KEY (privilegios) REFERENCES nivelprivilegios(id)
+);
