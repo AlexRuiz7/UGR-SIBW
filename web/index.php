@@ -18,19 +18,20 @@
   </head>
   <body>
     <?php
+      $pagina = "inicio";
       include("php/header.php");
-      ?>
-      <!-- SECCIONES: comienzo -->
-      <div class="secciones">
-        <?php
-        include("php/sidebar.php");
-        include("php/grid.php");
-        ?>
-      </div>
-      <!-- SECCIONES: fin -->
+    ?>
+    <!-- SECCIONES: comienzo -->
+    <div class="secciones">
       <?php
-        include("php/footer.php");
+      include("php/sidebar.php");
+      include("php/grid.php");
       ?>
+    </div>
+    <!-- SECCIONES: fin -->
+    <?php
+      include("php/footer.php");
+    ?>
   </body>
 
 </html>

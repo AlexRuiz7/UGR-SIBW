@@ -56,6 +56,10 @@
   grid-gap: 1em;
 }
 
+.gestor {
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr !important;
+}
+
 #btn_comentarios {
   cursor: pointer;
   border-top-left-radius: 100%;
@@ -93,10 +97,6 @@
   margin-left: 0;
   margin-top: 0;
   margin-bottom: 0;
-
-  display: grid;
-  grid-template-rows: 6fr 4fr;
-  text-align: center;
 }
 
 #comentarios {
@@ -120,7 +120,7 @@
 
 .comentario-fecha {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 5fr 5fr 1fr 1fr;
   text-align: center;
   font-weight: bold;
   font-style: italic;
@@ -137,13 +137,9 @@
   border-top-style: groove;
   border-top-color: orangered;
   position: relative;
-}
 
-fieldset {
-  position: absolute;
-  margin: 15px;
-  width: 760px;
-  height: 180px;
+  width: 90%;
+  margin-left: 3.5%;
 }
 
 #personal-info {
@@ -154,10 +150,10 @@ fieldset {
   font-weight: bold;
   font-size: 17px;
 }
-
+/*
 input {
   width: 280px;
-}
+}*/
 
 input[name="nombre"] {
   text-transform: capitalize !important;
@@ -165,14 +161,14 @@ input[name="nombre"] {
 
 textarea {
   resize: none;
-  width: 730px;
-  height: 100px;
+  width: 90%;
+  height: 10%;
+  margin-left: 2.5%;
+  margin-bottom: 2%;
 }
 
 #boton {
-  width: 100%;
-  font-weight: bold;
-  font-size: 17px;
+  margin-bottom: 0;
 }
 
 .modal {

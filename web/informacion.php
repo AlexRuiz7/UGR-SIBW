@@ -8,6 +8,7 @@
   mysqli_set_charset($conexion, "utf8");
 ?>
 
+<!-- ###########################  HTML ###################################  -->
 
 <html>
   <head>
@@ -15,32 +16,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Museo SIBW</title>
     <link rel="stylesheet" type="text/css" href="css/estilo.css">
-    <link rel="stylesheet" type="text/css" href="css/estilo_obra.css">
-    <script src="js/funciones.js"></script>
   </head>
-
   <body>
     <?php
-      $pagina = "colecciones";
+      $pagina = "info";
       include("php/header.php");
     ?>
     <!-- SECCIONES: comienzo -->
     <div class="secciones">
-      <?php
-      include("php/sidebar.php");
-      include("php/obra.php");
-      ?>
+      <?php include("php/sidebar.php"); ?>
+      <!-- COLECCIONES: comienzo -->
+      <div>
+        <div class="box">
+          <p>En construcción #</p>
+        </div>
+      </div>
+      <!-- COLECCIONES: fin -->
     </div>
     <!-- SECCIONES: fin -->
     <?php
-      include("php/comentarios.php");
       include("php/footer.php");
     ?>
   </body>
 
 </html>
 
+<!-- ###########################  PHP ###################################  -->
 
 <?php
-  mysqli_close ($conexion);
+  mysqli_close($conexion);
 ?>

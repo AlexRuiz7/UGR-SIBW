@@ -59,27 +59,26 @@ CREATE TABLE		EnColeccion
 );
 
 
-
-CREATE TABLE        nivelprivilegios
+CREATE TABLE        Usuarios
 (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	titulo VARCHAR(30) NOT NULL,
-	editardatos BIT DEFAULT 0,
-	comentar BIT DEFAULT 0,
-	moderar BIT DEFAULT 0,
-	gestionmuseo BIT DEFAULT 0,
-	gestionpermisos BIT DEFAULT 0
-
+	fecha_registro DATETIME DEFAULT CURRENT_TIMESTAMP,
+ 	nombre_usuario VARCHAR(20) NOT NULL,
+	email VARCHAR(30) NOT NULL,
+	password VARCHAR(10) NOT NULL,
+	privilegios INT NOT NULL DEFAULT 0,
+	PRIMARY KEY (nombre_usuario)
 );
 
+/* Tipos de usuarios codificados por un atributo de tipo entero que define sus
+	privilegios:
+	
+		* 0: "Anónimo"				-- sin privilegios
+		* 1: "Usuario registrado"	-- escribir comentarios, cambiar sus datos
+		* 2: "Moderador"			-- editar/borrar comentarios
+		* 3: "Gestor"				-- editar/borrar/añadir obras
+		* 4: "Superusuario"			-- todos
+*/
 
-CREATE TABLE        usuarios
-(
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	fecharegistro DATETIME DEFAULT CURRENT_TIMESTAMP,
- 	nombreusuario VARCHAR(30) NOT NULL,
-	password VARCHAR(30) NOT NULL,
-	privilegios INT NOT NULL,
-	imagen VARCHAR(30),
-	FOREIGN KEY (privilegios) REFERENCES nivelprivilegios(id)
-);
+-- Crea el usuario por defecto "Superusuario"
+insert into Usuarios (nombre_usuario, email, password, privilegios) 
+values ("Admin", "admin@dominio.com", "admin", 4);

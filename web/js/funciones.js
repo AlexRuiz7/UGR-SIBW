@@ -136,7 +136,7 @@ function revisarComentario(){
  var fb = document.getElementsByName("fb");
 
  // Get the <span> element that closes the modal
- var span = document.getElementById("cerrar")[0];
+ var span = document.getElementById("cerrar");
 
  // When the user clicks the button, open the modal
 function compartir() {

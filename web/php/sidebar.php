@@ -12,7 +12,7 @@
   </div>';
 
   $menu .= '<div class="navitem" title="Ir">
-    <a href="#">Información</a>
+    <a href="/web_sibw/informacion.php">Información</a>
   </div>';
 
   if( $num_filas > 0 ) {

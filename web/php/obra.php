@@ -38,12 +38,16 @@
       $link         = $fila["vermas"];
       $publicacion  = $fila["fechapublicacion"];
       $edicion      = $fila["fechamodificacion"];
+      $id           = $fila["id"];
     }
     else{
       echo("<script>console.log('PHP: sin datos - ".$num_filas."');</script>");
     }
-
   }
+
+  $usuario_avanzado = false;
+  if (($_SESSION['tipo'] == 'gestor') || ($_SESSION['tipo'] == 'admin'))
+  $usuario_avanzado = true;
 ?>
 
 <!-- OBRA: comienzo  -->
@@ -92,16 +96,35 @@
   <!-- Fechas -->
 
   <!-- Enlaces -->
-  <div class="enlaces">
+  <div class="enlaces <?php if( $usuario_avanzado ) {echo 'gestor';} ?>">
     <a name="fb" title="Compartir en Facebook" href="" onclick="compartir();return false;">
       <img src="icons/fb_ico.png"/>
     </a>
-    <a title="Compartir en Twitter" onclick="compartir();return false;" href="" >
+    <a name="tw" title="Compartir en Twitter" onclick="compartir();return false;" href="" >
       <img src="icons/tw_ico.png"/>
     </a>
     <a href="/web_sibw/php/obra_imprimir.php?id=<?php echo $obra ?>" target="_blank" title="Imprimir">
       <img src="icons/print.png"/>
     </a>
+    <?php
+      if ( $usuario_avanzado ) {
+        echo '<a title="Borrar obra">
+                <form action="php/borrar.php" method="POST">
+                  <input type="hidden" name="id" value="'.$id.'" />
+                  <input type="hidden" name="obra" value="'.$obra.'" />
+                  <input type="hidden" name="selector" value="Obra" />
+                  <input type="image" name="submit" src="/web_sibw/icons/trash.png" />
+                </form>
+              </a>';
+        echo '<a title="Editar obra">
+                <form action="php/editar.php" method="POST">
+                  <input type="hidden" name="id" value="'.$id.'" />
+                  <input type="hidden" name="selector" value="Obra" />
+                  <input type="image" name="submit" src="/web_sibw/icons/edit.png" />
+                </form>
+              </a>';
+      }
+    ?>
   </div>
   <!-- Enlaces -->
 

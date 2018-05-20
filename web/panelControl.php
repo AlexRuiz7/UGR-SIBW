@@ -15,32 +15,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Museo SIBW</title>
     <link rel="stylesheet" type="text/css" href="css/estilo.css">
-    <link rel="stylesheet" type="text/css" href="css/estilo_obra.css">
-    <script src="js/funciones.js"></script>
   </head>
-
   <body>
     <?php
-      $pagina = "colecciones";
+      $pagina = "opciones";
       include("php/header.php");
     ?>
     <!-- SECCIONES: comienzo -->
     <div class="secciones">
       <?php
-      include("php/sidebar.php");
-      include("php/obra.php");
+        include("php/sidebar.php");
+
+        if( isset($_SESSION['loggedin']) ){
+          include("php/login/opciones.php");
+        }
+        else {
+          include("php/login/login.php");
+        }
       ?>
     </div>
     <!-- SECCIONES: fin -->
     <?php
-      include("php/comentarios.php");
       include("php/footer.php");
     ?>
   </body>
 
 </html>
 
-
 <?php
-  mysqli_close ($conexion);
+  mysqli_close($conexion);
 ?>

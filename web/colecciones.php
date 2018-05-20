@@ -1,3 +1,6 @@
+
+<!-- ###########################  PHP ###################################  -->
+
 <?php
   $conexion = mysqli_connect ("localhost", "usuario", "", "museo");
 
@@ -7,9 +10,34 @@
 
   mysqli_set_charset($conexion, "utf8");
 
-  $peticion = "select * from Coleccion";
+  // $peticion_colecciones = "SELECT 'idObra' FROM EnColeccion WHERE 'idColeccion=1'";
+  //
+  // if ( !($resultado = mysqli_query ($conexion, $peticion_colecciones)) )
+  //   die("No se ha podido realizar la peticion: " . mysqli_error($conexion));
+  //
+  // $num_filas = mysqli_num_rows ($resultado);
+  //
+  // if ($num_filas > 0)
+  //   for($i=0; i<$num_filas; $i++){
+  //     $obra = mysqli_fetch_assoc ($resultado);
+  //     $
+  //   }
 
-  if ( !($resultado = mysqli_query ($conexion, $peticion)) )
+  $colecciones = '  <div class="grid">
+      <div class="box">
+        <p>En construcción #1</p>
+      </div>
+      <div class="box">
+        <p>En construcción #2</p>
+      </div>
+      <div class="box">
+        <p>En construcción #3</p>
+      </div>
+    </div>';
+
+  $peticion_cabeceras = "select * from Coleccion";
+
+  if ( !($resultado = mysqli_query ($conexion, $peticion_cabeceras)) )
     die("No se ha podido realizar la peticion: " . mysqli_error($conexion));
 
   $num_filas = mysqli_num_rows ($resultado);
@@ -21,13 +49,17 @@
       $descripcion   = $fila["descripcion"];
 
       $html        .= '
-        <div class="titulo">
-          <h2>'.$titulo.'</h2>
-          <p>'.$descripcion.'</p>
+        <div class="coleccion">
+          <div class="titulo">
+            <h2>'.$titulo.'</h2>
+            <p>'.$descripcion.'</p>
+          </div>
+          ' .$colecciones. '
         </div>';
     }
 ?>
 
+<!-- ###########################  HTML ###################################  -->
 
 <html>
   <head>
@@ -38,22 +70,27 @@
   </head>
   <body>
     <?php
+      $pagina = "colecciones";
       include("php/header.php");
-      ?>
-      <!-- SECCIONES: comienzo -->
-      <div class="secciones">
-        <?php include("php/sidebar.php"); ?>
-        <div class="colecciones">
-          <?php echo $html ?>
-        </div>
+    ?>
+    <!-- SECCIONES: comienzo -->
+    <div class="secciones">
+      <?php include("php/sidebar.php"); ?>
+      <!-- COLECCIONES: comienzo -->
+      <div>
+        <?php echo $html ?>
       </div>
-      <!-- SECCIONES: fin -->
-      <?php
-        include("php/footer.php");
-      ?>
+      <!-- COLECCIONES: fin -->
+    </div>
+    <!-- SECCIONES: fin -->
+    <?php
+      include("php/footer.php");
+    ?>
   </body>
 
 </html>
+
+<!-- ###########################  PHP ###################################  -->
 
 <?php
   mysqli_close($conexion);

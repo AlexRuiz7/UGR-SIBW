@@ -11,7 +11,7 @@
   $nombre = $_POST["nombre"];
   $email  = $_POST["email"];
   $texto  = $_POST["texto"];
-  $ip     = "192.168.1.1";
+  $ip     = $_SERVER['REMOTE_ADDR'];
   $fecha  = date("d-m-Y H:i");
 
   $insercion = "INSERT INTO Comentario
@@ -26,4 +26,6 @@
   }
 
   mysqli_close($conexion);
+
+  header("Location: http://localhost:8080/web_sibw/plantillaObra.php?id=$obra");
 ?>

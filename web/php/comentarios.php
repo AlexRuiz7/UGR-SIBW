@@ -13,11 +13,30 @@
       $fecha        = $fila["fechapublicacion"];
       $usuario      = $fila["usuario"];
       $comentario   = $fila["comentario"];
+      $id           = $fila["id"];
+
+      if( ($_SESSION['tipo'] == "moderador") || ($_SESSION['tipo'] == "admin") ){
+        $moderador = '<form action="/web_sibw/php/borrar.php" method="POST"
+        style="place-self: center;">
+          <input type="hidden" name="id"     value='.$id.'   />
+          <input type="hidden" name="obra"   value='.$obra.' />
+          <input type="hidden" name="selector" value="Comentario" />
+          <input type="image"  name="submit" value="Borrar" src=/web_sibw/icons/trash.png />
+        </form>
+        <form action="/web_sibw/php/editar.php" method="POST"
+        style="place-self: center;">
+          <input type="hidden" name="id"     value='.$id.'   />
+          <input type="hidden" name="obra"   value='.$obra.' />
+          <input type="hidden" name="selector" value="Comentario" />
+          <input type="image"  name="submit" value="Editar" src=/web_sibw/icons/edit.png />
+        </form>';
+      }
 
       $comentarios .= '<div class="comentario">
         <div class="comentario-fecha">
           <p>'.$fecha.'</p>
           <p>'.$usuario.'</p>
+          '.$moderador.'
         </div>
         <div class="texto">
           '.$comentario.'
@@ -54,35 +73,42 @@
       * Abajo: Formulario
   -->
     <div id=comentarios>
-
       <!-- Comentario predefinido 1 -->
     <?php echo $comentarios ?>
-
     </div>
 
-    <div id="formulario">
-      <form action="php/submit.php?id=<?php echo $obra?>" method="post">
-        <fieldset>
+    <?php
+      if( isset($_SESSION['loggedin']) ){
+        echo '
+        <!-- Formulario para inserción de comentarios -->
+        <form id="formulario" action="php/enviarComentario.php?id='.$obra.'" method="post">
           <div id="personal-info">
-            <span>
+            <div class="login-item">
               Nombre: <input type="text" id="nombre" name="nombre"
-              placeholder="Escribe aquí tu nombre..." maxlength="30" required>
-            </span>
-            <span>
+              value="'.$_SESSION['username'].'" readonly>
+            </div>
+            <div class="login-item">
               Email: <input type="email" id="email" name="email"
-              placeholder="Escribe aquí tu email..." maxlength="50" required>
-            </span>
+              value="'.$_SESSION['email'].'" readonly>
+            </div>
           </div>
-          <div>
-            <textarea id="comentario" name="texto" placeholder="Escribe aquí tu comentario..."
-             onKeyUp="revisarComentario();" maxlength="2000" required></textarea>
+          <textarea id="comentario" name="texto" placeholder="Escribe aquí tu comentario..."
+           onKeyUp="revisarComentario();" maxlength="2000" required></textarea>
+           <input id="boton" type="submit" value="Enviar" onClick="enviarComentario();">
+        </form>
+        ';
+      }
+      else {
+        echo '
+        <form id="formulario" action="/web_sibw/panelControl.php">
+          <div id="personal-info" style="grid-template-columns: 1fr; text-align:  center;">
+            <h2> Debes iniciar sesión para poder enviar un comentario </h2>
+            <input id="boton" type="submit" value="Iniciar sesión">
           </div>
-          <div>
-            <input id="boton" type="submit" value="Enviar" onClick="enviarComentario();">
-          </div>
-        </fieldset>
-      </form>
-    </div>
+        </form>
+        ';
+      }
+    ?>
   </div>
 </div>
 <!-- COMENTARIOS: fin -->

@@ -8,7 +8,7 @@ html {
   background: linear-gradient(to bottom, rgba(66,66,66,1), rgba(100,100,100,0.2));
 }
 
-div{
+div {
   margin: 10px;
 }
 
@@ -40,7 +40,7 @@ h1 {
   transition: opacity 0.5s;
 }
 
-img {
+img, input[type=image]{
   display: table-cell;
   margin: auto;
   top: 0px;
@@ -69,7 +69,7 @@ img {
 
 .navbar{
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
 .navitem{
@@ -91,7 +91,7 @@ a{
 }
 
 a.active{
-  background-color: #4CAF50;
+  background-color: #45a049;
 }
 
 a:hover {
@@ -122,8 +122,8 @@ a:hover {
 
 .seccion-lateral div {
   min-width: 170px;
-  width: fit-content;
-  width: -moz-fit-content;
+  /*width: fit-content;
+  width: -moz-fit-content;*/
   overflow: unset;
   margin-left: -5%;
   margin-right: -5%;
@@ -140,6 +140,8 @@ div.seccion-lateral .navitem{
   border-style: outset;
   border-color: orangered;
   box-shadow: 5px 6px 10px #451e00;
+  font-variant: all-petite-caps;
+  font-family: serif;
 }
 
 /* Estilo definido para el grid de la sección central de contenido */
@@ -200,6 +202,11 @@ div.seccion-lateral .navitem{
 p {
   text-rendering: optimizeLegibility;
   letter-spacing: 1px;
+  text-align: inherit;
+}
+
+.box p, .titulo p {
+  text-align: center !important;
 }
 
 .bold{
@@ -249,30 +256,112 @@ p {
   background-color: grey;            /* Add a dark-grey background on hover */
 }
 
-.colecciones {
+.coleccion {
   display: grid;
-  grid-auto-rows: 1fr;
+  grid-template-rows: 1fr 3fr;
 }
 
-.colecciones div {
-  display: grid;
-  grid-template-columns: 1fr 3fr;
-  text-align: justify;
+.coleccion .grid {
+  grid-template-rows: 1fr !important;
 }
 
 .titulo {
   font-variant: small-caps;
 }
 
-.titulo p {
-  text-align: center;
-  align-self: center;
-}
-
 .fechas {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 1em;
-  text-align: center;
+  text-align: center !important;
   font-variant: all-small-caps;
+}
+
+.login {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+}
+
+.login-container {
+  align-self: center;
+  border-radius: 5px;
+  display: grid;
+  grid-template-rows: 1fr 6fr;
+  place-items: center;
+  height: 90%;
+  background: linear-gradient(to bottom, rgba(100,66,33,1), rgba(100,66,33,0.3));
+}
+
+.login-item {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  line-height: 57px;
+}
+
+.opciones {
+  grid-template-rows: 1fr 1fr 1fr !important;
+}
+
+.avanzadas {
+  width: 85%;
+  height: 85%;
+  overflow-y: scroll;
+  border-radius: 15px;
+  background-color: #d1d1d1;
+}
+
+.admin {
+  grid-template-columns: 1fr 1fr 0.5fr 1fr 0.5fr !important;
+}
+
+.item-lista {
+  /*display:grid;*/
+  grid-template-columns: 1fr 1fr 1fr !important;
+}
+
+.negrita {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+form {
+  width: 70%;
+}
+
+a form {
+  height: 30%;
+  place-self: center;
+}
+
+.admin form {
+  place-self: center;
+  margin-top: 10px;
+}
+
+input[type=text], [type=email], [type=password], select {
+    width: 80%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    width: 100%;
+    background-color: #45a049;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    letter-spacing: 1px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+input[type=submit]:hover {
+  background-color: #00aa2e;
 }
