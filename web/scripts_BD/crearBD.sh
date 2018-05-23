@@ -6,3 +6,4 @@ mysql -u usuario museo < insertar_comentarios.sql
 mysql -u usuario museo < insertar_colecciones.sql
 mysql -u usuario museo < insertar_datos_web.sql
 mysql -u usuario museo < insertar_palabras_mal.sql
+mysql -u usuario museo < insertar_usuarios.sql
