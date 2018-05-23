@@ -1,4 +1,4 @@
-CREATE DATABASE museo CHARACTER SET utf8 COLLATE utf8_general_ci;
+﻿CREATE DATABASE museo CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE museo;
 
 
@@ -69,16 +69,3 @@ CREATE TABLE        Usuarios
 	PRIMARY KEY (nombre_usuario)
 );
 
-/* Tipos de usuarios codificados por un atributo de tipo entero que define sus
-	privilegios:
-	
-		* 0: "Anónimo"				-- sin privilegios
-		* 1: "Usuario registrado"	-- escribir comentarios, cambiar sus datos
-		* 2: "Moderador"			-- editar/borrar comentarios
-		* 3: "Gestor"				-- editar/borrar/añadir obras
-		* 4: "Superusuario"			-- todos
-*/
-
--- Crea el usuario por defecto "Superusuario"
-insert into Usuarios (nombre_usuario, email, password, privilegios) 
-values ("Admin", "admin@dominio.com", "admin", 4);
