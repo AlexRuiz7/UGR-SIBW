@@ -108,19 +108,27 @@
     </a>
     <?php
       if ( $usuario_avanzado ) {
+      echo '<a name="añadir" title="Añadir obra" href="" onclick="alert();return false;">
+              <img src="icons/file.png" />
+            </a>';
+
+        echo '<a title="Editar obra">
+          <form action="php/editar.php" method="POST">
+          <input type="hidden" name="id" value="'.$id.'" />
+
+          <input type="hidden" name="titulo" value="'.$titulo.'" />
+          <input type="hidden" name="autor" value="'.$autor.'" />
+          <input type="hidden" name="desc" value="'.$descripcion.'" />
+
+          <input type="hidden" name="selector" value="Obra" />
+          <input type="image" name="submit" src="/web_sibw/icons/edit.png" />
+          </form>
+          </a>';
         echo '<a title="Borrar obra">
                 <form action="php/borrar.php" method="POST">
                   <input type="hidden" name="id" value="'.$id.'" />
-                  <input type="hidden" name="obra" value="'.$obra.'" />
                   <input type="hidden" name="selector" value="Obra" />
                   <input type="image" name="submit" src="/web_sibw/icons/trash.png" />
-                </form>
-              </a>';
-        echo '<a title="Editar obra">
-                <form action="php/editar.php" method="POST">
-                  <input type="hidden" name="id" value="'.$id.'" />
-                  <input type="hidden" name="selector" value="Obra" />
-                  <input type="image" name="submit" src="/web_sibw/icons/edit.png" />
                 </form>
               </a>';
       }

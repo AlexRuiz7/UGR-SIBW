@@ -3,8 +3,8 @@ INSERT INTO	Obra
   (fechaobra, descripcion, titulo, autor, imagen, vermas)
 
   VALUES (
-    '1513',
-    "<p>  <b>'La Duquesa Fea'</b> o también conocida como '<b>Una mujer mayor</b>',
+    "1513",
+    "<p>  <b>La Duquesa Fea</b> o también conocida como <b>Una mujer mayor</b>,
       es un cuadro del pintor flamenco <b>Quentin Massys</b>, realizado
       cerca de 1513, al óleo.
     </p>
@@ -25,7 +25,7 @@ INSERT INTO	Obra
   ),
 
 (
-  '2011',
+  "2011",
   "<p>  Detrás de todas las cosas disfrazadas por la moral y los prejuicios
     de la sociedad, existe un lado aberrante que busca ser expuesto
     para contradecir los estatutos de la belleza y cuestionar sus
@@ -40,7 +40,7 @@ INSERT INTO	Obra
   ),
 
 (
-  '1819',
+  "1819",
   "<p>  El cuadro Saturno devorando a su hijo o Saturno devorando a un hijo es
     una de las pinturas al óleo sobre revoco que formaron parte de la decoración
     de los muros de la casa que Francisco de Goya adquirió en 1819, llamada la Quinta del Sordo.
@@ -58,7 +58,7 @@ INSERT INTO	Obra
   ),
 
 (
-  '2012',
+  "2012",
   "<p>  Las pinturas de Rex van Minnen poseen un marcado estilo renacentista,
     con un toque casi poítico de carnosas ampollas purulentas, grotescas,
     deformadas, desfiguradas y en descomposición.

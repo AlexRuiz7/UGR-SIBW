@@ -57,7 +57,7 @@
 }
 
 .gestor {
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr !important;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr !important;
 }
 
 #btn_comentarios {

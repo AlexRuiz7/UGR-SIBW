@@ -150,7 +150,9 @@
         </div>
       </div>';
 
-      return $html;
+    include("/web_sibw/php/comentarios.php");
+
+    return $html;
   }
 
 
@@ -162,7 +164,6 @@
     $lista = '<div class="fechas admin negrita">
           <p> Usuario </p>
           <p> Correo  </p>
-          <p> </p>
           <p> Tipo    </p>
         </div>';
 
@@ -176,13 +177,13 @@
         $lista .= '<div class="fechas admin">
               <p>'.$nombre.'</p>
               <p>'.$email.'</p>
-              <form action="/web_sibw/php/editar.php" method="POST" id="privilegios">
+              <form class="admin-form" action="/web_sibw/php/editar.php" method="POST" id="privilegios">
                 <input type="hidden" name="usuario" value="'.$nombre.'" />
+                <input type="hidden" name="tipo" value="'.$tipo.'" />
                 <input type="hidden" name="selector" value="Usuarios" />
                 <input type="image"  name="submit" src="/web_sibw/icons/confirm.png"
                   title="Confirmar cambios"/>
-              </form>
-              <select name="privilegios" form="privilegios">';
+              <select name="privilegios"">';
 
         switch ($tipo) {
           case 0:
@@ -217,7 +218,9 @@
             break;
         }
 
-        $lista .='</select>
+        $lista .= '</select> </form>';
+
+        $lista .='
             <form action="php/borrar.php" method="POST">
               <input type="hidden" name="usuario" value="'.$nombre.'" />
               <input type="hidden" name="selector" value="Usuarios" />

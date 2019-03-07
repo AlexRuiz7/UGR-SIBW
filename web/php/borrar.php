@@ -19,18 +19,17 @@
     $borrar_colecciones = "DELETE FROM EnColeccion WHERE idObra='$_POST[id]'";
     if ( !mysqli_query($conexion, $borrar_colecciones) )
       die ("No se han podido borrar las dependencias: " . mysqli_error($conexion));
+
+    $borrar = "DELETE FROM Obra WHERE id='$_POST[id]'";
+
+    if ( !mysqli_query($conexion, $borrar) )
+    die ("No se ha podido borrar: " . mysqli_error($conexion));
   }
 
   if($tabla == "Usuarios"){
     $borrar_usuario = "DELETE FROM Usuarios WHERE nombre_usuario='$_POST[usuario]'";
     if ( !mysqli_query($conexion, $borrar_usuario) )
       die ("No se ha podido borrar el usuario: " . mysqli_error($conexion));
-  }
-  else{
-    $borrar = "DELETE FROM $tabla WHERE id='$_POST[id]'";
-
-    if ( !mysqli_query($conexion, $borrar) )
-    die ("No se ha podido borrar: " . mysqli_error($conexion));
   }
 
   mysqli_close($conexion);

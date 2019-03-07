@@ -311,7 +311,7 @@ p {
 }
 
 .admin {
-  grid-template-columns: 1fr 1fr 0.5fr 1fr 0.5fr !important;
+  grid-template-columns: 1fr 1fr 3fr 0.5fr !important;
 }
 
 .item-lista {
@@ -336,6 +336,11 @@ a form {
 .admin form {
   place-self: center;
   margin-top: 10px;
+}
+
+.admin-form {
+  display: inline-grid;
+  grid-template-columns: 1fr 3fr;
 }
 
 input[type=text], [type=email], [type=password], select {
