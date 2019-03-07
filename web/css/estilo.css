@@ -1,4 +1,10 @@
 
+/** {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}*/
+
 html {
   font-family: Arial,"Helvetica Neue",Helvetica,sans-serif;
   font-size: 16px;
@@ -8,15 +14,13 @@ html {
   background: linear-gradient(to bottom, rgba(66,66,66,1), rgba(100,100,100,0.2));
 }
 
-div {
+div{
   margin: 10px;
-}
-
-h1 {
-  font-variant: small-caps;
+  /*border-style: solid;*/
 }
 
 .cabecera {
+  /*margin: inherit;*/
   display: grid;
   grid-template-columns: 1fr 3fr;
   background: linear-gradient(to bottom, rgba(100,66,33,1), rgba(100,66,33,0.3));
@@ -29,6 +33,7 @@ h1 {
 }
 
 .imagen {
+  /*margin: auto;*/
   display: table;
   width: 100%;
   opacity: 0.8;
@@ -40,7 +45,7 @@ h1 {
   transition: opacity 0.5s;
 }
 
-img, input[type=image]{
+img {
   display: table-cell;
   margin: auto;
   top: 0px;
@@ -52,6 +57,7 @@ img, input[type=image]{
 }
 
 .titulo-cabecera {
+  /*height: auto;*/
   display: grid;
   grid-template-rows: 2fr 1fr;
   text-align: center;
@@ -69,7 +75,7 @@ img, input[type=image]{
 
 .navbar{
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
 }
 
 .navitem{
@@ -91,11 +97,11 @@ a{
 }
 
 a.active{
-  background-color: #45a049;
+  background-color: #4CAF50;
 }
 
 a:hover {
-  background-color: grey !important;
+  background-color: grey;
   color: red;
   transition: background-color .7s, color .7s !important;
 }
@@ -122,8 +128,8 @@ a:hover {
 
 .seccion-lateral div {
   min-width: 170px;
-  /*width: fit-content;
-  width: -moz-fit-content;*/
+  width: fit-content;
+  width: -moz-fit-content;
   overflow: unset;
   margin-left: -5%;
   margin-right: -5%;
@@ -140,8 +146,6 @@ div.seccion-lateral .navitem{
   border-style: outset;
   border-color: orangered;
   box-shadow: 5px 6px 10px #451e00;
-  font-variant: all-petite-caps;
-  font-family: serif;
 }
 
 /* Estilo definido para el grid de la sección central de contenido */
@@ -202,11 +206,6 @@ div.seccion-lateral .navitem{
 p {
   text-rendering: optimizeLegibility;
   letter-spacing: 1px;
-  text-align: inherit;
-}
-
-.box p, .titulo p {
-  text-align: center !important;
 }
 
 .bold{
@@ -247,126 +246,11 @@ p {
   cursor: pointer;                   /* Add a mouse pointer on hover */
   padding: 15px;                     /* Some padding */
   border-radius: 100%;               /* Rounded corners */
-  background-image: url("../icons/arrow.png");
+  background-image: url("icons/arrow.png");
   background-repeat: no-repeat;
   background-position: center;
 }
 
 #scroll:hover {
   background-color: grey;            /* Add a dark-grey background on hover */
-}
-
-.coleccion {
-  display: grid;
-  grid-template-rows: 1fr 3fr;
-}
-
-.coleccion .grid {
-  grid-template-rows: 1fr !important;
-}
-
-.titulo {
-  font-variant: small-caps;
-}
-
-.fechas {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 1em;
-  text-align: center !important;
-  font-variant: all-small-caps;
-}
-
-.login {
-  display: grid;
-  grid-template-rows: 1fr 1fr;
-}
-
-.login-container {
-  align-self: center;
-  border-radius: 5px;
-  display: grid;
-  grid-template-rows: 1fr 6fr;
-  place-items: center;
-  height: 90%;
-  background: linear-gradient(to bottom, rgba(100,66,33,1), rgba(100,66,33,0.3));
-}
-
-.login-item {
-  display: grid;
-  grid-template-columns: 1fr 3fr;
-  line-height: 57px;
-}
-
-.opciones {
-  grid-template-rows: 1fr 1fr 1fr !important;
-}
-
-.avanzadas {
-  width: 85%;
-  height: 85%;
-  overflow-y: scroll;
-  border-radius: 15px;
-  background-color: #d1d1d1;
-}
-
-.admin {
-  grid-template-columns: 1fr 1fr 3fr 0.5fr !important;
-}
-
-.item-lista {
-  /*display:grid;*/
-  grid-template-columns: 1fr 1fr 1fr !important;
-}
-
-.negrita {
-  text-decoration: underline;
-  font-weight: bold;
-}
-
-form {
-  width: 70%;
-}
-
-a form {
-  height: 30%;
-  place-self: center;
-}
-
-.admin form {
-  place-self: center;
-  margin-top: 10px;
-}
-
-.admin-form {
-  display: inline-grid;
-  grid-template-columns: 1fr 3fr;
-}
-
-input[type=text], [type=email], [type=password], select {
-    width: 80%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-input[type=submit] {
-    width: 100%;
-    background-color: #45a049;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    letter-spacing: 1px;
-    font-size: 15px;
-    font-weight: bold;
-}
-
-input[type=submit]:hover {
-  background-color: #00aa2e;
 }
