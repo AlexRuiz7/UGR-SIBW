@@ -11,7 +11,7 @@ html {
   color: black;
   overflow-y: scroll;
   scroll-behavior: smooth;
-  background: linear-gradient(to bottom, rgba(66,66,66,1), rgba(100,100,100,0.2));
+  background: #333;
 }
 
 div{
@@ -23,7 +23,7 @@ div{
   /*margin: inherit;*/
   display: grid;
   grid-template-columns: 1fr 3fr;
-  background: linear-gradient(to bottom, rgba(100,66,33,1), rgba(100,66,33,0.3));
+  background: linear-gradient(to bottom, rgb(250, 250, 250), rgb(255, 255, 255));
 }
 
 .logo {
@@ -52,6 +52,7 @@ img {
   bottom: 0;
   left: 0;
   right: 0;
+  max-width: 80%;
   vertical-align: middle;
   overflow: unset;
 }
@@ -61,16 +62,16 @@ img {
   display: grid;
   grid-template-rows: 2fr 1fr;
   text-align: center;
-  font-style: oblique;
-  font-variant: small-caps;
-  font-size: 20px;
+  font-family: "Roboto_condensed";
+  font-variant: inherit;
+  font-size: 150%;
 }
 
 .titulo {
   height: fit-content;
   height: -moz-fit-content;
-  letter-spacing: 10px;
-  font-family: serif;
+  letter-spacing: 7px;
+  font-family: "Roboto_condensed";
 }
 
 .navbar{
@@ -81,7 +82,7 @@ img {
 .navitem{
   letter-spacing: 3px;
   color: black;
-  border-color: #009050;
+  border-color: #410505;
   border-style: solid;
 }
 
@@ -97,11 +98,11 @@ a{
 }
 
 a.active{
-  background-color: #4CAF50;
+  background-color: #941429;
 }
 
 a:hover {
-  background-color: grey;
+  background-color: rgb(255, 255, 255);
   color: red;
   transition: background-color .7s, color .7s !important;
 }
@@ -118,7 +119,7 @@ a:hover {
   grid-auto-rows: max-content;
   grid-gap: 2em;
   padding: 1em 1.5em;
-  background: linear-gradient(to bottom, rgba(100,66,33,1), rgba(100,66,33,0.3));
+  background: linear-gradient(to bottom, rgb(255, 255, 255), rgb(255, 255, 255));
 }
 
 .clearfix {
@@ -137,15 +138,15 @@ a:hover {
 
 .seccion-lateral div h3{
   padding: 5%;
-  color: orangered;
+  color: #009050;
   text-decoration: underline;
   text-shadow: 4px 2px 6px black;
 }
 
 div.seccion-lateral .navitem{
   border-style: outset;
-  border-color: orangered;
-  box-shadow: 5px 6px 10px #451e00;
+  border-color: #333;
+  box-shadow: 5px 6px 10px #333;
 }
 
 /* Estilo definido para el grid de la sección central de contenido */
@@ -154,14 +155,14 @@ div.seccion-lateral .navitem{
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
   grid-gap: 5%;
-  color: #888;
+  color: #333;
 }
 
 .box {
   display: grid;
   grid-template-rows: 16fr 2fr;
   width: 100%;
-  background-color: #444;
+  background-color: #333;
   color: transparent;
   border-radius: 5px;
   font-size: 2vw;
@@ -190,7 +191,8 @@ div.seccion-lateral .navitem{
   grid-template-columns: 2fr 2fr 2fr 0.5fr 1fr;
   text-align: center;
   align-items: center;
-  background: linear-gradient(to bottom, rgba(100,66,33,1), rgba(100,66,33,0.3));
+  color:rgb(250, 250, 250);
+  background:rgba(148, 7, 7, 0.459)
 }
 
 #informacion {
@@ -246,7 +248,7 @@ p {
   cursor: pointer;                   /* Add a mouse pointer on hover */
   padding: 15px;                     /* Some padding */
   border-radius: 100%;               /* Rounded corners */
-  background-image: url("icons/arrow.png");
+  background-image: url("./icons/arrow.png");
   background-repeat: no-repeat;
   background-position: center;
 }
