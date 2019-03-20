@@ -12,33 +12,26 @@
 <body>
   <!-- CABECERA: comienzo -->
   <div class="cabecera">
-    <!-- Elementos que deben aparecer en la cabecera:
-    //  * Título
-    //  * Logotipo o imagen
-    //  * Menú (navbar)
-    -->
 
     <!-- LOGO: comienzo -->
     <div class="logo">
-      <a class="imagen" href="portada.html" title="Ir a inicio">
-        <img src="./imgs/news-logo.png" alt="Logotipo periódico">
+      <a href="portada.html" title="Ir a inicio">
+        <img src="./imgs/logo.png" alt="Logotipo del portal">
       </a>
     </div>
     <!-- LOGO: fin -->
 
-    <!-- TITULO-CABECERA: comienzo -->
-    <div class="titulo-cabecera">
-      <!-- TÍTULO: comienzo -->
-      <div class="titulo">
-        <h1>NOTICIAS ETSIIT</h1>
+    <!-- META-CABECERA: comienzo -->
+    <div class="meta-cabecera">
+      <div class="contenedor-titulo">
+        <h1 class="center">NOTICIAS ETSIIT</h1>
       </div>
-      <!-- TÍTULO: fin -->
 
       <!-- MENU: comienzo -->
       <div class="navbar">
-        <a class="navitem active" href="portada.html" title="Ir a inicio">Inicio</a>
-        <a class="navitem" href="./obra.html" title="Listado de obras">Obras</a>
-        <a class="navitem" href=#informacion title="Ir a detalles">Conócenos</a>
+        <a class="navitem active" href="portada.html" title="Ir a inicio"><p class="center">Inicio</p></a>
+        <a class="navitem" href="" title="Listado de noticias"><p class="center">Noticias</p></a>
+        <a class="navitem" href=#informacion title="Ir a información de contacto"><p class="center">Contacto</p></a>
       </div>
       <!-- MENU: fin -->
     </div>
@@ -46,93 +39,106 @@
   </div>
   <!-- CABECERA: fin -->
 
-  <!-- SECCIONES: comienzo -->
-  <div class="secciones">
+<!-- SECCIONES: comienzo -->
+  <div class="principal">
     <!-- SECCION-LATERAL: comienzo -->
     <div class="seccion-lateral">
 
-      <div>
-        <h3 align="center">NAVEGADOR</h3>
-      </div>
-      <!-- <div class="clearfix"></div> -->
+      <h3>Más visitadas</h3>
 
-      <div class="navitem" title="Ir">
-        <a href="./portada.html">Inicio</a>
-      </div>
+      <a class="navitem" href="./portada.html" title="Ir"><p class="center">Noticia 1</p></a>
 
-      <div class="navitem" title="Ir">
-        <a href="./obra_1.html">Noticia 1</a>
-      </div>
+      <a class="navitem" href="./noticia_1.html" title="Ir"><p class="center">Noticia 2</p></a>
 
-      <div class="navitem" title="Ir">
-        <a href="./obra_2.html">Noticia 2</a>
-      </div>
+      <a class="navitem" href="./noticia_1.html" title="Ir"><p class="center">Noticia 3</p></a>
 
-      <div class="navitem" title="Ir">
-        <a href="">Obra 3</a>
-      </div>
-
-      <div class="navitem" title="Ir">
-        <a href="">Enlace 1</a>
-      </div>
-
-      <div class="navitem" title="Ir">
-        <a href="">Enlace 2</a>
-      </div>
-
-      <div class="navitem" title="Ir">
-        <a href="">Enlace 3</a>
-      </div>
-
-      <div class="navitem" title="Ir">
-        <a href="">Enlace 4</a>
-      </div>
-
-      <div class="navitem" title="Ir">
-        <a href="">Enlace 5</a>
-      </div>
+      <a class="navitem" href="./noticia_1.html" title="Ir"><p class="center">Noticia 4</p></a>
 
     </div>
     <!-- SECCION-LATERAL: fin -->
-    <!-- GRID: comienzo  -->
-    <div class="grid">
-      <div class="box">
-        <a href="./obra_1.html" title="Visitar Obra">
-          <img src="" class="imagen">
-        </a>
-        <div class="titulo-obra" ></div>
+
+    <!-- SECCION-NOTICIAS: comienzo  -->
+    <div class="seccion-noticias">
+
+      <div class="fila">
+        <div class="box">
+          <a href="./noticia_1.html" title="Ver noticia">
+            <img src="imgs/nvidia_gtx.jpg">
+          </a>
+          <p>NVIDIA lleva el Ray Tracing a sus tarjetas gráficas GTX</p>
+        </div>
+
+        <div class="box">
+          <a href="" title="Ver noticia">
+            <img src="imgs/placeholder.png">
+          </a>
+          <p>En construcción #2</p>
+        </div>
+
+        <div class="box">
+          <a href="" title="Ver noticia">
+            <img src="imgs/placeholder.png">
+          </a>
+          <p>En construcción #3</p>
+        </div>
       </div>
-      <div class="box">
-        <a href="./obra_2.html" title="Visitar Obra">
-          <img src="" class="imagen">
-        </a>
-        <div class="titulo-obra" ></div>
+
+
+      <div class="fila">
+        <div class="box">
+          <a href="" title="Ver noticia">
+            <img src="imgs/placeholder.png">
+          </a>
+          <p>En construcción #4</p>
+        </div>
+
+        <div class="box">
+          <a href="" title="Ver noticia">
+            <img src="imgs/placeholder.png">
+          </a>
+          <p>En construcción #5</p>
+        </div>
+
+        <div class="box">
+          <a href="" title="Ver noticia">
+            <img src="imgs/placeholder.png">
+          </a>
+          <p>En construcción #6</p>
+        </div>
       </div>
-      <div class="box">
-        <p></p>
+
+      <div class="fila">
+        <div class="box">
+          <a href="" title="Ver noticia">
+            <img src="imgs/placeholder.png">
+          </a>
+          <p>En construcción #7</p>
+        </div>
+
+        <div class="box">
+          <a href="" title="Ver noticia">
+            <img src="imgs/placeholder.png">
+          </a>
+          <p>En construcción #8</p>
+        </div>
+
+        <div class="box">
+          <a href="" title="Ver noticia">
+            <img src="imgs/placeholder.png">
+          </a>
+          <p>En construcción #9</p>
+        </div>
       </div>
-      <div class="box">
-        <p></p>
-      </div>
-      <div class="box">
-        <p></p>
-      </div>
-      <div class="box">
-        <p></p>
-      </div>
-      <div class="box">
-        <p></p>
-      </div>
-      <div class="box">
-        <p></p>
-      </div>
-      <div class="box">
-        <p></p>
-      </div>
+
     </div>
-    <!-- GRID: fin -->
+    <!-- SECCION-NOTICIAS: fin -->
   </div>
   <!-- SECCIONES: fin -->
+
+
+  <!-- <div style="height:600px">
+
+  </div> -->
 
   <!-- FOOTER: comienzo -->
   <div class="footer">
@@ -148,15 +154,17 @@
 
     <div id="mapa">
       <a class="imagen" href="https://www.google.es/maps" target="_blank" title="Abrir Google Maps">
-        <img class="map" src="imgs/madrid-map.gif">
+        <img src="imgs/madrid-map.gif">
       </a>
     </div>
 
     <div id="copyright">
-      <p>Al acceder a esta página confirmas haber leído y aceptado nuestros
-         términos de servicio, cookies y políticas de privacidad.</p>
-      <p>Copyright 1999-2019.</p>
-      <p>Todos los derechos reservados.</p>
+      <div class="center">
+        <p>Al acceder a esta página confirmas haber leído y aceptado nuestros
+          términos de servicio, cookies y políticas de privacidad.</p>
+          <p>Copyright 1999-2019.</p>
+          <p>Todos los derechos reservados.</p>
+      </div>
     </div>
 
     <div id="rrss">
@@ -171,9 +179,9 @@
       </a>
     </div>
 
-    <span>
-      <img src="./imgs/news-logo.png" alt="Logotipo periódico">
-    </span>
+    <div class="logo">
+      <img src="./imgs/logo.png" alt="Logotipo del portal">
+    </div>
 
   </div>
   <!-- FOOTER: fin -->

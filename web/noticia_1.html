@@ -1,0 +1,176 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Noticias ETSIIT</title>
+  <link rel="stylesheet" type="text/css" href="css/estilo.css">
+  <link rel="stylesheet" type="text/css" href="css/estilo_noticia.css">
+</head>
+
+<body>
+  <!-- CABECERA: comienzo -->
+  <div class="cabecera">
+
+    <!-- LOGO: comienzo -->
+    <div class="logo">
+      <a href="portada.html" title="Ir a inicio">
+        <img src="./imgs/logo.png" alt="Logotipo del portal">
+      </a>
+    </div>
+    <!-- LOGO: fin -->
+
+    <!-- META-CABECERA: comienzo -->
+    <div class="meta-cabecera">
+      <div class="contenedor-titulo">
+        <h1 class="center">NOTICIAS ETSIIT</h1>
+      </div>
+
+      <!-- MENU: comienzo -->
+      <div class="navbar">
+        <a class="navitem active" href="portada.html" title="Ir a inicio"><p class="center">Inicio</p></a>
+        <a class="navitem" href="" title="Listado de noticias"><p class="center">Noticias</p></a>
+        <a class="navitem" href=#informacion title="Ir a información de contacto"><p class="center">Contacto</p></a>
+      </div>
+      <!-- MENU: fin -->
+    </div>
+    <!-- TITULO-CABECERA: fin -->
+  </div>
+  <!-- CABECERA: fin -->
+
+  <!-- SECCIONES: comienzo -->
+  <div class="principal">
+    <!-- SECCION-LATERAL: comienzo -->
+    <div class="seccion-lateral">
+
+      <h3>Más visitadas</h3>
+
+      <a class="navitem" href="./portada.html" title="Ir"><p class="center">Noticia 1</p></a>
+
+      <a class="navitem" href="./noticia_1.html" title="Ir"><p class="center">Noticia 2</p></a>
+
+      <a class="navitem" href="./noticia_1.html" title="Ir"><p class="center">Noticia 3</p></a>
+
+      <a class="navitem" href="./noticia_1.html" title="Ir"><p class="center">Noticia 4</p></a>
+
+    </div>
+    <!-- SECCION-LATERAL: fin -->
+
+    <!-- NOTICIA: comienzo  -->
+    <div class="seccion-noticias">
+      <div class="noticia">
+
+        <article>
+          <header>
+            <h1>NVIDIA lleva el Ray Tracing a sus tarjetas gráficas GTX</h1>
+            <h2>Escrito por Juan Cuesta</h2>
+            <h3>20/04/2019</h3>
+            <div class="contenedor-imagen">
+              <a href="https://www.adslzone.net/2019/03/19/nvidia-gtx-ray-tracing/amp/">
+                <img src="./imgs/nvidia_gtx.jpg" alt="Tarjeta gráfica GTX"/>
+              </a>
+            </div>
+            <p>
+              NVIDIA anunció a finales de 2018 sus tarjetas gráficas RTX, donde además de estrenar la arquitectura Turing de 12 nm y mejorar el rendimiento, incluían RT Cores y compatibilidad con Ray Tracing para una iluminación y reflejos más realistas en los videojuegos compatibles. Ahora, El Ray Tracing va a llegar a las tarjetas GTX que la compañía ya tenía en el mercado de la generación anterior.
+            </p>
+            <p>
+              Entre estas tarjetas gráficas encontramos todas las de la serie GTX a partir de la 1060 de 6 GB. El cambio a RTX tenía que ver con la llegada del Ray Tracing, dejando de lado la gama GTX para las tarjetas no compatibles, pero finalmente la diferencia parece ser que será solo a nivel de hardware.
+            </p>
+              Y es que, si NVIDIA quiere que haya un soporte más amplio por parte de los juegos para Ray Tracing, tiene que abrirlo a más tarjetas gráficas. Este es el motivo por el que han decidido llevar a la gama GTX un soporte algo más básico de Ray Tracing que el que ofrecen en las RTX.
+
+              Así, ahora mismo encontramos dos gamas que soportarán DXR, o DirectX Raytracing, la API de DirectX 12. Esta API, teóricamente, hacía compatible con el trazado de rayos a cualquier tarjeta gráfica compatible con DirectX 12.
+            </p>
+            <p>
+              La gama más básica contará con efectos básicos de Ray Tracing, y un conteo bajo de rayos. Entre ellas encontramos la Titan XP, Titan X, GTX 1080 Ti, GTX 1080, GTX 1070 Ti, GTX 1070, GTX 1060 6 GB (el de 3 GB no), así como las nuevas GTX 1660 Ti y GTX 1660.
+            </p>
+            <p>
+              En cuanto al soporte completo de efectos de Ray Tracing y un conteo alto de rayos, encontramos el mismo soporte actual de la Titan RTX, RTX 2080 Ti, RTX 2080, RTX 2070 y RTX 2060.
+            </p>
+            <p>
+              La compatibilidad llegará a estas tarjetas gráficas mediante un nuevo driver GeForce el próximo mes de abril, donde nuestros compañeros de HardZone recogerán las novedades al respecto, así como realizarán pruebas de este nuevo modo. Los desarrolladores no tendrán que hacer nada para que estas tarjetas sean compatibles. Si el juego ya soporta Ray Tracing, la tarjeta gráfica GTX ya podrá hacer uso de las funcionalidades que tenga compatibles.
+            </p>
+            <p>
+              Esta apuesta de NVIDIA es muy interesante, teniendo en cuenta que hasta ahora se creía que eran necesarios tener núcleos específicos para hacer los cálculos relacionados con el Ray Tracing, y eso que incluso con ellos el rendimiento del juego cae a la mitad. Con GTX se creía que el rendimiento se quedaría por los suelos, así que habrá que ver cómo afecta esta implementación, e incluso si usar estos rayos en “calidad baja” es suficiente como para no tener que activar la implementación completa.
+            </p>
+            <p>
+              Lo que no será compatible con las GTX será DLSS, o Deep Learning Super Sampling, donde la tarjeta gráfica usa los Tensor Cores para reescalar la imagen y mejorarla sin que el rendimiento se vea afectado.
+            </p>
+          </header>
+        </article>
+
+      </div>
+
+
+      <!-- Enlaces -->
+      <div class="enlaces">
+
+          <a href="https://www.facebook.com/" target="_blank" title="Compartir en Facebook">
+            <img src="icons/fb_ico.png"/>
+          </a>
+          <a href="https://twitter.com/" target="_blank" title="Compartir en Twitter">
+            <img src="icons/tw_ico.png"/>
+          </a>
+          <a href="noticia_imprimir.html" target="_blank" title="Imprimir">
+            <img src="icons/print.png"/>
+          </a>
+
+      </div>
+      <!-- Enlaces -->
+    </div>
+    <!-- NOTICIA: fin -->
+  </div>
+  <!-- SECCIONES: fin -->
+
+  <!-- FOOTER: comienzo -->
+  <div class="footer">
+
+    <div id="informacion">
+      <p class="bold">Dirección:</p>
+      <p>Calle Desengaño, 21, Madrid</p>
+      <p class="bold">Teléfono:</p>
+      <p>9xx xxx xxx, 6xx xxx xxx</p>
+      <p class="bold">Correo:</p>
+      <p>vayase_señor_cuesta@gmail.com</p>
+    </div>
+
+    <div id="mapa">
+      <a class="imagen" href="https://www.google.es/maps" target="_blank" title="Abrir Google Maps">
+        <img src="imgs/madrid-map.gif">
+      </a>
+    </div>
+
+    <div id="copyright">
+      <div class="center">
+        <p>Al acceder a esta página confirmas haber leído y aceptado nuestros
+          términos de servicio, cookies y políticas de privacidad.</p>
+          <p>Copyright 1999-2019.</p>
+          <p>Todos los derechos reservados.</p>
+      </div>
+    </div>
+
+    <div id="rrss">
+      <a href="https://www.facebook.com/" target="_blank" title="Estamos en Facebook">
+        <img src="icons/fb_ico.png"/>
+      </a>
+      <a href="https://www.instagram.com/" target="_blank" title="Estamos en Instagram">
+        <img src="icons/ig_ico.png"/>
+      </a>
+      <a href="https://twitter.com/" target="_blank" title="Estamos en twitter">
+        <img src="icons/tw_ico.png"/>
+      </a>
+    </div>
+
+    <div class="logo">
+      <img src="./imgs/logo.png" alt="Logotipo del portal">
+    </div>
+
+  </div>
+  <!-- FOOTER: fin -->
+
+  <button onclick="document.documentElement.scrollTop = 0;" id="scroll"  src="./icons/arrow.png" title="Volver a arriba"></button>
+
+</body>
+
+</html>

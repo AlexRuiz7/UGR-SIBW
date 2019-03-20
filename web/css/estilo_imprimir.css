@@ -1,43 +1,79 @@
 
-html {
-  background: none;
-}
-
 body {
   border-style: double;
   border-color: black;
   margin: 5%;
-}
-
-.obra div {
-  overflow: unset !important;
-  border-style: solid;
-  align-items: start;
+  background: none;
+  color: black;
 }
 
 .cabecera {
-  background: none !important;
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  align-items: center;
-}
-
-.obra {
-  display: grid;
-  grid-template-rows: 9fr 1fr;
   background: none;
-  overflow: unset;
+  display: flex;
+  align-items: center;
+  width: 90%;
+  height: 25%;
 }
 
-.encabezado-imagen {
+.contenedor-titulo {
+  height: 100%;
+  margin-top: 0%;
+  margin-bottom: 0%;
+  position: relative;
+  width: 70%;
+}
+
+h1 {
+  font-size: 4vw;
+  width: 100%;
+  font-family: seroe;
+  text-transform: uppercase;
+  font-weight: bolder;
+  font-style: italic;
+}
+
+.noticia {
+  margin: 5%
+}
+
+header p {
+  text-align: justify;
+  font-variant: all-petite-caps;
+  font-size: 1.4vw;
+}
+
+
+.footer {
+  background: none;
+  position: relative;
+  border-style: double;
+  border-color: black;
+}
+
+.footer div {
+  height: unset;
+  width: 90%;
+}
+
+#informacion {
+  width: 35%;
+}
+
+#copyright {
+  height: auto;
+  width: 40%;
+}
+
+
+/* .encabezado-imagen {
   display: grid;
   grid-template-columns: 3fr 4fr;
   text-align: center;
   align-items: start;
-  /*border-style: solid;*/
+  border-style: solid;
 }
 
-.meta-obra {
+.meta-noticia {
   display: grid;
   grid-template-rows: 1fr 1fr 1fr 4fr;
   height: auto;
@@ -45,7 +81,7 @@ body {
 }
 
 
-#titulo-obra {
+#titulo-noticia {
   text-transform: uppercase;
   font-family: serif;
   font-weight: bolder;
@@ -59,7 +95,7 @@ body {
 }
 
 
-.imagen-obra {
+.imagen-noticia {
   max-height: 680px;
   max-width: 550px;
   height: 95%;
@@ -69,13 +105,8 @@ body {
   place-self: center;
 }
 
-.descripcion-obra {
+.descripcion-noticia {
   text-align: justify;
   font-variant: all-petite-caps;
   font-size: 1.4vw;
-}
-
-.footer {
-  background: none !important;
-  grid-template-columns: 1fr 1fr 1fr !important;
-}
+} */
