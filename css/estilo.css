@@ -6,14 +6,15 @@
 html {
   height: 100%;
   width: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
 }
 
 body {
   font-family: Arial,"Helvetica Neue",Helvetica,sans-serif;
-  font-size: 16px;
+  font-size: 2vw;
   color: #fbfbfb;
-  overflow-y: scroll;
-  scroll-behavior: smooth;
   background: #333 url(../imgs/fondo.gif) center fixed;
   background-size: 100% 100%;
   margin: 0%;
@@ -29,10 +30,8 @@ body {
 .cabecera {
   margin: inherit;
   display: flex;
-  /* background: rgba(80, 80, 80, 0.5); */
   width: 100%;
   height: 25%;
-  /* position: absolute; */
 }
 
 .logo {
@@ -62,9 +61,15 @@ img {
 
 .contenedor-titulo {
   height: 70%;
+  width: 100%;
   margin-top: 0%;
   margin-bottom: 0%;
   position: relative;
+}
+
+h1 {
+  width: 100%;
+  font-size: 5vw;
 }
 
 .center {
@@ -75,6 +80,7 @@ img {
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   height: auto;
+  width: 90%;
 }
 
 .navbar {
@@ -155,15 +161,20 @@ p:last-child {
   display: flex;
   text-align: center;
   align-items: center;
-  /* background: rgba(80, 80, 80, 0.5); */
   width: 100%;
   height: 20%;
-  position: absolute;
+  position: relative;
 }
 
-.footer div {
+.footer > div {
   height: 90%;
   width: 90%;
+}
+
+.contenedor-columna-3 {
+  height: 30%;
+  width: 90%;
+  min-height: 10px;
 }
 
 #informacion {
