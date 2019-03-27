@@ -39,3 +39,131 @@ header h3 {
   all: unset;
   margin-top: 2%;
 }
+
+
+/*****************************************************************************
+  CÓDIGO NO SANEADO
+*****************************************************************************/
+
+
+#btn_comentarios {
+  cursor: pointer;
+  border-top-left-radius: 100%;
+  border-bottom-left-radius: 100%;
+  background-color: rgba(80, 80, 80, 0.9);
+  border-style: groove;
+  border-color: #410505;
+  position: relative;
+}
+
+#desplegable-comentarios {
+  display:grid;
+  grid-template-columns: 1fr 21fr;
+  position: fixed;
+  z-index: 99;                  /* Make sure it does not overlap */
+  transition: left 2s;
+  transition-timing-function: ease;
+  max-height: 600px;
+  overflow: hidden;
+
+  /* Código para centrar la sección de comentarios en la pantalla */
+  width: 900px;
+  height: 600px;
+  top: 50%;
+  left: 116%;                   /* Cambiará a 50% al ser desplegado */
+  margin-top: -300px;           /* Negative half of height. */
+  margin-left: -19%;            /* Negative half of width. */
+  display: grid;
+}
+
+#contenedor-comentarios {
+  background-color: rgba(80, 80, 80, 0.9);
+  border-style: groove;
+  border-color: #410505;
+  border-left-color: transparent;
+  margin-left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+
+  display: grid;
+  grid-template-rows: 6fr 4fr;
+  text-align: center;
+}
+
+#comentarios {
+  overflow-y: scroll;
+  display: grid;
+  grid-auto-rows: 1fr;
+  grid-row-gap: 10px;
+  max-width: 830px;
+  max-height: 340px;
+  width: 830px;
+  height: 330px;
+}
+
+.comentario {
+  display: grid;
+  grid-auto-rows: 1fr 2fr;
+  border-style: groove;
+  border-color: threedface;
+  border-bottom-color: grey;
+}
+
+.comentario-fecha {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  text-align: center;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.texto {
+  text-align: justify;
+  /*font-variant: all-petite-caps;*/
+  text-rendering: optimizeLegibility;
+  font-size: 17px;
+}
+
+#formulario {
+  border-top-style: groove;
+  border-top-color: #410505;
+  position: relative;
+}
+
+fieldset {
+  position: absolute;
+  margin: 15px;
+  width: 760px;
+  height: 180px;
+}
+
+#personal-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  font-variant: small-caps;
+  font-style: oblique;
+  font-weight: bold;
+  font-size: 17px;
+}
+
+input {
+  width: 280px;
+}
+
+input[name="nombre"] {
+  text-transform: capitalize !important;
+}
+
+textarea {
+  resize: none;
+  width: 730px;
+  height: 100px;
+}
+
+#boton {
+  width: 100%;
+  height: 100%;
+  margin-top: -1%;
+  font-weight: bold;
+  font-size: 17px;
+}
