@@ -160,12 +160,18 @@ p {
 .footer > div {
   height: 90%;
   width: 90%;
+  place-items: center;
 }
 
 .contenedor-columna-3 {
   height: 30%;
   width: 90%;
-  /* min-height: 10px; */
+  display: inline-flex;
+  position: relative;
+}
+
+.contenedor-fila-3 {
+  width: 34%;
   display: inline-block;
   position: relative;
 }
@@ -210,7 +216,8 @@ p {
 }
 
 #rrss {
-  display: block;
+  display: flex;
+  flex-flow: wrap;
   width: 5%;
 }
 
