@@ -1,7 +1,7 @@
 --
 -- CREACIÓN DE BASE DE DATOS
 --
-CREATE DATABASE IF NOT EXISTS SIBW CHARACTER SET utf8 COLLATE utf8_general_ci;
+CREATE DATABASE IF NOT EXISTS SIBW CHARACTER SET utf8 COLLATE utf8_spanish_ci;
 USE SIBW;
 
 --
@@ -31,24 +31,27 @@ CREATE TABLE IF NOT EXISTS Usuarios (
 
 
 CREATE TABLE IF NOT EXISTS Noticias (
-  id        INT AUTO_INCREMENT,
-  titular   VARCHAR(80),
-  texto     VARCHAR(5000),
-  fecha     DATETIME DEFAULT CURRENT_TIMESTAMP,
+  id        INT           AUTO_INCREMENT,
+  titular   VARCHAR(80)   DEFAULT 'TITULAR',
+  texto     VARCHAR(5000) DEFAULT 'TEXTO AQUÍ...',
+  autor     VARCHAR(20)   DEFAULT "Escritor ó Autor",
+  fecha     DATETIME      DEFAULT CURRENT_TIMESTAMP,
+  visitas   INT           DEFAULT 0,
+  link      VARCHAR(130),
   PRIMARY KEY (id)
 );
 
 
-CREATE TABLE IF NOT EXISTS Imagenes (
-  url VARCHAR(50),
-  PRIMARY KEY (url)
-);
-
-
-CREATE TABLE IF NOT EXISTS Etiquetas (
-  tema VARCHAR(15),
-  PRIMARY KEY (tema)
-);
+-- CREATE TABLE IF NOT EXISTS Imagenes (
+--   url VARCHAR(50),
+--   PRIMARY KEY (url)
+-- );
+--
+--
+-- CREATE TABLE IF NOT EXISTS Etiquetas (
+--   tema VARCHAR(15),
+--   PRIMARY KEY (tema)
+-- );
 
 
 --
@@ -66,29 +69,29 @@ CREATE TABLE IF NOT EXISTS Comentarios (
 );
 
 
-CREATE TABLE IF NOT EXISTS Escritor (
-  email_escritor VARCHAR(35) NOT NULL,
-  id_noticia INT,
-  PRIMARY KEY (id_noticia),
-  UNIQUE (email_escritor),
-  FOREIGN KEY (id_noticia) REFERENCES Noticias(id),
-  FOREIGN KEY (email_escritor) REFERENCES Usuarios(email)
-);
+-- CREATE TABLE IF NOT EXISTS Escritor (
+--   email_escritor  VARCHAR(35) NOT NULL,
+--   id_noticia      INT,
+--   PRIMARY KEY (id_noticia),
+--   UNIQUE (email_escritor),
+--   FOREIGN KEY (id_noticia) REFERENCES Noticias(id),
+--   FOREIGN KEY (email_escritor) REFERENCES Usuarios(email)
+-- );
 
 
 CREATE TABLE IF NOT EXISTS EtiquetasEnNoticia (
   id_noticia  INT,
   tema        VARCHAR(15),
   PRIMARY KEY (id_noticia, tema),
-  FOREIGN KEY (id_noticia) REFERENCES Noticias(id),
-  FOREIGN KEY (tema)       REFERENCES Etiquetas(tema)
+  FOREIGN KEY (id_noticia) REFERENCES Noticias(id)
+  -- FOREIGN KEY (tema)       REFERENCES Etiquetas(tema)
 );
 
 
 CREATE TABLE IF NOT EXISTS ImagenesEnNoticia (
   id_noticia  INT,
-  url         VARCHAR(50),
+  url         VARCHAR(50) DEFAULT 'placeholder.png',
   PRIMARY KEY (id_noticia, url),
-  FOREIGN KEY (id_noticia) REFERENCES Noticias(id),
-  FOREIGN KEY (url)        REFERENCES Imagenes(url)
+  FOREIGN KEY (id_noticia) REFERENCES Noticias(id)
+  -- FOREIGN KEY (url)        REFERENCES Imagenes(url)
 );

@@ -118,3 +118,14 @@ function revisarComentario(){
   var comentario = document.getElementById("comentario");
   comentario.value = comentario.value.replace(bad_words, " **** ");
 }
+
+
+
+
+
+
+
+function compartir(plataforma, titulo, imagen) {
+  var mensaje = "Se compartrá en " + plataforma + " el siguiente mensaje:\n\n";
+  alert(mensaje + titulo + "\n\n" + imagen);
+}

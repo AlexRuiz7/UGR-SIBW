@@ -1,0 +1,18 @@
+{# sidebar.twig #}
+
+{% block barra_lateral %}
+  <!-- SECCION-LATERAL: comienzo -->
+  <div class="seccion-lateral">
+    <h3>Más visitadas</h3>
+
+    {% for item in noticias_sidebar %}
+    <div class="navitem">
+      <a href="./?p=noticias&id={{ item.id }}" title="Ir">
+        <p class="center">{{ item.titulo }}</p>
+      </a>
+    </div>
+    {% endfor %}
+
+  </div>
+  <!-- SECCION-LATERAL: fin -->
+{% endblock %}
