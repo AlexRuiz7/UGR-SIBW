@@ -44,10 +44,11 @@
 
       <img src="/media/icons/fb_ico.png"/>
     </a>
-    <a href="https://www.twitter.com/" target="_blank" title="Compartir en Twitter"
-      onclick="compartir('Twitter', '{{ noticia.titulo }}', '{{ noticia.imagen }}'); return false;">
+    <a href="https://twitter.com/intent/tweet?text='{{ noticia.titulo }}' vía
+      {{ noticia.enlace }}" target="_blank" title="Compartir en Twitter">
       <img src="/media/icons/tw_ico.png"/>
     </a>
+
     <a href="?p=imprimir&id={{ noticia.id }}" target="_blank" title="Imprimir">
       <img src="/media/icons/print.png"/>
     </a>

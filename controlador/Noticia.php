@@ -225,10 +225,11 @@ class Noticia extends EntidadBase {
     $comentarios  = $this -> setComentarios($id_noticia);
     $parrafos     = explode("##", $datos["texto"]);
 
-    /* Actualizar contador de visitas */
+    /* Actualización del contador de visitas */
     $visitas = $datos["visitas"] + 1;
     $this->modelo->updateValues("visitas=$visitas", "id=$id_noticia");
 
+    /* Construcción de la estructura de datos */
     $temp = array(
       "id"      => $datos["id"],
       "titulo"  => $datos["titular"],
@@ -241,8 +242,8 @@ class Noticia extends EntidadBase {
       "etiquetas" => $etiquetas,
       "comentarios" => $comentarios
     );
-
     $array_noticias = array('noticia' => $temp);
+
     return $array_noticias;
   }
 
