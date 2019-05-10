@@ -4,6 +4,8 @@
   require_once __ROOT__.'autoload.php';
 
   date_default_timezone_set("Europe/Madrid");
+  ini_set('display_errors', 'On');
+  error_reporting(E_ALL | E_STRICT);
 
   $page = 'inicio';
   if(isset($_GET['p'])) {

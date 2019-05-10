@@ -17,9 +17,9 @@ class Noticia extends EntidadBase {
   public function __construct($twig) {
     parent::__construct("Noticias", $twig);
 
-    $this -> con_imagen = new ConsultasCRUD("ImagenesEnNoticia");
-    $this -> con_etiquetas = new ConsultasCRUD("EtiquetasEnNoticia");
-    // $this -> con_comentarios = new ConsultasCRUD("");
+    $this -> con_imagen       = new ConsultasCRUD("ImagenesEnNoticia");
+    $this -> con_etiquetas    = new ConsultasCRUD("EtiquetasEnNoticia");
+    $this -> con_comentarios  = new ConsultasCRUD("Comentarios");
 
     $this -> noticia        = array();
     $this -> barra_lateral  = array();
@@ -184,15 +184,50 @@ class Noticia extends EntidadBase {
   }
 
 
+
   /**
-   * [setNoticia description]
+   * Obtiene y devuelve todos los comentarios de la noticia identificada por
+   * su id, dado como parámetro
+   *
+   * @param [type] $id_noticia [description]
+   */
+  private function setComentarios($id_noticia) {
+    $datos = $this->con_comentarios->getValuesByOrdered("texto, email_usuario, fecha", "id_noticia=$id_noticia", "fecha DESC");
+
+    $temp = NULL;
+
+    while($fila = $datos->fetch(PDO::FETCH_ASSOC)) {
+      $temp[] = array(
+        'texto'   => $fila['texto'],
+        'usuario' => $fila['email_usuario'],
+        'fecha'   => $fila['fecha']
+      );
+    }
+
+    return $temp;
+  }
+
+
+  /**
+   * Inicializa la noticia solicitada recuperando todos los datos relacionados
+   * con ella.
    */
   private function setNoticia($id_noticia) {
-    $datos = $this->modelo->getValuesBy("*", "id=$id_noticia")->fetch(PDO::FETCH_ASSOC);
 
-    $imagenes  = $this -> setImgs($id_noticia);
-    $etiquetas = $this -> setEtiquetas($id_noticia);
-    $parrafos  = $this -> formatearTexto($datos["texto"]);
+    if(isset($_POST["comentario"])) {
+      $this -> crearComentario($id_noticia);
+    }
+
+    /* Recuperación de información */
+    $datos = $this->modelo->getValuesBy("*", "id=$id_noticia")->fetch(PDO::FETCH_ASSOC);
+    $imagenes     = $this -> setImgs($id_noticia);
+    $etiquetas    = $this -> setEtiquetas($id_noticia);
+    $comentarios  = $this -> setComentarios($id_noticia);
+    $parrafos     = explode("##", $datos["texto"]);
+
+    /* Actualizar contador de visitas */
+    $visitas = $datos["visitas"] + 1;
+    $this->modelo->updateValues("visitas=$visitas", "id=$id_noticia");
 
     $temp = array(
       "id"      => $datos["id"],
@@ -203,7 +238,8 @@ class Noticia extends EntidadBase {
       "enlace"  => $datos["link"],
       "texto"   => $parrafos,
       "imagen"  => 'media/imgs/noticias/' . $imagenes,
-      "etiquetas" => $etiquetas
+      "etiquetas" => $etiquetas,
+      "comentarios" => $comentarios
     );
 
     $array_noticias = array('noticia' => $temp);
@@ -212,8 +248,10 @@ class Noticia extends EntidadBase {
 
 
   /**
-   * [getNoticia description]
-   * @return [type] [description]
+   * Renderiza la noticia con Twig haciendo uso de los datos recuperados
+   * de la base de datos.
+   *
+   * @return Array array con la información de la noticia
    */
   public function getNoticia($id_noticia) {
     $datos = $this->barra_lateral + $this -> setNoticia($id_noticia);
@@ -233,10 +271,22 @@ class Noticia extends EntidadBase {
   }
 
 
+  /**
+   * [crearComentario description]
+   * @return [type] [description]
+   */
+  private function crearComentario($id_noticia) {
+    $campos = "ip, texto, email_usuario, id_noticia";
+    $temp = array(
+      $_SERVER['REMOTE_ADDR'],
+      $_POST["comentario"],
+      "cuenta_falsa_1@dominio.com",
+      $id_noticia
+    );
 
+    $valores = "'" . implode("', '", $temp) . "'";
 
-  private function formatearTexto($texto) {
-    return explode("##", $texto);
+    $this->con_comentarios->insertValues($campos, $valores);
   }
 
 }

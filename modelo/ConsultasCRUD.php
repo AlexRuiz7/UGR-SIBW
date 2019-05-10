@@ -49,6 +49,8 @@ class ConsultasCRUD {
    * @return PDOStatement      [description]
    */
   private function consultar($sql) {
+    $datos = NULL;
+
     try {
       $datos = $this->conn->query($sql);
     } catch (PDOException $e) {
@@ -193,6 +195,6 @@ class ConsultasCRUD {
       echo "</ul>";
     }
   }
-  
+
 }
 ?>
