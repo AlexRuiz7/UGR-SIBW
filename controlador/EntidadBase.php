@@ -1,17 +1,14 @@
 <?php
 
 class EntidadBase {
-  protected $modelo, $twig;
+  protected $modelo;
 
 
   /**
    * Constructor
-   *
-   * @param Twig $twig Instancia de twig
    */
-  public function __construct($tabla, $twig) {
+  public function __construct($tabla) {
     $this -> modelo = new ConsultasCRUD($tabla);
-    $this -> twig   = $twig;
   }
 
 
@@ -20,7 +17,6 @@ class EntidadBase {
    */
   public function __destruct() {
     unset(  $this -> modelo );
-    unset(  $this -> twig   );
   }
 
 }

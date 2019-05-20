@@ -1,19 +1,17 @@
 {# noticia_imprimir.twig #}
 
+
+{% extends "layout_imprimir.twig" %}
+
 {% block noticia %}
 
-<head>
-  <link rel="stylesheet" type="text/css" href="css/estilo_imprimir.css">
-</head>
-
 <!-- NOTICIA: comienzo  -->
-<div class="seccion-noticias">
   <div class="noticia">
 
     <article>
       <header>
         <h1>{{ noticia.titulo }}</h1>
-        <h2>Escrito por {{autor}}</h2>
+        <h2>Escrito por {{noticia.autor}}</h2>
         <h3>{{ noticia.fecha }}</h3>
         <div class="contenedor-imagen">
           <div class="contenedor-imagen">
@@ -27,7 +25,7 @@
             {{  parrafo }}
           </p>
           {% endfor %}
-          </header>>
+          </header>
 
       </header>
     </article>

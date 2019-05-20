@@ -11,11 +11,9 @@ class Noticia extends EntidadBase {
 
   /**
    * Constructor
-   *
-   * @param Twig $twig Instancia de twig
    */
-  public function __construct($twig) {
-    parent::__construct("Noticias", $twig);
+  public function __construct() {
+    parent::__construct("Noticias");
 
     $this -> con_imagen       = new ConsultasCRUD("ImagenesEnNoticia");
     $this -> con_etiquetas    = new ConsultasCRUD("EtiquetasEnNoticia");
@@ -90,19 +88,17 @@ class Noticia extends EntidadBase {
         );
     }
 
-    $array_noticias = array('noticias_sidebar' => $temp);
-    $this->barra_lateral = $array_noticias;
+    $this->barra_lateral = array('noticias_sidebar' => $temp);;
   }
 
 
   /**
-   * Renderiza la barra lateral con Twig haciendo uso de los datos recuperados
-   * de la base de datos.
+   * Devuelve los datos de la barra lateral en forma de array
    *
-   * @return Template plantilla de la barra lateral rellenada con sus datos.
+   * @return Array datos de la barra lateral
    */
   public function getBarraLateral() {
-    return $this->twig->render('sidebar.twig', $this->barra_lateral);
+    return $this->barra_lateral;
   }
 
 
@@ -128,29 +124,17 @@ class Noticia extends EntidadBase {
       }
     }
 
-    $array_noticias = array('noticias_grid' => $temp);
-    $this->grid_inicio = $array_noticias;
+    $this->grid_inicio = array('noticias_grid' => $temp);
   }
 
 
   /**
-   * Renderiza la sección central con Twig haciendo uso de los datos recuperados
-   * de la base de datos.
+   * Devuelve los datos del grid de noticias de la página de inicio
    *
-   * @return Template plantilla de la sección central rellenada con sus datos.
+   * @return Array datos del grid de noticias de inicio
    */
   public function getGridInicio() {
-    return $this->twig->render('seccion_central.twig', $this->grid_inicio);
-  }
-
-
-  /**
-   * [getInicio description]
-   * @return [type] [description]
-   */
-  public function getInicio() {
-    $datos = $this->barra_lateral + $this->grid_inicio;
-    return $this->twig->render('seccion_central.twig', $datos);
+    return $this->grid_inicio;
   }
 
 
@@ -242,39 +226,26 @@ class Noticia extends EntidadBase {
       "etiquetas" => $etiquetas,
       "comentarios" => $comentarios
     );
-    $array_noticias = array('noticia' => $temp);
 
-    return $array_noticias;
+    return array('noticia' => $temp);
   }
 
 
   /**
-   * Renderiza la noticia con Twig haciendo uso de los datos recuperados
-   * de la base de datos.
+   * Devuelve los datos de la noticia solicitada
    *
-   * @return Array array con la información de la noticia
+   * @param  Int $id_noticia id de la noticia
+   * @return Array           datos de la noticia solicitada
    */
   public function getNoticia($id_noticia) {
-    $datos = $this->barra_lateral + $this -> setNoticia($id_noticia);
-
-    return $this->twig->render('seccion_central.twig', $datos);
+    return $this -> setNoticia($id_noticia);
   }
 
 
   /**
-   * [getNoticia description]
-   * @return [type] [description]
-   */
-  public function getNoticiaImprimir($id_noticia) {
-    $datos = $this -> setNoticia($id_noticia);
-
-    return $this->twig->render('noticia_imprimir.twig', $datos);
-  }
-
-
-  /**
-   * [crearComentario description]
-   * @return [type] [description]
+   * Añade un comentario a la base de datos
+   *
+   * @param  Int $id_noticia id de la noticia
    */
   private function crearComentario($id_noticia) {
     $campos = "ip, texto, email_usuario, id_noticia";

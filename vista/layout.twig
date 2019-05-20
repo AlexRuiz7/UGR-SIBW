@@ -1,3 +1,5 @@
+{# layout.twig #}
+
 <!DOCTYPE HTML>
 <html lang="es">
   <head>
@@ -5,18 +7,138 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ cabecera.titulo }}</title>
     <link rel="stylesheet" type="text/css" href="css/estilo.css">
+    <script src="js/funciones.js"></script>
+   <link rel="shortcut icon" href="favicon/danger.png" >
   </head>
 
   <body>
 
-    {% block header %}
-    {% endblock %}
+    <!-- CABECERA: comienzo -->
+    <div class="cabecera">
 
-    {% block seccion_central %}
-    {% endblock %}
+      <div class="logo">
+        <a href="/?p=inicio" title="Ir a inicio">
+          <img src="{{ cabecera.logo }}" alt="Logotipo del portal">
+        </a>
+      </div>
 
-    {% block footer %}
-    {% endblock %}
+      <div class="meta-cabecera">
+        <div class="contenedor-titulo">
+          <h1 class="center">{{ cabecera.titulo }}</h1>
+        </div>
+
+        <!-- MENU: comienzo -->
+        <div class="navbar">
+          {% block menu %}
+            <a class="navitem active" href="/?p=inicio" title="Ir a inicio"><p class="center">Inicio</p></a>
+            <a class="navitem" href="/?p=listado-noticias" title="Listado de noticias"><p class="center">Noticias</p></a>
+            <a class="navitem" href=#informacion title="Ir a información de contacto"><p class="center">Contacto</p></a>
+            <a class="navitem" href="/?p=inicio-sesion" title="Iniciar sesion"><p class="center">Iniciar sesión</p></a>
+          {% endblock %}
+        </div>
+        <!-- MENU: fin -->
+      </div>
+
+    </div>
+    <!-- CABECERA: fin -->
+
+
+    <!-- SECCIÓN PRINCIPAL: comienzo -->
+    <div class="principal">
+
+      <div class="seccion-lateral">
+        <h3>Más visitadas</h3>
+
+        {% for item in noticias_sidebar %}
+        <div class="navitem">
+          <a href="./?p=noticias&id={{ item.id }}" title="Ir">
+            <p class="center">{{ item.titulo }}</p>
+          </a>
+        </div>
+        {% endfor %}
+
+      </div>
+
+
+      {% block principal %}
+      {% endblock %}
+
+    </div>
+    <!-- SECCIÓN PRINCIPAL: fin -->
+
+
+    <!-- FOOTER: comienzo -->
+      <div class="footer">
+        <div id="informacion">
+          <div class="contenedor-columna-3">
+            <div class="center">
+              <p class="bold">Dirección:</p>
+              <p>{{ footer.direccion }}</p>
+            </div>
+          </div>
+
+          <div class="contenedor-columna-3">
+            <div class="center">
+              <p class="bold">Teléfono:</p>
+              <p>{{ footer.telefono }}</p>
+            </div>
+          </div>
+
+          <div class="contenedor-columna-3">
+            <div class="center">
+              <p class="bold">Correo:</p>
+              <p>{{ footer.email }}</p>
+            </div>
+          </div>
+        </div>
+
+        <div id="mapa">
+          <a href="https://www.google.es/maps" target="_blank" title="Abrir Google Maps">
+            <img src="{{ footer.mapa }}">
+          </a>
+        </div>
+
+        <div id="copyright">
+          <div class="contenedor-columna-3">
+            <p class="center">Al acceder a esta página confirmas haber leído y aceptado nuestros
+              términos de servicio, cookies y políticas de privacidad.</p>
+          </div>
+          <div class="contenedor-columna-3">
+            <p class="center">Copyright 1999-2019.</p>
+          </div>
+          <div class="contenedor-columna-3">
+            <p class="center">Todos los derechos reservados.</p>
+          </div>
+        </div>
+
+        <div id="rrss">
+          <div class="contenedor-columna-3">
+            <a class="center" href="https://www.facebook.com/" target="_blank" title="Estamos en Facebook">
+              <img src="{{ footer.icn_fb }}"/>
+            </a>
+          </div>
+
+          <div class="contenedor-columna-3">
+            <a class="center" href="https://www.instagram.com/" target="_blank" title="Estamos en Instagram">
+              <img src="{{ footer.icn_ig }}"/>
+            </a>
+          </div>
+
+          <div class="contenedor-columna-3">
+            <a class="center" href="https://twitter.com/" target="_blank" title="Estamos en twitter">
+              <img src="{{ footer.icn_tw }}"/>
+            </a>
+          </div>
+        </div>
+
+        <div class="logo">
+          <img src="{{ footer.logo }}" alt="Logotipo del portal">
+        </div>
+      </div>
+
+      <!-- SCROLL BUTTON -->
+      <button onclick="document.documentElement.scrollTop = 0;" id="scroll"
+        title="Volver a arriba"></button>
 
   </body>
 </html>

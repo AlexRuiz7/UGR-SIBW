@@ -6,13 +6,12 @@ class DatosWeb extends EntidadBase {
 
   /**
    * Constructor
-   *
-   * @param Twig $twig Instancia de twig
    */
-  public function __construct($twig) {
-    parent::__construct("Datos_Web", $twig);
+  public function __construct() {
+    parent::__construct("Datos_Web");
 
     $this -> header = $this -> setHeader();
+    $this -> header_imprimir = $this -> setHeader();
     $this -> footer = $this -> setFooter();
   }
 
@@ -44,6 +43,7 @@ class DatosWeb extends EntidadBase {
       )
     );
   }
+
 
 
   /**
@@ -80,22 +80,22 @@ class DatosWeb extends EntidadBase {
 
 
   /**
-   * Renderiza y devuelve el template de la cabecera.
+   * Devuelve los datos de la cabecera de la página
    *
-   * @return Template plantilla de la cabecera rellenada con sus datos
+   * @return Array datos de la cabecera
    */
   public function getHeader () {
-    return $this->twig->render('header.twig', $this->header);
+    return $this -> header;
   }
 
 
   /**
-   * Renderiza y devuelve el template del footer.
+   * Devuelve los datos del pie de página.
    *
-   * @return Template plantilla del footer rellenada con sus datos
+   * @return Array datos del pie de página
    */
   public function getFooter () {
-    return $this->twig->render('footer.twig', $this->footer);
+    return $this -> footer;
   }
 
 }

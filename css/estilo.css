@@ -349,8 +349,10 @@ p {
 }
 
 .not-found {
-  background: center no-repeat;
-    background-size: 50% 100%;
-    background-image: url(https://cdn.dribbble.com/users/479289/screenshots/4849417/008_optimize.gif);
-    min-height: 100%;
+  height: inherit;
+  width: 80%;
+}
+
+.not-found img {
+  object-fit: scale-down;
 }

@@ -13,8 +13,8 @@ class Controlador {
   public function __construct($pagina, $twig) {
     $this -> pagina     = $pagina;
     $this -> twig       = $twig;
-    $this -> datos_web  = new DatosWeb($twig);
-    $this -> noticias   = new Noticia ($twig);
+    $this -> datos_web  = new DatosWeb();
+    $this -> noticias   = new Noticia ();
   }
 
 
@@ -35,33 +35,49 @@ class Controlador {
    * @return HTML código html renderizado por Twig
    */
   public function construir() {
-    echo $this -> datos_web -> getHeader();
+    $datos = $this -> datos_web -> getHeader()
+           + $this -> noticias -> getBarraLateral()
+           + $this -> datos_web -> getFooter();
 
     switch ($this->pagina) {
       case 'inicio':
-        echo $this -> noticias -> getInicio();
+        $datos += $this -> noticias -> getGridInicio();
+        echo $this -> twig -> render("inicio.twig", $datos);
       break;
 
       case 'noticias':
-        if(  isset($_GET['id']) && is_numeric($_GET['id']) )
-          echo $this -> noticias -> getNoticia($_GET['id']);
-        else
-          echo $this->twig->render('404.twig', []);
+        if( isset($_GET['id']) && is_numeric($_GET['id']) ) {
+          $datos += $this -> noticias -> getNoticia($_GET['id']);
+          echo $this -> twig -> render("noticia.twig", $datos);
+        }
+        else {
+          echo $this->twig->render('404.twig', $datos);
+        }
+      break;
+
+      case 'listado-noticias':
+        echo $this->twig->render('404.twig', $datos);
       break;
 
       case 'imprimir':
-        if(  isset($_GET['id']) && is_numeric($_GET['id']) )
-          echo $this -> noticias -> getNoticiaImprimir($_GET['id']);
-        else
-          echo $this->twig->render('404.twig', []);
+        if( isset($_GET['id']) && is_numeric($_GET['id']) ) {
+          $datos += $this -> noticias -> getNoticia($_GET['id']);
+          echo $this -> twig -> render("noticia_imprimir.twig", $datos);
+        }
+        else {
+          echo $this->twig->render('404.twig', $datos);
+        }
+      break;
+
+      case 'inicio-sesion':
+        echo $this->twig->render('login.twig', $datos);
       break;
 
       default:
-        echo $this->twig->render('404.twig', []);
+        echo $this->twig->render('404.twig', $datos);
       break;
     }
 
-    echo $this -> datos_web -> getFooter();
   }
 }
 

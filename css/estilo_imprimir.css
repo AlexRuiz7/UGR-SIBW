@@ -1,5 +1,7 @@
 
 body {
+  border-color: black;
+  margin: 5%;
   background: none;
   color: black;
 }
@@ -8,13 +10,19 @@ body {
   border-style: double;
   border-color: black;
   margin: 5%;
+  background: none;
+  color: black;
+}
+
+.logo {
+  width: 30% !important;
 }
 
 .cabecera {
   background: none;
   align-items: center;
+  border-bottom: double black;
   margin: unset;
-  border-bottom-style: double;
 }
 
 .contenedor-titulo {
@@ -26,7 +34,7 @@ body {
 }
 
 h1 {
-  font-size: 4vw;
+  font-size: 6vw;
   width: 100%;
   font-family: seroe;
   text-transform: uppercase;
@@ -42,12 +50,21 @@ header p {
   text-align: justify;
   font-variant: all-petite-caps;
   font-size: 1.4vw;
-  letter-spacing: normal;
+}
+.logo_imprimir {
+  height: 100%;
+  width: 20% !important;
+}
+
+.logo_imprimir img {
+  max-width: 50%;
+  height: 100%;
 }
 
 .footer {
   background: none;
-  border-top-style: double;
+  position: relative;
+  border-top: double black;
 }
 
 .footer div {
