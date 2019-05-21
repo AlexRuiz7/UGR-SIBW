@@ -1,0 +1,70 @@
+{# layout_imprimir.twig #}
+
+<!DOCTYPE HTML>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ cabecera.titulo }}</title>
+    <link rel="stylesheet" type="text/css" href="css/estilo.css">
+    <link rel="stylesheet" type="text/css" href="css/estilo_noticia.css">
+    <link rel="stylesheet" type="text/css" href="css/estilo_imprimir.css">
+
+  </head>
+
+  <div class = "contenedor-principal">
+    <body>
+
+      <!-- CABECERA: comienzo -->
+      <div class="cabecera">
+
+        <div class="logo">
+          <a href="/?p=inicio" title="Ir a inicio">
+            <img src="{{ cabecera.logo }}" alt="Logotipo del portal">
+          </a>
+        </div>
+
+        <div class="contenedor-titulo">
+          <h1 class="center">{{ cabecera.titulo }}</h1>
+        </div>
+
+      </div>
+      <!-- CABECERA: fin -->
+
+
+    {% block noticia %}
+    {% endblock %}
+
+
+    <!-- FOOTER: comienzo -->
+    <div class="footer">
+
+      <div id="informacion">
+        <p class="bold">Dirección:</p>
+        <p>{{ footer.direccion }}</p>
+        <p class="bold">Teléfono:</p>
+        <p>{{ footer.telefono }}</p>
+        <p class="bold">Correo:</p>
+        <p>{{ footer.email }}</p>
+      </div>
+
+      <div id="copyright">
+        <div class="center">
+          <p>Al acceder a esta página confirmas haber leído y aceptado nuestros
+            términos de servicio, cookies y políticas de privacidad.</p>
+            <p>Copyright 1999-2019.</p>
+            <p>Todos los derechos reservados.</p>
+        </div>
+      </div>
+
+      <div class="logo_imprimir">
+        <img src="{{ footer.logo }}" alt="Logotipo del portal">
+      </div>
+
+      </div>
+    <!-- FOOTER: fin -->
+
+    </body>
+  </div>
+
+</html>
