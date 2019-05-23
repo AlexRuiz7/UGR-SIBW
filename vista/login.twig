@@ -8,26 +8,54 @@
   <link rel="stylesheet" type="text/css" href="css/estilo_registro.css">
 </head>
 
-<div class="login">
+<div class="contenedor-form">
 
- <!-- o <a href="/php/registro.php">Registrarse</a> -->
-  <div class="l1">
+  <div class="formulario login">
     <h2>Inicio de sesión</h2>
+
+    <form method="post" autocomplete="on" action="">
+      <div class="contenedor-fila-2">
+        <p class="item-fila-2">Correo electrónico: </p>
+        <input class="item-fila-2" type="email" name="email" autocomplete="email"
+         placeholder="Inserte su email" maxlength="35">
+      </div>
+      <div class="contenedor-fila-2">
+        <p class="item-fila-2">Contraseña:  </p>
+        <input class="item-fila-2" type="password" name="contraseña" maxlength="30"
+        autocomplete="current-password" placeholder="Inserte su contraseña">
+      </div>
+      <input type="submit" name="inicio-sesion" value="Enviar">
+    </form>
   </div>
 
- <div class="l2">
-   <form class="center" method="post" name="login" autocomplete="on" target="_self">
-     <div>
-       <p>Correo electrónico: </p>
-       <input type="text" name="email" placeholder="Inserte su email">
-     </div>
-     <div>
-       <p>Contraseña:  </p>
-       <input type="password" name="contraseña" placeholder="Inserte su contraseña">
-     </div>
-     <input type="submit"  value="Enviar">
-   </form>
- </div>
+  <div class="formulario registro">
+    <h2>Registro</h2>
+
+    <form method="post" autocomplete="on">
+      <div class="contenedor-fila-2">
+        <p class="item-fila-2">Correo electrónico: </p>
+        <input class="item-fila-2" type="email" name="email" maxlength="35"
+        autocomplete="email" placeholder="Inserte su email">
+      </div>
+      <div class="contenedor-fila-2">
+        <p class="item-fila-2">Nombre de usuario: </p>
+        <input class="item-fila-2" type="text" name="nombre" maxlength="30"
+        autocomplete="username" placeholder="Inserte un nombre de usuario">
+      </div>
+      <div class="contenedor-fila-2">
+        <p class="item-fila-2">Contraseña:  </p>
+        <input class="item-fila-2" type="password" name="contraseña" maxlength="30"
+        autocomplete="current-password" placeholder="Inserte su contraseña">
+      </div>
+      <div class="contenedor-fila-2">
+        <p class="item-fila-2">Repetir contraseña:  </p>
+        <input class="item-fila-2" type="password" name="conf_contraseña"
+        autocomplete="new-password" placeholder="Inserte su contraseña"
+        maxlength="30">
+      </div>
+      <input type="submit" name="registro" value="Enviar">
+    </form>
+  </div>
 
 </div>
 

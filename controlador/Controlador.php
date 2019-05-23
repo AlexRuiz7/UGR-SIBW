@@ -1,7 +1,7 @@
 <?php
 
 class Controlador {
-  private $pagina, $datos_web, $noticias, $twig;
+  private $pagina, $datos_web, $noticias, $twig, $usuario;
 
 
   /**
@@ -15,6 +15,7 @@ class Controlador {
     $this -> twig       = $twig;
     $this -> datos_web  = new DatosWeb();
     $this -> noticias   = new Noticia ();
+    $this -> usuario    = new Usuario ();
   }
 
 
@@ -25,6 +26,7 @@ class Controlador {
     unset( $this -> pagina    );
     unset( $this -> datos_web );
     unset( $this -> noticias  );
+    unset( $this -> usuario   );
     unset( $this -> twig      );
   }
 
@@ -70,6 +72,18 @@ class Controlador {
       break;
 
       case 'inicio-sesion':
+        if( isset($_POST['inicio-sesion']) ) {
+          $email  = $_POST['email'];
+          $pass   = $_POST['contraseña'];
+          $this->usuario->conectar($email, $pass);
+        }
+        else if( isset($_POST['registro']) ) {
+          $email  = $_POST['email'];
+          $nombre = $_POST['nombre'];
+          $pass   = $_POST['contraseña'];
+          $pass_2 = $_POST['conf_contraseña'];
+          $this->usuario->registrar($email, $nombre, $pass, $pass_2);
+        }
         echo $this->twig->render('login.twig', $datos);
       break;
 
