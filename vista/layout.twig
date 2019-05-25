@@ -33,7 +33,11 @@
             <a class="navitem active" href="/?p=inicio" title="Ir a inicio"><p class="center">Inicio</p></a>
             <a class="navitem" href="/?p=listado-noticias" title="Listado de noticias"><p class="center">Noticias</p></a>
             <a class="navitem" href=#informacion title="Ir a información de contacto"><p class="center">Contacto</p></a>
-            <a class="navitem" href="/?p=inicio-sesion" title="Iniciar sesion"><p class="center">Iniciar sesión</p></a>
+            <a class="navitem" href="/?p={% block p_usuario %}inicio-sesion{% endblock %}" title="Iniciar sesion"><p class="center">
+              {% block nombre_usuario %}
+                Iniciar sesión
+              {% endblock %}
+              </p></a>
           {% endblock %}
         </div>
         <!-- MENU: fin -->

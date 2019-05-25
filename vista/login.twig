@@ -2,6 +2,24 @@
 
 {% extends "layout.twig" %}
 
+
+{% block menu %}
+  <a class="navitem" href="/?p=inicio" title="Ir a inicio"><p class="center">Inicio</p></a>
+  <a class="navitem" href="/?p=listado-noticias" title="Listado de noticias"><p class="center">Noticias</p></a>
+  <a class="navitem" href=#informacion title="Ir a información de contacto"><p class="center">Contacto</p></a>
+  <a class="navitem active" href="/?p={% block p_usuario %}{% if seccion_usuarios is defined %}{{ seccion_usuarios }}{% else %}{{ parent() }}{% endif %}{% endblock %}"
+    title="Iniciar sesion"><p class="center">
+    {% block nombre_usuario %}
+      {% if usuario is defined %}
+          {{ usuario }}
+      {% else %}
+        {{ parent() }}
+      {% endif %}
+    {% endblock %}
+  </p></a>
+{% endblock %}
+
+
 {% block principal %}
 
 <head>
@@ -17,12 +35,14 @@
       <div class="contenedor-fila-2">
         <p class="item-fila-2">Correo electrónico: </p>
         <input class="item-fila-2" type="email" name="email" autocomplete="email"
-         placeholder="Inserte su email" maxlength="35">
+         placeholder="Inserte nuevo correo electrónico" maxlength="35" required
+         pattern=".{10,}">
       </div>
       <div class="contenedor-fila-2">
         <p class="item-fila-2">Contraseña:  </p>
         <input class="item-fila-2" type="password" name="contraseña" maxlength="30"
-        autocomplete="current-password" placeholder="Inserte su contraseña">
+        autocomplete="current-password" placeholder="Inserte su contraseña" required
+        pattern=".{3,}">
       </div>
       <input type="submit" name="inicio-sesion" value="Enviar">
     </form>
@@ -34,24 +54,26 @@
     <form method="post" autocomplete="on">
       <div class="contenedor-fila-2">
         <p class="item-fila-2">Correo electrónico: </p>
-        <input class="item-fila-2" type="email" name="email" maxlength="35"
-        autocomplete="email" placeholder="Inserte su email">
+        <input class="item-fila-2" type="email" name="email" maxlength="35" required
+        autocomplete="email" placeholder="Inserte su email" pattern=".{10,}">
       </div>
       <div class="contenedor-fila-2">
         <p class="item-fila-2">Nombre de usuario: </p>
-        <input class="item-fila-2" type="text" name="nombre" maxlength="30"
-        autocomplete="username" placeholder="Inserte un nombre de usuario">
+        <input class="item-fila-2" type="username" name="nombre" maxlength="30"
+        required autocomplete="username" placeholder="Inserte un nombre de usuario"
+        pattern=".{4,}">
       </div>
       <div class="contenedor-fila-2">
         <p class="item-fila-2">Contraseña:  </p>
         <input class="item-fila-2" type="password" name="contraseña" maxlength="30"
-        autocomplete="current-password" placeholder="Inserte su contraseña">
+        required autocomplete="current-password" placeholder="Inserte su contraseña"
+        pattern=".{3,}">
       </div>
       <div class="contenedor-fila-2">
         <p class="item-fila-2">Repetir contraseña:  </p>
         <input class="item-fila-2" type="password" name="conf_contraseña"
         autocomplete="new-password" placeholder="Inserte su contraseña"
-        maxlength="30">
+        maxlength="30" required pattern=".{3,}">
       </div>
       <input type="submit" name="registro" value="Enviar">
     </form>

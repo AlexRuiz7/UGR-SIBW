@@ -44,7 +44,8 @@ h2 {
 
 input[type="text"],
 input[type="password"],
-input[type="email"] {
+input[type="email"],
+input[type="username"] {
   padding: 1.5% 0%;
   display: flex;
   width: 50%;

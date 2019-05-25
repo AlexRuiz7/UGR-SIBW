@@ -1,0 +1,70 @@
+{# usuario.twig #}
+
+{% extends "layout.twig" %}
+
+
+{% block menu %}
+  <a class="navitem" href="/?p=inicio" title="Ir a inicio"><p class="center">Inicio</p></a>
+  <a class="navitem" href="/?p=listado-noticias" title="Listado de noticias"><p class="center">Noticias</p></a>
+  <a class="navitem" href=#informacion title="Ir a información de contacto"><p class="center">Contacto</p></a>
+  <a class="navitem active" href="/?p={% block p_usuario %}{% if seccion_usuarios is defined %}{{ seccion_usuarios }}{% else %}{{ parent() }}{% endif %}{% endblock %}"
+    title="Iniciar sesion"><p class="center">
+    {% block nombre_usuario %}
+      {% if usuario is defined %}
+          {{ usuario }}
+      {% else %}
+        {{ parent() }}
+      {% endif %}
+    {% endblock %}
+  </p></a>
+{% endblock %}
+
+
+{% block principal %}
+
+<head>
+  <link rel="stylesheet" type="text/css" href="css/estilo_registro.css">
+</head>
+
+<div class="contenedor-form">
+
+  <div class="formulario">
+    <h2>Desconectar</h2>
+
+    <form method="post" action="">
+      <input type="submit" name="cerrar-sesion" value="Cerrar sesión">
+    </form>
+
+  </div>
+
+  <div class="formulario registro">
+    <h2>Modificar datos</h2>
+
+    <form method="post">
+      <div class="contenedor-fila-2">
+        <p class="item-fila-2">Cambiar nombre: </p>
+        <input class="item-fila-2" type="username" name="username" autocomplete="username"
+         placeholder="Inserte nuevo nombre de usuario" maxlength="35" pattern=".{4,}">
+      </div>
+      <div class="contenedor-fila-2">
+        <p class="item-fila-2">Cambiar contraseña: </p>
+        <input class="item-fila-2" type="password" name="pass" autocomplete="email"
+         placeholder="Inserte nueva contraseña" maxlength="35" pattern=".{3,}">
+      </div>
+      <input type="submit" name="edicion" value="Modificar">
+    </form>
+
+  </div>
+
+  <div class="formulario registro">
+    <h2>Eliminar cuenta</h2>
+
+    <form method="post" action="">
+      <input type="submit" name="eliminar" value="Eliminar">
+    </form>
+
+  </div>
+
+</div>
+
+{% endblock %}

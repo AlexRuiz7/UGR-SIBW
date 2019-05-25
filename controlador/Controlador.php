@@ -37,9 +37,16 @@ class Controlador {
    * @return HTML código html renderizado por Twig
    */
   public function construir() {
+
     $datos = $this -> datos_web -> getHeader()
            + $this -> noticias -> getBarraLateral()
            + $this -> datos_web -> getFooter();
+
+    if(isset($_SESSION['nombre_usuario'])) {
+      $usuario = array('usuario' => $_SESSION['nombre_usuario']);
+      $pagina = array('seccion_usuarios' => 'usuario');
+      $datos = $datos + $usuario + $pagina;
+    }
 
     switch ($this->pagina) {
       case 'inicio':
@@ -76,6 +83,9 @@ class Controlador {
           $email  = $_POST['email'];
           $pass   = $_POST['contraseña'];
           $this->usuario->conectar($email, $pass);
+
+          if( isset($_SESSION["correo_usuario"]) )
+            header('Location: http://localhost:8081/?p=usuario');
         }
         else if( isset($_POST['registro']) ) {
           $email  = $_POST['email'];
@@ -87,11 +97,39 @@ class Controlador {
         echo $this->twig->render('login.twig', $datos);
       break;
 
+      case 'usuario':
+        if( isset($_POST['cerrar-sesion']) ) {
+          $this->usuario->desconectar();
+          header('Location: http://localhost:8081/?p=inicio-sesion');
+        }
+
+        if( isset($_POST['edicion']) ) {
+
+          if( !empty($_POST['username']) ) {
+            $nombre = $_POST['username'];
+            $this->usuario->modificarNombre($nombre);
+          }
+          if( !empty($_POST['pass']) ) {
+            $pass = $_POST['pass'];
+            $this->usuario->modificarContraseña($pass);
+          }
+
+          header('Location: http://localhost:8081/?p=usuario');
+        }
+
+        if( isset($_POST['eliminar']) ) {
+          $this->usuario->eliminar();
+          header('Location: http://localhost:8081/?p=inicio-sesion');
+        }
+        echo $this->twig->render('usuario.twig', $datos);
+      break;
+
       default:
         echo $this->twig->render('404.twig', $datos);
       break;
     }
 
+    // print_r($datos);
   }
 }
 

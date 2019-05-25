@@ -17,6 +17,8 @@
   $twig = new Twig_Environment($loader, []);
   $twig->addGlobal('current_page', $page);
 
+  // Iniciamos la sesión
+  session_start();
 
   // Inicializamos el controlador
   $controlador = new Controlador($page, $twig);

@@ -11,7 +11,7 @@ class Comentario extends EntidadBase {
    * @param [type] $id   [description]
    */
   public function __construct($id) {
-    parent::__construct("Comentarios", $twig);
+    parent::__construct("Comentarios");
 
     $this -> id_noticia = $id;
     $this -> setComentarios();

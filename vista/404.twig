@@ -2,6 +2,25 @@
 
 {% extends "layout.twig" %}
 
+
+{% block menu %}
+  <a class="navitem active" href="/?p=inicio" title="Ir a inicio"><p class="center">Inicio</p></a>
+  <a class="navitem" href="/?p=listado-noticias" title="Listado de noticias"><p class="center">Noticias</p></a>
+  <a class="navitem" href=#informacion title="Ir a información de contacto"><p class="center">Contacto</p></a>
+  <a class="navitem" href="/?p={% block p_usuario %}{% if seccion_usuarios is defined %}{{ seccion_usuarios }}{% else %}{{ parent() }}{% endif %}{% endblock %}"
+    title="Iniciar sesion"><p class="center">
+    {% block nombre_usuario %}
+      {% if usuario is defined %}
+          {{ usuario }}
+      {% else %}
+        {{ parent() }}
+      {% endif %}
+    {% endblock %}
+  </p></a>
+  </p></a>
+{% endblock %}
+
+
 {% block principal %}
 
 <div class="not-found">
