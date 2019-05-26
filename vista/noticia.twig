@@ -3,23 +3,6 @@
 {% extends "layout.twig" %}
 
 
-{% block menu %}
-  <a class="navitem" href="/?p=inicio" title="Ir a inicio"><p class="center">Inicio</p></a>
-  <a class="navitem active" href="/?p=listado-noticias" title="Listado de noticias"><p class="center">Noticias</p></a>
-  <a class="navitem" href=#informacion title="Ir a información de contacto"><p class="center">Contacto</p></a>
-  <a class="navitem" href="/?p={% block p_usuario %}{% if seccion_usuarios is defined %}{{ seccion_usuarios }}{% else %}{{ parent() }}{% endif %}{% endblock %}"
-    title="Iniciar sesion"><p class="center">
-    {% block nombre_usuario %}
-      {% if usuario is defined %}
-          {{ usuario }}
-      {% else %}
-        {{ parent() }}
-      {% endif %}
-    {% endblock %}
-  </p></a>
-{% endblock %}
-
-
 {% block principal %}
 
   <head>
@@ -90,16 +73,6 @@
         </form>
       </div>
       {% endif %}
-
-      <div class="navitem comentario">
-        <div class="cabecera-comentario">
-          <h4>Usuario_predeterminado</h4>
-          <h5>dd/mm/yyyy hh:mm:ss</h5>
-        </div>
-        <div class="cuerpo">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </div>
-      </div>
 
       {% for item in noticia.comentarios %}
         <div class="navitem comentario">

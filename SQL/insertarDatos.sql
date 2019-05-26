@@ -25,10 +25,11 @@ INSERT IGNORE INTO Datos_Web (campo, valor) VALUES
 ;
 
 --
-INSERT IGNORE INTO Usuarios (email, nombre, contraseña) VALUES
-  ('cuenta_falsa_1@dominio.com',  'Juan Cuesta'   , 'junta_urgente'           ),
-  ('cuenta_falsa_2@dominio.com',  'Emilio Delgado', 'un_poquito_de_por_favor' ),
-  ('cuenta_falsa_3@dominio.com',  'Paloma Cuesta' , 'puff'                    )
+INSERT IGNORE INTO Usuarios (email, nombre, contraseña, tipo) VALUES
+  ('cuenta_falsa_1@dominio.com',  'Juan Cuesta'   , 'junta_urgente'          , 'admin'),
+  ('cuenta_falsa_2@dominio.com',  'Emilio Delgado', 'un_poquito_de_por_favor', 'moderador'),
+  ('cuenta_falsa_3@dominio.com',  'Paloma Cuesta' , 'puff'                   , 'gestor'),
+  ('cuenta_falsa_4@dominio.com',  'Belén'         , 'del_monton_bueno'       , 'registrado')
 ;
 
 --

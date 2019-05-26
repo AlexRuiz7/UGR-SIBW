@@ -2,7 +2,8 @@
 <?php
 
   class Usuario extends EntidadBase {
-    private $usuario;
+    private $email, $nombre, $tipo;
+    public $data;
 
 
     /**
@@ -21,9 +22,6 @@
       // $this->desconectar();
     }
 
-    private function initUsuario() {
-
-    }
 
     /**
      * Conecta un usuario al sistema.
@@ -37,9 +35,20 @@
     public function conectar($correo, $pass) {
       $datos = $this->modelo->getValuesBy("*", "email='$correo'")->fetch(PDO::FETCH_ASSOC);
 
+      if(!isset($datos)) {
+        echo "<script>alert('Fallo en la bd)</script>";
+        return false;
+      }
+
+
       if($datos['email']==$correo && $datos['contraseña']==$pass) {
         $_SESSION['nombre_usuario'] = $datos['nombre'];
         $_SESSION['correo_usuario'] = $datos['email'];
+        $_SESSION['tipo'] = $datos['tipo'];
+
+        $this->nombre = $datos['nombre'];
+        $this->email = $datos['email'];
+        $this->tipo = $datos['tipo'];
       }
 
       if( isset($_SESSION['nombre_usuario']) ) {
@@ -60,7 +69,7 @@
     public function desconectar() {
       unset($this -> email);
       unset($this -> nombre);
-      unset($this -> privilegios);
+      unset($this -> tipo);
       session_unset();
       session_destroy();
     }
@@ -100,9 +109,10 @@
     public function modificarNombre($nombre) {
       $pk = $_SESSION['correo_usuario'];
 
-      if( $this->modelo->updateValues("nombre='$nombre'", "email='$pk'") ) {
+      if( $this->modelo->updateValues("nombre='$nombre'", "email='$pk'") != NULL) {
         $_SESSION['nombre_usuario'] = $nombre;
       }
+      return gettype($datos);
     }
 
 
@@ -113,6 +123,8 @@
      */
     public function modificarContraseña($pass) {
       $pk = $_SESSION['correo_usuario'];
+
+      
       $this->modelo->updateValues("contraseña='$pass'", "email='$pk'");
     }
 
@@ -125,6 +137,33 @@
       $pk = $_SESSION['correo_usuario'];
       $this->modelo->deleteBy("email='$pk'");
       $this->desconectar();
+    }
+
+
+    ////////////////////////////////////////////////////
+    // GETTERS - funciones de consulta de información //
+    ////////////////////////////////////////////////////
+
+    public function getNombre() {
+      return $this->nombre;
+    }
+
+    public function getCorreo() {
+      return $this->email;
+    }
+
+    public function getTipo() {
+      echo $this->tipo;
+      switch ($this->tipo) {
+        case 'R':   $tipo_usuario = "Registrado";   break;
+        case 'M':   $tipo_usuario = "Moderador";    break;
+        case 'G':   $tipo_usuario = "Gestor";       break;
+        case 'X':   $tipo_usuario = "Admin.";       break;
+        default :   $tipo_usuario = "unset";        break;
+      }
+
+      // return $tipo_usuario;
+      return $this->tipo;
     }
 
   }

@@ -25,6 +25,8 @@ CREATE TABLE IF NOT EXISTS Usuarios (
   nombre          VARCHAR(30) NOT NULL,
   contraseña      VARCHAR(30) NOT NULL,
   fecha_registro  DATETIME DEFAULT CURRENT_TIMESTAMP,
+  tipo            VARCHAR(10) NOT NULL DEFAULT 'registrado' CHECK(tipo IN ('admin', 'gestor', 'moderador', 'registrado')),
+  --
   UNIQUE (nombre),
   PRIMARY KEY (email)
 );

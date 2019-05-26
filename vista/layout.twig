@@ -30,15 +30,34 @@
         <!-- MENU: comienzo -->
         <div class="navbar">
           {% block menu %}
-            <a class="navitem active" href="/?p=inicio" title="Ir a inicio"><p class="center">Inicio</p></a>
-            <a class="navitem" href="/?p=listado-noticias" title="Listado de noticias"><p class="center">Noticias</p></a>
-            <a class="navitem" href=#informacion title="Ir a información de contacto"><p class="center">Contacto</p></a>
-            <a class="navitem" href="/?p={% block p_usuario %}inicio-sesion{% endblock %}" title="Iniciar sesion"><p class="center">
-              {% block nombre_usuario %}
-                Iniciar sesión
-              {% endblock %}
-              </p></a>
+            <a class="navitem {% if noticias_grid is defined %}active{% endif %}"
+              href="/?p=inicio" title="Ir a inicio"><p class="center">Inicio</p>
+            </a>
+            <a class="navitem {% if noticia is defined %}active{% endif %}"
+              href="/?p=listado-noticias" title="Listado de noticias">
+                <p class="center">Noticias</p>
+            </a>
+            <a class="navitem" href=#informacion title="Ir a información de contacto">
+              <p class="center">Contacto</p>
+            </a>
+
+
+            <a class="navitem {% if pagina == "inicio-sesion" or pagina == "usuario" %}active{% endif %}"
+              href="/?p={% if usuario is defined %}usuario{% else %}inicio-sesion{% endif %}"
+              title="{% if usuario is defined %}Opciones de usuario{% else %}Iniciar sesión{% endif %}">
+              <p class="center">{% if usuario is defined %}{{ usuario }}{% else %}Iniciar sesión{% endif %}</p>
+            </a>
+
+
           {% endblock %}
+
+          {% if tipo_usuario is defined %}
+          <!-- SOLO PARA USUARIOS CON CONTROL SOBRE EL SISTEMA -->
+          <a class="navitem" href="/?p={{ tipo_usuario }}" title="Opciones">
+            <p class="center">{{ tipo_usuario }}</p>
+          </a>
+          {% endif %}
+
         </div>
         <!-- MENU: fin -->
       </div>

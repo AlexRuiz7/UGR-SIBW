@@ -40,41 +40,41 @@ class Controlador {
 
     $datos = $this -> datos_web -> getHeader()
            + $this -> noticias -> getBarraLateral()
-           + $this -> datos_web -> getFooter();
+           + $this -> datos_web -> getFooter()
+           + array('pagina' => $this->pagina);
 
-    if(isset($_SESSION['nombre_usuario'])) {
-      $usuario = array('usuario' => $_SESSION['nombre_usuario']);
-      $pagina = array('seccion_usuarios' => 'usuario');
-      $datos = $datos + $usuario + $pagina;
+    if( isset($_SESSION['nombre_usuario']) ) {
+      $datos += array('usuario' => $_SESSION['nombre_usuario']);
+
+      if( $_SESSION['tipo'] != 'registrado') {
+        $datos += array('tipo_usuario' => $_SESSION['tipo']);
+      }
     }
+
+    $plantilla = '404.twig';
 
     switch ($this->pagina) {
       case 'inicio':
         $datos += $this -> noticias -> getGridInicio();
-        echo $this -> twig -> render("inicio.twig", $datos);
+        $plantilla = "inicio.twig";
       break;
 
       case 'noticias':
         if( isset($_GET['id']) && is_numeric($_GET['id']) ) {
           $datos += $this -> noticias -> getNoticia($_GET['id']);
-          echo $this -> twig -> render("noticia.twig", $datos);
-        }
-        else {
-          echo $this->twig->render('404.twig', $datos);
+          $plantilla = "noticia.twig";
         }
       break;
 
       case 'listado-noticias':
-        echo $this->twig->render('404.twig', $datos);
+        // TODO
+        // $plantilla = "listado-noticias.twig;"
       break;
 
       case 'imprimir':
         if( isset($_GET['id']) && is_numeric($_GET['id']) ) {
           $datos += $this -> noticias -> getNoticia($_GET['id']);
-          echo $this -> twig -> render("noticia_imprimir.twig", $datos);
-        }
-        else {
-          echo $this->twig->render('404.twig', $datos);
+          $plantilla = "noticia_imprimir.twig";
         }
       break;
 
@@ -94,7 +94,8 @@ class Controlador {
           $pass_2 = $_POST['conf_contraseña'];
           $this->usuario->registrar($email, $nombre, $pass, $pass_2);
         }
-        echo $this->twig->render('login.twig', $datos);
+
+        $plantilla = 'login.twig';
       break;
 
       case 'usuario':
@@ -107,7 +108,7 @@ class Controlador {
 
           if( !empty($_POST['username']) ) {
             $nombre = $_POST['username'];
-            $this->usuario->modificarNombre($nombre);
+            echo $this->usuario->modificarNombre($nombre);
           }
           if( !empty($_POST['pass']) ) {
             $pass = $_POST['pass'];
@@ -121,14 +122,11 @@ class Controlador {
           $this->usuario->eliminar();
           header('Location: http://localhost:8081/?p=inicio-sesion');
         }
-        echo $this->twig->render('usuario.twig', $datos);
+        $plantilla = 'usuario.twig';
       break;
 
-      default:
-        echo $this->twig->render('404.twig', $datos);
-      break;
     }
-
+    echo $this->twig->render($plantilla, $datos);
     // print_r($datos);
   }
 }

@@ -155,10 +155,10 @@ class ConsultasCRUD {
    * @return Bool                 true si se ha ejecutado con éxito, false en otro caso
    */
   public function updateValues($campos, $condiciones) {
-    $sql = "UPDATE $this->tabla SET $campos";
-
-    if(isset($condiciones))
-      $sql = "UPDATE $this->tabla SET $campos WHERE $condiciones";
+    // $sql = "UPDATE $this->tabla SET $campos";
+    //
+    // if(isset($condiciones))
+    $sql = "UPDATE $this->tabla SET $campos WHERE $condiciones";
 
     return $this->consultar($sql);
   }

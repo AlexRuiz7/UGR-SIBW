@@ -65,6 +65,7 @@ img {
   margin-bottom: 0%;
   position: relative;
   text-transform: uppercase;
+  font-size: larger;
 }
 
 .center {
@@ -92,6 +93,7 @@ img {
   box-sizing: border-box;
   position: relative;
   background: rgba(80, 80, 80, 0.9);
+  text-transform: capitalize;
 }
 
 .navitem a {
