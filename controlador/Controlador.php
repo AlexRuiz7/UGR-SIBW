@@ -73,9 +73,11 @@ class Controlador {
 
               if( isset($_POST['editar']) && !empty($_POST['texto']) ) {
                 $this->noticias->editarComentario($_POST['texto'], $_POST['index']);
+                header('Location: http://localhost:8081/?p=noticias&id='.$_GET['id']);
               }
               else if(isset($_POST['borrar'])) {
                 $this->noticias->borrarComentario($_POST['index']);
+                header('Location: http://localhost:8081/?p=noticias&id='.$_GET['id']);
               }
               break;
 

@@ -90,7 +90,7 @@ form {
 input, textarea {
   width: 100%;
   margin-top: 2%;
-  /* padding: 2% 2% 0%; */
+  padding: 1.5% 2% 0%;
   background-color: inherit;
   color: white;
   border-style: unset;
