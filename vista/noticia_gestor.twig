@@ -1,0 +1,93 @@
+{# noticia.twig #}
+
+{% extends "layout.twig" %}
+
+
+{% block principal %}
+
+  <head>
+    <link rel="stylesheet" type="text/css" href="css/estilo_noticia.css">
+  </head>
+
+  <!-- NOTICIA: comienzo  -->
+  <div class="seccion-noticias">
+    <div class="noticia">
+
+      <article>
+        <header>
+          <h1>{{ noticia.titulo }}</h1>
+          <h2>Escrito por {{ noticia.autor }}</h2>
+            <h3>{{ noticia.fecha }}</h3>
+          <div class="contenedor-fila-2">
+            <h4>Etiquetas: {{ noticia.etiquetas }}</h4>
+            <h4>{{ noticia.visitas }} visitas</h4>
+          </div>
+          <div class="contenedor-imagen">
+            <a href="{{ noticia.enlace }}">
+              <img src="{{ noticia.imagen }}" alt=""/>
+            </a>
+          </div>
+
+          {% for parrafo in noticia.texto %}
+          <p class="parrafo">
+            {{  parrafo }}
+          </p>
+          {% endfor %}
+        </header>
+      </article>
+
+    </div>
+
+
+    <!-- Enlaces -->
+    <div class="enlaces">
+
+      <a href="https://www.facebook.com/" target="_blank" title="Compartir en Facebook"
+        onclick="compartir('Twitter', '{{ noticia.titulo }}', '{{ noticia.imagen }}'); return false;">
+
+        <img src="/media/icons/fb_ico.png"/>
+      </a>
+      <a href="https://twitter.com/intent/tweet?text='{{ noticia.titulo }}' vía
+        {{ noticia.enlace }}" target="_blank" title="Compartir en Twitter">
+        <img src="/media/icons/tw_ico.png"/>
+      </a>
+
+      <a href="?p=imprimir&id={{ noticia.id }}" target="_blank" title="Imprimir">
+        <img src="/media/icons/print.png"/>
+      </a>
+
+    </div>
+    <!-- Enlaces -->
+
+
+    <!-- Comentarios -->
+      <div class="seccion-comentarios">
+      <h2>Comentarios</h2>
+
+      {% if usuario is defined %}
+      <div class="navitem comentario">
+        <form method="post" action="" >
+          <input type="text" name="comentario" maxlength="140" required
+          placeholder="Añade un comentario público..." autocomplete="off"></textarea>
+          <input class="boton" type="submit" value="Comentar"/>
+        </form>
+      </div>
+      {% endif %}
+
+      {% for item in noticia.comentarios %}
+        <div class="navitem comentario">
+          <div class="cabecera-comentario">
+            <h4>{{ item.usuario }}</h4>
+            <h5>{{ item.fecha }}</h5>
+          </div>
+          <div class="cuerpo">
+            {{ item.texto }}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    <!-- Comentarios -->
+
+  </div>
+
+{% endblock %}

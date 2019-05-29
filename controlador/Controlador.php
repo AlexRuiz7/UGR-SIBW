@@ -37,7 +37,6 @@ class Controlador {
    * @return HTML código html renderizado por Twig
    */
   public function construir() {
-
     $datos = $this -> datos_web -> getHeader()
            + $this -> noticias -> getBarraLateral()
            + $this -> datos_web -> getFooter()
@@ -46,7 +45,8 @@ class Controlador {
     if( isset($_SESSION['nombre_usuario']) ) {
       $datos += array('usuario' => $_SESSION['nombre_usuario']);
 
-      if( $_SESSION['tipo'] != 'registrado') {
+      // echo $_SESSION['tipo'];
+      if( $_SESSION['tipo'] != 'registrado' ) {
         $datos += array('tipo_usuario' => $_SESSION['tipo']);
       }
     }
@@ -63,6 +63,34 @@ class Controlador {
         if( isset($_GET['id']) && is_numeric($_GET['id']) ) {
           $datos += $this -> noticias -> getNoticia($_GET['id']);
           $plantilla = "noticia.twig";
+
+          if(isset($_SESSION['tipo'])) {
+            $tipo = $_SESSION['tipo'];
+
+            switch ($tipo) {
+              case 'moderador':
+              $plantilla = "noticia_moderador.twig";
+
+              if( isset($_POST['editar']) && !empty($_POST['texto']) ) {
+                $this->noticias->editarComentario($_POST['texto'], $_POST['index']);
+              }
+              else if(isset($_POST['borrar'])) {
+                $this->noticias->borrarComentario($_POST['index']);
+              }
+              break;
+
+              case 'gestor':
+              $plantilla = "noticia_gestor.twig";
+
+              break;
+
+              case 'admin':
+              $plantilla = "noticia_admin.twig";
+
+              break;
+            }
+          }
+          // header('Location: http://localhost:8081/?p=noticias&id='.$_GET['id']);
         }
       break;
 
@@ -123,6 +151,20 @@ class Controlador {
           header('Location: http://localhost:8081/?p=inicio-sesion');
         }
         $plantilla = 'usuario.twig';
+      break;
+
+      case 'moderador':
+        $mbd = new Comentario();
+
+        if( isset($_POST['busqueda']) ) {
+          $comentarios = $mbd->buscarComentarioEmail($_POST['busqueda']);
+          $datos += array ("comentarios_busqueda" => $comentarios);
+        }
+
+        if( $temp = $mbd->getComentarios() )
+          $datos += array("comentarios" => $temp);
+
+        $plantilla = 'moderador.twig';
       break;
 
     }

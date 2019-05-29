@@ -65,7 +65,9 @@ CREATE TABLE IF NOT EXISTS Comentarios (
   texto           VARCHAR(140) NOT NULL,
   email_usuario   VARCHAR(35),
   id_noticia      INT,
-  PRIMARY KEY (email_usuario, id_noticia, ip, fecha),
+  id              INT,
+  editado         BIT DEFAULT 0,
+  PRIMARY KEY (email_usuario, id_noticia, id, fecha),
   FOREIGN KEY (email_usuario) REFERENCES Usuarios(email),
   FOREIGN KEY (id_noticia)    REFERENCES Noticias(id)
 );

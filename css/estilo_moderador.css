@@ -1,0 +1,118 @@
+/*****************************************************************************
+  Estilo Moderador en Noticias
+*****************************************************************************/
+
+.bttn {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  border-radius: 50%;
+  background: #333;
+  margin: 2.5% 0% 0% 0%;
+}
+
+.borrar {
+  background-image: url("../media/icons/trash.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  color: transparent;
+  background-color: transparent;
+}
+
+.editar {
+  background-image: url("../media/icons/edit.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  color: transparent;
+  background-color: transparent;
+}
+
+textarea {
+  resize: none;
+  width: 100%;
+  margin-top: 2%;
+  /* padding: 2% 2% 0%; */
+  background-color: inherit;
+  color: white;
+  border-style: unset;
+  font-size: medium;
+  text-align: justify;
+}
+
+textarea:focus {
+  background-color: #3e3e3ea3;
+}
+
+.form-botones {
+  place-self: center;
+  width: 20%;
+}
+
+.nulo {
+  display: none;
+}
+
+
+/*****************************************************************************
+  SECCIÓN MODERADOR
+*****************************************************************************/
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.moderador-main-container {
+  background: rgba(80, 80, 80, 0.5);
+  margin: 0 2.5%;
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  text-align: center;
+}
+
+.slider {
+  display: flex;
+  flex-direction: column;
+  /* place-content: space-evenly; */
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  margin: 5% 2% 2%;
+  background: rgba(80, 80, 80, 0.5);
+  max-height: 20em;
+}
+
+.comentario {
+  padding: 0% 5% 2% 5%;
+  font-size: medium;
+  border-style: groove;
+  margin: 2%;
+  box-shadow: 0px 5px 10px #410505;
+}
+
+.cabecera-comentario {
+  display: flex;
+  flex-direction: row;
+  place-content: space-evenly;
+  text-transform: uppercase;
+}
+
+.comentario form {
+  display: flex;
+  place-content: space-evenly;
+}
+
+.comentario p {
+  color: white;
+  border-style: unset;
+  font-size: medium;
+  text-align: justify;
+}
+
+.comentario a {
+  display: inline;
+  font-size: medium;
+}

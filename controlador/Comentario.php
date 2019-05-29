@@ -1,20 +1,14 @@
 <?php
 
 class Comentario extends EntidadBase {
-  private $id_noticia, $l_comentarios;
+  private $l_comentarios;
 
 
   /**
    * Constructor
-   *
-   * @param [type] $twig [description]
-   * @param [type] $id   [description]
    */
-  public function __construct($id) {
+  public function __construct() {
     parent::__construct("Comentarios");
-
-    $this -> id_noticia = $id;
-    $this -> setComentarios();
   }
 
 
@@ -23,39 +17,51 @@ class Comentario extends EntidadBase {
    */
   public function __destruct() {
     parent::__destruct();
-
-    unset( $this -> id_noticia    );
     unset( $this -> l_comentarios );
   }
 
 
   /**
-   * Recupera los comentarios de la base de datos y los introduce en un array
-   * para ser utlizados por Twig.
+   * [buscarComentarioEmail description]
+   * @param  [type] $email [description]
+   * @return [type]        [description]
    */
-  private function setComentarios() {
-    $datos = $this->modelo->getValuesBy("texto, email_usuario");
+  public function buscarComentarioEmail($email) {
+    $datos = $this->modelo->getValuesBy("*", "email_usuario='$email'");
 
     while($fila = $datos->fetch(PDO::FETCH_ASSOC)) {
-      $temp[] = array(
-        'texto'=> $fila['texto'],
-        'usuario' => $fila['email_usuario']
+      $this->l_comentarios[] = array(
+        'texto'   => $fila['texto'],
+        'usuario' => $fila['email_usuario'],
+        'fecha'   => $fila['fecha'],
+        'id_ntc'  => $fila['id_noticia']
       );
     }
 
-    $this -> l_comentarios = array('comentarios' => $temp);
+    if(isset($this->l_comentarios))
+      return $this->l_comentarios;
   }
 
 
   /**
-   * Devuelve los comnetarios asociados a la noticia
-   *
-   * @return Array comentarios de la noticia
+   * [getComentarios description]
+   * @return [type] [description]
    */
   public function getComentarios() {
-    return $this -> l_comentarios;
-  }
+    $datos = $this->modelo->getValues();
 
+    while($fila = $datos->fetch(PDO::FETCH_ASSOC)) {
+      $this->l_comentarios[] = array(
+        'texto'   => $fila['texto'],
+        'usuario' => $fila['email_usuario'],
+        'fecha'   => $fila['fecha'],
+        'id_ntc'  => $fila['id_noticia']
+      );
+    }
+
+    if(isset($this->l_comentarios))
+      return $this->l_comentarios;
+  }
 }
 
 ?>

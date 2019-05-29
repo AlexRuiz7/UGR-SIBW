@@ -7,6 +7,8 @@ class Noticia extends EntidadBase {
   private $noticia, $barra_lateral, $grid_inicio;
   /* Parámetros varios */
   private $tam_sidebar;
+  /* Lista de comentarios de la noticia */
+  private $l_comentarios;
 
 
   /**
@@ -22,6 +24,7 @@ class Noticia extends EntidadBase {
     $this -> noticia        = array();
     $this -> barra_lateral  = array();
     $this -> grid_inicio    = array();
+    // $this -> l_comentarios  = array();
 
     $this -> tam_sidebar    = 4;
 
@@ -176,19 +179,47 @@ class Noticia extends EntidadBase {
    * @param [type] $id_noticia [description]
    */
   private function setComentarios($id_noticia) {
-    $datos = $this->con_comentarios->getValuesByOrdered("texto, email_usuario, fecha", "id_noticia=$id_noticia", "fecha DESC");
+    $datos = $this->con_comentarios->getValuesByOrdered("*", "id_noticia=$id_noticia", "fecha DESC");
 
-    $temp = NULL;
+    $comentarios = NULL;
 
     while($fila = $datos->fetch(PDO::FETCH_ASSOC)) {
-      $temp[] = array(
+      $comentarios[] = array(
         'texto'   => $fila['texto'],
         'usuario' => $fila['email_usuario'],
-        'fecha'   => $fila['fecha']
+        'fecha'   => $fila['fecha'],
+        'ip'      => $fila['ip'],
+        'index'   => $fila['id'],
+        'editado' => $fila['editado']
       );
     }
 
-    return $temp;
+    $this->llenarComentariosLocal($id_noticia);
+
+    return $comentarios;
+  }
+
+
+  /**
+   * [llenarComentariosLocal description]
+   * @param  [type] $id_noticia [description]
+   * @return [type]             [description]
+   */
+  private function llenarComentariosLocal($id_noticia) {
+    $datos = $this->con_comentarios->getValuesByOrdered("*", "id_noticia=$id_noticia", "id ASC");
+
+    $comentarios = NULL;
+
+    while($fila = $datos->fetch(PDO::FETCH_ASSOC)) {
+      $this->l_comentarios[] = array(
+        'texto'   => $fila['texto'],
+        'usuario' => $fila['email_usuario'],
+        'fecha'   => $fila['fecha'],
+        'ip'      => $fila['ip'],
+        'index'   => $fila['id'],
+        'editado' => $fila['editado']
+      );
+    }
   }
 
 
@@ -248,17 +279,64 @@ class Noticia extends EntidadBase {
    * @param  Int $id_noticia id de la noticia
    */
   private function crearComentario($id_noticia) {
-    $campos = "ip, texto, email_usuario, id_noticia";
+    $campos = "ip, texto, email_usuario, id_noticia, id";
+    $index = -1;
+
+    $datos = $this->con_comentarios->getValuesByOrdered("id", "id_noticia=$id_noticia", "id DESC");
+
+    if($datos->rowCount() != 0) {
+      $index = (int) $datos->fetch(PDO::FETCH_ASSOC)['id'];
+    }
+
+    $index += 1;
+
     $temp = array(
       $_SERVER['REMOTE_ADDR'],
       $_POST["comentario"],
       "cuenta_falsa_1@dominio.com",
-      $id_noticia
+      $id_noticia,
+      $index
     );
+
+    // Añadir a lista local
+    // $this->l_comentarios[] = $temp;
 
     $valores = "'" . implode("', '", $temp) . "'";
 
     $this->con_comentarios->insertValues($campos, $valores);
+  }
+
+
+  ////////////////////////////
+  // Funciones de MODERADOR //
+  ////////////////////////////
+
+
+  /**
+   * [editarComentario description]
+   * @param  [type] $texto [description]
+   * @param  [type] $index [description]
+   * @return [type]        [description]
+   */
+  public function editarComentario($texto, $index) {
+    $noticia = $this->l_comentarios[(int) $index];
+
+    if( trim($texto) != trim((string)$noticia['texto']) ) {
+      $id_noticia = $_GET['id'];
+
+      $pk = "id='$index' AND id_noticia='$id_noticia'";
+      $this->con_comentarios->updateValues("texto='$texto', editado=1", $pk);
+    }
+  }
+
+
+  /**
+   * [borrarComentario description]
+   * @param  [type] $index [description]
+   * @return [type]        [description]
+   */
+  public function borrarComentario($index) {
+    $this->con_comentarios->deleteBy("id='$index'");
   }
 
 }

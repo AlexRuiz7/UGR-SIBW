@@ -29,7 +29,8 @@ INSERT IGNORE INTO Usuarios (email, nombre, contraseña, tipo) VALUES
   ('cuenta_falsa_1@dominio.com',  'Juan Cuesta'   , 'junta_urgente'          , 'admin'),
   ('cuenta_falsa_2@dominio.com',  'Emilio Delgado', 'un_poquito_de_por_favor', 'moderador'),
   ('cuenta_falsa_3@dominio.com',  'Paloma Cuesta' , 'puff'                   , 'gestor'),
-  ('cuenta_falsa_4@dominio.com',  'Belén'         , 'del_monton_bueno'       , 'registrado')
+  ('cuenta_falsa_4@dominio.com',  'Belén'         , 'del_monton_bueno'       , 'registrado'),
+  ('zxc@zxc.com',  'usuario'         , '123'       , 'moderador')
 ;
 
 --
@@ -213,13 +214,46 @@ INSERT IGNORE INTO Noticias (titular, texto, autor, fecha, visitas, link) VALUES
 -- ;
 
 --
-INSERT IGNORE INTO Comentarios (ip, texto, email_usuario, id_noticia) VALUES
+INSERT IGNORE INTO Comentarios (ip, texto, email_usuario, id_noticia, id) VALUES
   ('localhost',
     'Ciertamente una ventaja ante AMD, aunque sea más caro',
-    'cuenta_falsa_1@dominio.com', 1),
+    'cuenta_falsa_1@dominio.com', 1, 0),
   ('localhost',
     'Yo siempre he sido de AMD pero con estos avances seguramente mi próxima gráfica sea NVIDIA',
-    'cuenta_falsa_2@dominio.com', 1)
+    'cuenta_falsa_2@dominio.com', 1, 1),
+
+  ('localhost',
+    'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    'cuenta_falsa_1@dominio.com', 2, 0),
+  ('localhost',
+    'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    'cuenta_falsa_2@dominio.com', 2, 1),
+  ('localhost',
+    'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.', 'cuenta_falsa_3@dominio.com', 2, 2),
+    ('localhost',
+      'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'cuenta_falsa_3@dominio.com', 2, 3),
+
+  ('localhost',
+    'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    'cuenta_falsa_1@dominio.com', 3, 0),
+  ('localhost',
+    'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    'cuenta_falsa_2@dominio.com', 3, 1),
+  ('localhost',
+    'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.', 'cuenta_falsa_3@dominio.com', 3, 2),
+    ('localhost',
+      'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'cuenta_falsa_3@dominio.com', 3, 3),
+
+  ('localhost',
+    'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    'cuenta_falsa_1@dominio.com', 4, 0),
+  ('localhost',
+    'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    'cuenta_falsa_2@dominio.com', 4, 1),
+  ('localhost',
+    'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.', 'cuenta_falsa_3@dominio.com', 4, 2),
+    ('localhost',
+      'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'cuenta_falsa_3@dominio.com', 4, 3)
 ;
 
 --

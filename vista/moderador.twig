@@ -1,0 +1,74 @@
+{# moderador.twig #}
+
+{% extends "layout.twig" %}
+
+
+{% block principal %}
+
+<head>
+  <link rel="stylesheet" type="text/css" href="css/estilo_moderador.css">
+  <link rel="stylesheet" type="text/css" href="css/estilo_registro.css">
+</head>
+
+<div class="flex-container moderador-main-container">
+
+  <div class="formulario flex-container">
+    <h2>Buscar</h2>
+
+    <form method="post" action="">
+      <div class="contenedor-fila-2">
+        <p class="item-fila-2">Por correo de usuario: </p>
+        <input class="item-fila-2" type="email" name="busqueda"
+          placeholder="Buscar por correo de usuario" autocomplete="on"
+          maxlength="35" required/>
+      </div>
+      <input type="submit" name="inicio-sesion" value="Buscar">
+    </form>
+
+    {% if comentarios_busqueda is defined %}
+      <div class="slider">
+        {% for item in comentarios_busqueda %}
+
+        <div class="navitem comentario">
+          <div class="cabecera-comentario">
+            <h4>{{ item.usuario }}</h4>
+            <h5>{{ item.fecha }}</h5>
+            <h5>En noticia: <a href="?p=noticias&id={{ item.id_ntc }}">{{ item.id_ntc }}</a></h5>
+          </div>
+          <div class="cuerpo">
+            <p>{{ item.texto }}</p>
+          </div>
+        </div>
+
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+
+  <div class="formulario">
+    <h2>Comentarios</h2>
+
+    {% if comentarios is defined %}
+      <div class="slider">
+        {% for item in comentarios %}
+
+        <div class="navitem comentario">
+          <div class="cabecera-comentario">
+            <h4>{{ item.usuario }}</h4>
+            <h5>{{ item.fecha }}</h5>
+            <h5>En noticia: <a href="?p=noticias&id={{ item.id_ntc }}">{{ item.id_ntc }}</a></h5>
+          </div>
+          <div class="cuerpo">
+            <p>{{ item.texto }}</p>
+          </div>
+        </div>
+
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+
+
+</div>
+
+{% endblock %}

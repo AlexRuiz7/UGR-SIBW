@@ -53,7 +53,7 @@
 
           {% if tipo_usuario is defined %}
           <!-- SOLO PARA USUARIOS CON CONTROL SOBRE EL SISTEMA -->
-          <a class="navitem" href="/?p={{ tipo_usuario }}" title="Opciones">
+          <a class="navitem {% if pagina == tipo_usuario %}active{% endif %}" href="/?p={{ tipo_usuario }}" title="Opciones">
             <p class="center">{{ tipo_usuario }}</p>
           </a>
           {% endif %}

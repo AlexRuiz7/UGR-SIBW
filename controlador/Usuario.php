@@ -11,6 +11,7 @@
      */
     public function __construct() {
       parent::__construct("Usuarios");
+      // $_SESSION['tipo'] = "baxsico";
     }
 
 
@@ -70,6 +71,9 @@
       unset($this -> email);
       unset($this -> nombre);
       unset($this -> tipo);
+      unset($_SESSION['nombre']);
+      unset($_SESSION['email']);
+      unset($_SESSION['tipo']);
       session_unset();
       session_destroy();
     }
@@ -84,16 +88,17 @@
      * @return [type]            [description]
      */
     public function registrar($correo, $nombre, $pass, $pass_conf) {
+      $exito = false;
 
       if($pass == $pass_conf) {
         $campos = "email, nombre, contraseña";
         $temp = array($correo, $nombre, $pass);
         $valores = "'" . implode("', '", $temp) . "'";
 
-        $this->modelo->insertValues($campos, $valores);
+        $exito = $this->modelo->insertValues($campos, $valores);
       }
 
-      if( isset($_SESSION["correo_usuario"]) )
+      if( $exito )
         echo "<script>alert('Registro completo, incie sesión)</script>";
       else
         echo "<script>alert('Falló el registro')</script>";
@@ -124,7 +129,7 @@
     public function modificarContraseña($pass) {
       $pk = $_SESSION['correo_usuario'];
 
-      
+
       $this->modelo->updateValues("contraseña='$pass'", "email='$pk'");
     }
 
