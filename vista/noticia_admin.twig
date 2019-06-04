@@ -78,7 +78,7 @@
       <div class="navitem comentario">
         <form method="post" action="" >
           <input type="text" name="comentario" maxlength="140" required
-          placeholder="Añade un comentario público..." autocomplete="off"></textarea>
+          placeholder="Añade un comentario público..." autocomplete="off">
           <input class="boton" type="submit" value="Comentar"/>
         </form>
       </div>
@@ -89,9 +89,19 @@
           <div class="cabecera-comentario">
             <h4>{{ item.usuario }}</h4>
             <h5>{{ item.fecha }}</h5>
+            <!-- <p class="nulo">{{ item.index }}</p> -->
+            <form class="form-botones" name="moderador" id="form{{ loop.index }}" method="post" action="?p={{ pagina }}&id={{ noticia.id }}">
+              <input class="nulo" type="number" name="index" readonly value="{{ item.index }}">
+              <button class="bttn borrar" type="submit" name="borrar" formmethod="post" formaction="?p={{ pagina }}&id={{ noticia.id }}">B</button>
+
+              <button class="bttn editar" type="submit" name="editar" formmethod="post" formaction="?p={{ pagina }}&id={{ noticia.id }}">E</button>
+            </form>
           </div>
           <div class="cuerpo">
-            {{ item.texto }}
+              {% if item.editado %}
+                <p>Comentario editado por moderador</p>
+              {% endif %}
+            <textarea name="texto" maxlength="140" rows="3" form="form{{loop.index}}">{{ item.texto }}</textarea>
           </div>
         </div>
       {% endfor %}

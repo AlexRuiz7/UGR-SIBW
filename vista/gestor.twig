@@ -1,0 +1,76 @@
+{# gestor.twig #}
+
+{% extends "layout.twig" %}
+
+
+{% block principal %}
+
+<head>
+  <link rel="stylesheet" type="text/css" href="css/estilo_moderador.css">
+  <link rel="stylesheet" type="text/css" href="css/estilo_registro.css">
+</head>
+
+<div class="flex-container moderador-main-container">
+
+  <div class="formulario">
+    <h2>Buscar eventos</h2>
+    <form method="post" action="">
+      <div class="contenedor-fila-2">
+        <p class="item-fila-2">Por etiquetas: </p>
+        <input class="item-fila-2" type="search" name="busqueda"
+          placeholder="Buscar por etiquetas" autocomplete="on"
+          maxlength="35" required/>
+      </div>
+      <input type="submit" value="Buscar">
+    </form>
+
+    {% if eventos_busqueda is defined %}
+      <div class="slider listado-noticias-gestor">
+        {% for level in eventos_busqueda %}
+          {% for item in level %}
+            {% if false %}
+            <div class="navitem comentario noticia-gestor-item-lista">
+              <div class="cuerpo">
+                <h5><a href="?p=noticias&id={{ level[item.id] }}">{{ level[item.titular] }}</a></h5>
+              </div>
+            </div>
+            {% else %}
+            <div class="navitem comentario noticia-gestor-item-lista">
+              <div class="cabecera-comentario">
+                <h4>{{ level[item.autor] }}</h4>
+                <h5>{{ level[item.fecha] }}</h5>
+              </div>
+              <div class="cuerpo">
+                <h5><a href="?p=noticias&id={{ level[item.id] }}">{{ level[item.titular] }}</a></h5>
+              </div>
+            </div>
+            {% endif %}
+          {% endfor %}
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+
+  <div class="formulario">
+    <h2>Noticias</h2>
+
+    {% if noticias is defined %}
+      <div class="slider listado-noticias-gestor">
+        {% for item in noticias %}
+        <div class="navitem comentario noticia-gestor-item-lista">
+          <div class="cabecera-comentario">
+            <h4>{{ item.autor }}</h4>
+            <h5>{{ item.fecha }}</h5>
+          </div>
+          <div class="cuerpo">
+            <h5><a href="?p=noticias&id={{ item.id }}">{{ item.titular }}</a></h5>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+  </div>
+</div>
+
+{% endblock %}

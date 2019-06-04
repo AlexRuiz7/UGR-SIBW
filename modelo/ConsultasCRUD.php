@@ -48,7 +48,7 @@ class ConsultasCRUD {
    * @param  PDOStatement $sql [description]
    * @return PDOStatement      [description]
    */
-  private function consultar($sql) {
+  public function consultar($sql) {
     $datos = NULL;
 
     try {
@@ -158,7 +158,7 @@ class ConsultasCRUD {
     // $sql = "UPDATE $this->tabla SET $campos";
     //
     // if(isset($condiciones))
-    $sql = "UPDATE $this->tabla SET $campos WHERE $condiciones";
+    $sql = "UPDATE IGNORE $this->tabla SET $campos WHERE $condiciones";
 
     return $this->consultar($sql);
   }

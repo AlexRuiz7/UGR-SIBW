@@ -167,7 +167,8 @@ class Noticia extends EntidadBase {
       $temp[] = $fila['tema'];
     }
 
-    return implode(", ", $temp);
+    if(isset($temp))
+      return implode(", ", $temp);
   }
 
 
@@ -293,7 +294,7 @@ class Noticia extends EntidadBase {
     $temp = array(
       $_SERVER['REMOTE_ADDR'],
       $_POST["comentario"],
-      "cuenta_falsa_1@dominio.com",
+      $_SESSION['correo_usuario'],
       $id_noticia,
       $index
     );
@@ -337,6 +338,102 @@ class Noticia extends EntidadBase {
    */
   public function borrarComentario($index) {
     $this->con_comentarios->deleteBy("id='$index'");
+  }
+
+
+  /////////////////////////
+  // Funciones de GESTOR //
+  /////////////////////////
+
+
+  /**
+   * Recupera los eventos que contienen la etiqueta dada como argumento
+   *
+   * Busca todos los identificadores de noticia que contienen esa etiqueta, para
+   * después buscar los titulos de esas noticias.
+   *
+   * @param  [type] $etiqueta [description]
+   * @return [type]           [description]
+   */
+  public function buscarEvento($etiqueta) {
+    $eventos = NULL;
+    $query = "SELECT titular, id, autor, fecha FROM
+          (Noticias n NATURAL JOIN EtiquetasEnNoticia e) WHERE
+        e.tema='$etiqueta' AND e.id_noticia=n.id";
+
+    $datos = $this->con_etiquetas->consultar($query);
+    while($fila = $datos->fetch(PDO::FETCH_ASSOC)) {
+      $eventos[] = array( "id"      => $fila['id'],
+                          "autor"   => $fila['autor'],
+                          "titular" => $fila['titular'],
+                          "fecha"   => $fila['fecha']
+                        );
+    }
+    // $datos = $this->con_etiquetas->consultar($query)->fetchAll(PDO::FETCH_ASSOC);
+
+    return $eventos;
+  }
+
+
+  /**
+   * [getNoticias description]
+   * @return [type] [description]
+   */
+  public function getNoticias() {
+    $datos = $this->modelo->getValues();
+
+    while($fila = $datos->fetch(PDO::FETCH_ASSOC)) {
+      $this->l_noticias[] = array(
+        'titular' => $fila['titular'],
+        'autor'   => $fila['autor'],
+        'fecha'   => $fila['fecha'],
+        'id'      => $fila['id']
+      );
+    }
+
+    if(isset($this->l_noticias))
+      return $this->l_noticias;
+  }
+
+
+  /**
+   * [borrarComentario description]
+   * @param  [type] $index [description]
+   * @return [type]        [description]
+   */
+  public function borrarEtiquetas($index) {
+    $this->con_etiquetas->deleteBy("id_noticia='$index'");
+  }
+
+
+  /**
+   * [editarEtiquetas description]
+   * @param  [type] $n_etiqueta [description]
+   * @param  [type] $id_noticia [description]
+   * @return [type]             [description]
+   */
+  public function editarEtiquetas($n_etiqueta, $id_noticia) {
+    // echo $n_etiqueta . $id_noticia;
+    $datos = $this->con_etiquetas->getValuesBy("*", "id_noticia='$id_noticia'")->fetchAll(PDO::FETCH_ASSOC);
+
+    if($datos == NULL) {
+      echo $this->con_etiquetas->insertValues("tema, id_noticia", "'$n_etiqueta', '$id_noticia'");
+    }
+    else
+      $this->con_etiquetas->updateValues("tema='$n_etiqueta'", "id_noticia='$id_noticia'");
+  }
+
+
+  /**
+   * [borrarEvento description]
+   * @param  [type] $id [description]
+   * @return [type]     [description]
+   */
+  public function borrarEvento($id) {
+    $this->borrarEtiquetas($id);
+    $this->con_comentarios->deleteBy("id_noticia='$id'");
+    $this->con_imagen->deleteBy("id_noticia='$id'");
+    $this->modelo->deleteBy("id='$id'");
   }
 
 }

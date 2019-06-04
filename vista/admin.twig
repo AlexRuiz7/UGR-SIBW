@@ -1,0 +1,171 @@
+{# admin.twig #}
+
+{% extends "layout.twig" %}
+
+
+{% block principal %}
+
+<head>
+  <link rel="stylesheet" type="text/css" href="css/estilo_moderador.css">
+  <link rel="stylesheet" type="text/css" href="css/estilo_registro.css">
+</head>
+
+
+  <!-- ////////////////////////////////// -->
+  <!-- // OPERACIONES DE ADMINISTRADOR // -->
+  <!-- ////////////////////////////////// -->
+
+<div class="flex-container moderador-main-container">
+  <div class="formulario flex-container">
+    <h2>Buscar usuarios</h2>
+    <form method="post" action="">
+      <div class="contenedor-fila-2">
+        <p class="item-fila-2">Por correo de usuario: </p>
+        <input class="item-fila-2" type="email" name="busqueda_admin"
+          placeholder="Buscar por correo de usuario" autocomplete="on"
+          maxlength="35" required/>
+      </div>
+      <input type="submit" value="Buscar">
+    </form>
+
+    {% if usuario_busqueda is defined %}
+      <div class="slider">
+        <div class="navitem comentario">
+          <div class="cabecera-comentario usuario">
+            <h5>{{ usuario_busqueda.nombre }}</h5>
+            <h5>{{ usuario_busqueda.correo }}</h5>
+            <h5>{{ usuario_busqueda.tipo }}</h5>
+            <select name="tipo_usuario" form="edit-tipo">
+              <option value="admin">Administrador</option>
+              <option value="moderador">Moderador</option>
+              <option value="gestor">Gestor</option>
+              <option value="registrado">Registrado</option>
+            </select>
+            <input class="bttn-admin-usuario" type="submit" value="Editar" form="edit-tipo">
+          </div>
+          <form class="nulo" id="edit-tipo" method="post" action="">
+            <input class="nulo" name="email" readonly value="{{ usuario_busqueda.correo }}"/>
+          </form>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+
+  <!-- /////////////////////////// -->
+  <!-- // OPERACIONES DE GESTOR // -->
+  <!-- /////////////////////////// -->
+
+  <div class="formulario">
+    <h2>Buscar eventos</h2>
+    <form method="post" action="">
+      <div class="contenedor-fila-2">
+        <p class="item-fila-2">Por etiquetas: </p>
+        <input class="item-fila-2" type="search" name="busqueda_gestor"
+          placeholder="Buscar por etiquetas" autocomplete="on"
+          maxlength="35" required/>
+      </div>
+      <input type="submit" value="Buscar">
+    </form>
+
+    {% if eventos_busqueda is defined %}
+      <div class="slider listado-noticias-gestor">
+        {% for item in eventos_busqueda %}
+          {% if false %}
+          <div class="navitem comentario noticia-gestor-item-lista">
+            <div class="cuerpo">
+              <h5><a href="?p=noticias&id={{ item.id }}">{{ item.titular }}</a></h5>
+            </div>
+          </div>
+          {% else %}
+          <div class="navitem comentario noticia-gestor-item-lista">
+            <div class="cabecera-comentario">
+              <h4>{{ item.autor }}</h4>
+              <h5>{{ item.fecha }}</h5>
+            </div>
+            <div class="cuerpo">
+              <h5><a href="?p=noticias&id={{ item.id }}">{{ item.titular }}</a></h5>
+            </div>
+          </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+
+  <div class="formulario">
+    <h2>Noticias</h2>
+    {% if noticias is defined %}
+      <div class="slider listado-noticias-gestor">
+        {% for item in noticias %}
+        <div class="navitem comentario noticia-gestor-item-lista">
+          <div class="cabecera-comentario">
+            <h4>{{ item.autor }}</h4>
+            <h5>{{ item.fecha }}</h5>
+          </div>
+          <div class="cuerpo">
+            <h5><a href="?p=noticias&id={{ item.id }}">{{ item.titular }}</a></h5>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+
+
+  <!-- ////////////////////////////// -->
+  <!-- // OPERACIONES DE MODERADOR // -->
+  <!-- ////////////////////////////// -->
+
+  <div class="formulario flex-container">
+    <h2>Buscar comentarios</h2>
+    <form method="post" action="">
+      <div class="contenedor-fila-2">
+        <p class="item-fila-2">Por correo de usuario: </p>
+        <input class="item-fila-2" type="email" name="busqueda_moderador"
+          placeholder="Buscar por correo de usuario" autocomplete="on"
+          maxlength="35" required/>
+      </div>
+      <input type="submit" value="Buscar">
+    </form>
+
+    {% if comentarios_busqueda is defined %}
+      <div class="slider">
+        {% for item in comentarios_busqueda %}
+        <div class="navitem comentario">
+          <div class="cabecera-comentario">
+            <h4>{{ item.usuario }}</h4>
+            <h5>{{ item.fecha }}</h5>
+            <h5>En noticia: <a href="?p=noticias&id={{ item.id_ntc }}">{{ item.id_ntc }}</a></h5>
+          </div>
+          <div class="cuerpo">
+            <p>{{ item.texto }}</p>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+
+  <div class="formulario">
+    <h2>Comentarios</h2>
+    {% if comentarios is defined %}
+      <div class="slider">
+        {% for item in comentarios %}
+        <div class="navitem comentario">
+          <div class="cabecera-comentario">
+            <h4>{{ item.usuario }}</h4>
+            <h5>{{ item.fecha }}</h5>
+            <h5>En noticia: <a href="?p=noticias&id={{ item.id_ntc }}">{{ item.id_ntc }}</a></h5>
+          </div>
+          <div class="cuerpo">
+            <p>{{ item.texto }}</p>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+
+</div>
+
+{% endblock %}

@@ -48,6 +48,7 @@ textarea:focus {
 .form-botones {
   place-self: center;
   width: 20%;
+  float: right;;
 }
 
 .nulo {
@@ -68,6 +69,7 @@ textarea:focus {
   background: rgba(80, 80, 80, 0.5);
   margin: 0 2.5%;
   width: 75%;
+  width: -webkit-fill-available;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -83,6 +85,18 @@ textarea:focus {
   margin: 5% 2% 2%;
   background: rgba(80, 80, 80, 0.5);
   max-height: 20em;
+}
+
+.listado-noticias-gestor {
+  flex-direction: row;
+  overflow-y: unset;
+  overflow-x: scroll;
+  place-content: space-between;
+}
+
+.noticia-gestor-item-lista {
+  min-width: 30%;
+  padding: 2% 3% 2% 3%;
 }
 
 .comentario {
@@ -115,4 +129,12 @@ textarea:focus {
 .comentario a {
   display: inline;
   font-size: medium;
+}
+
+.bttn-admin-usuario {
+  width: 15% !important;
+}
+
+select {
+  place-self: center;
 }

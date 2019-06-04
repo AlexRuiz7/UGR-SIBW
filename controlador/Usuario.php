@@ -158,7 +158,7 @@
     }
 
     public function getTipo() {
-      echo $this->tipo;
+      // echo $this->tipo;
       switch ($this->tipo) {
         case 'R':   $tipo_usuario = "Registrado";   break;
         case 'M':   $tipo_usuario = "Moderador";    break;
@@ -169,6 +169,37 @@
 
       // return $tipo_usuario;
       return $this->tipo;
+    }
+
+
+    /////////////////////////////////
+    // Funciones de Administrador  //
+    /////////////////////////////////
+
+
+    public function buscarUsuario($email) {
+      $datos = $this->modelo->getValuesBy("*", "email='$email'")->fetch(PDO::FETCH_ASSOC);
+
+      return array( "nombre" => $datos['nombre'],
+                    "correo" => $datos['email'],
+                    "tipo"   => $datos['tipo']);
+    }
+
+
+
+    public function editarUsuario($email, $tipo) {
+
+      // Recuperar tipo actual de usuario
+      $tipo_usuario = $this->modelo->getValuesBy("tipo", "email='$email'")->fetch(PDO::FETCH_ASSOC)['tipo'];
+      // Si es admin y se le va a quitar ese nivel, comprobamos si es el último.
+       // && $tipo!='admin'
+      if($tipo_usuario=='admin') {
+        $datos = $this->modelo->getValuesBy("tipo", "tipo='admin'")->fetchAll(PDO::FETCH_ASSOC);
+        if(count($datos)==1)
+          return false;
+      }
+
+      $this->modelo->updateValues("tipo='$tipo'", "email='$email'");
     }
 
   }

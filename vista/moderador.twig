@@ -13,22 +13,20 @@
 <div class="flex-container moderador-main-container">
 
   <div class="formulario flex-container">
-    <h2>Buscar</h2>
-
+    <h2>Buscar comentarios</h2>
     <form method="post" action="">
       <div class="contenedor-fila-2">
         <p class="item-fila-2">Por correo de usuario: </p>
-        <input class="item-fila-2" type="email" name="busqueda"
+        <input class="item-fila-2" type="email" name="busqueda_moderador"
           placeholder="Buscar por correo de usuario" autocomplete="on"
           maxlength="35" required/>
       </div>
-      <input type="submit" name="inicio-sesion" value="Buscar">
+      <input type="submit" value="Buscar">
     </form>
 
     {% if comentarios_busqueda is defined %}
       <div class="slider">
         {% for item in comentarios_busqueda %}
-
         <div class="navitem comentario">
           <div class="cabecera-comentario">
             <h4>{{ item.usuario }}</h4>
@@ -39,7 +37,6 @@
             <p>{{ item.texto }}</p>
           </div>
         </div>
-
         {% endfor %}
       </div>
     {% endif %}
@@ -47,11 +44,9 @@
 
   <div class="formulario">
     <h2>Comentarios</h2>
-
     {% if comentarios is defined %}
       <div class="slider">
         {% for item in comentarios %}
-
         <div class="navitem comentario">
           <div class="cabecera-comentario">
             <h4>{{ item.usuario }}</h4>
@@ -62,12 +57,10 @@
             <p>{{ item.texto }}</p>
           </div>
         </div>
-
         {% endfor %}
       </div>
     {% endif %}
   </div>
-
 
 </div>
 

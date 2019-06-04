@@ -33,7 +33,8 @@ h2 {
 }
 
 .formulario {
-  margin: 5%;
+  margin: 2%;
+  padding: 2% 0% 0%;
   background: rgba(80, 80, 80, 0.5);
   font-size: large;
 }
@@ -45,7 +46,8 @@ h2 {
 input[type="text"],
 input[type="password"],
 input[type="email"],
-input[type="username"] {
+input[type="username"],
+input[type="search"] {
   padding: 1.5% 0%;
   display: flex;
   width: 50%;
