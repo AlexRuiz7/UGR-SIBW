@@ -11,8 +11,13 @@
 
   <!-- NOTICIA: comienzo  -->
   <div class="seccion-noticias">
-    <div class="noticia">
 
+    <!-- RESULTADOS DE LA BÚSQUEDA AJAX -->
+    <div class="slider" id="resultado-busqueda">
+      <!-- AQUÍ SE DESPLAGARÁN LOS RESULTADOS DE LA BÚSQUEDA -->
+    </div>
+
+    <div class="noticia">
       <article>
         <header>
           <h1>{{ noticia.titulo }}</h1>
@@ -35,7 +40,6 @@
           {% endfor %}
         </header>
       </article>
-
     </div>
 
 

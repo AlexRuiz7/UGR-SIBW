@@ -6,9 +6,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ cabecera.titulo }}</title>
+    <link rel="shortcut icon" href="favicon/danger.png" >
     <link rel="stylesheet" type="text/css" href="css/estilo.css">
     <script src="js/funciones.js"></script>
-   <link rel="shortcut icon" href="favicon/danger.png" >
+    <!-- SCRIPTS JQUERY / AJAX -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="js/ajax.js"></script>
   </head>
 
   <body>
@@ -40,15 +43,11 @@
             <a class="navitem" href=#informacion title="Ir a información de contacto">
               <p class="center">Contacto</p>
             </a>
-
-
             <a class="navitem {% if pagina == "inicio-sesion" or pagina == "usuario" %}active{% endif %}"
               href="/?p={% if usuario is defined %}usuario{% else %}inicio-sesion{% endif %}"
               title="{% if usuario is defined %}Opciones de usuario{% else %}Iniciar sesión{% endif %}">
               <p class="center">{% if usuario is defined %}{{ usuario }}{% else %}Iniciar sesión{% endif %}</p>
             </a>
-
-
           {% endblock %}
 
           {% if tipo_usuario is defined %}
@@ -57,6 +56,10 @@
             <p class="center">{{ tipo_usuario }}</p>
           </a>
           {% endif %}
+
+          <a class="navitem" title="Buscar noticias">
+            <input class="center" type="search" name="busqueda" id="busqueda" placeholder="Buscar..." />
+          </a>
 
         </div>
         <!-- MENU: fin -->

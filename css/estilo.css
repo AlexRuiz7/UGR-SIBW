@@ -358,3 +358,17 @@ p {
 .not-found img {
   object-fit: scale-down;
 }
+
+#busqueda {
+  display: flex;
+  border-radius: 5px;
+  border: 1px solid #eee;
+  text-align: center;
+  height: 65%;
+  background-color: white;
+  color: black;
+  font-size: small;
+  padding: 0;
+  margin: 0;
+  width: 80%;
+}

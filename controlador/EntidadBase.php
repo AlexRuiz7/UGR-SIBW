@@ -1,7 +1,7 @@
 <?php
 
 class EntidadBase {
-  protected $modelo;
+  public $modelo;
 
 
   /**

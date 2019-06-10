@@ -7,6 +7,11 @@
   <!-- SECCION-NOTICIAS: comienzo  -->
   <div class="seccion-noticias">
 
+    <!-- RESULTADOS DE LA BÚSQUEDA AJAX -->
+    <div class="slider" id="resultado-busqueda">
+      <!-- AQUÍ SE DESPLAGARÁN LOS RESULTADOS DE LA BÚSQUEDA -->
+    </div>
+
     {% for item in noticias_grid %}
       <div class="box">
         <a href="./?p=noticias&id={{ item.id }}" title="Ver noticia">
